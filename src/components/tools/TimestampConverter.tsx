@@ -24,6 +24,7 @@ export default function TimestampConverter() {
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [format, setFormat] = useState("human");
   const [customFormat, setCustomFormat] = useState("YYYY-MM-DD HH:mm:ss");
+  const [activeTab, setActiveTab] = useState<"single" | "batch">("single");
 
   // Live clock
   useEffect(() => {
@@ -149,178 +150,215 @@ export default function TimestampConverter() {
   };
 
   return (
-    <div id="timestamp-converter" className="max-w-4xl mx-auto p-6 bg-gradient-to-br from-gray-50 to-gray-100 shadow-lg rounded-2xl mt-10 mb-10">
-      <h2 className="text-3xl font-extrabold mb-4 text-center text-gray-800">Unix Timestamp Converter</h2>
-
-      {/* Live timestamp */}
-      <div className="text-center mb-6">
-        <p className="text-gray-700 text-lg">Current Timestamp:</p>
-        <p className="font-mono text-2xl text-blue-600">{currentTimestamp}</p>
-      </div>
-
-      {/* Timezone & format */}
-      <div className="flex flex-wrap gap-4 mb-4 justify-center">
-        <div>
-          <label className="mr-2 font-medium">Timezone:</label>
-          <select 
-            value={timezone} 
-            onChange={(e) => setTimezone(e.target.value)} 
-            className="border p-2 rounded-lg"
-          >
-            <option value="UTC">UTC</option>
-            <option value="LOCAL">Local</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="mr-2 font-medium">Format:</label>
-          <select 
-            value={format} 
-            onChange={(e) => setFormat(e.target.value)} 
-            className="border p-2 rounded-lg"
-          >
-            <option value="human">Human</option>
-            <option value="iso">ISO</option>
-            <option value="rfc">RFC</option>
-            <option value="custom">Custom</option>
-          </select>
-        </div>
-      </div>
-
-      {format === "custom" && (
-        <div className="mb-4 text-center">
-          <input
-            type="text"
-            placeholder="YYYY-MM-DD HH:mm:ss"
-            value={customFormat}
-            onChange={(e) => setCustomFormat(e.target.value)}
-            className="border p-2 rounded-lg w-64 text-center"
-          />
-        </div>
-      )}
-
-      {/* Timestamp → Date */}
-      <div className="mb-6">
-        <label className="block text-gray-700 font-semibold mb-2">Timestamp → Date</label>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            placeholder="Enter timestamp"
-            value={timestamp}
-            onChange={(e) => setTimestamp(e.target.value)}
-            className="flex-1 border p-2 rounded-lg"
-          />
-          <button 
-            onClick={handleTimestampConvert} 
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-          >
-            Convert
-          </button>
-        </div>
-        {convertedDate && (
-          <div className="mt-2 p-2 bg-gray-100 rounded-lg flex justify-between items-center">
-            <span>{convertedDate}</span>
-            <button 
-              onClick={() => copyToClipboard(convertedDate)} 
-              className="text-blue-500 hover:underline"
-            >
-              Copy
-            </button>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-white">
+          <h1 className="text-2xl sm:text-3xl font-bold text-center">Unix Timestamp Converter</h1>
+          <div className="text-center mt-4">
+            <p className="text-sm sm:text-base font-medium">Current Timestamp:</p>
+            <p className="font-mono text-xl sm:text-2xl font-bold mt-1">{currentTimestamp}</p>
           </div>
-        )}
-      </div>
-
-      {/* Date → Timestamp */}
-      <div className="mb-6">
-        <label className="block text-gray-700 font-semibold mb-2">Date → Timestamp</label>
-        <div className="flex gap-2">
-          <input
-            type="datetime-local"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="flex-1 border p-2 rounded-lg"
-          />
-          <button 
-            onClick={handleDateConvert} 
-            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
-          >
-            Convert
-          </button>
         </div>
-        {convertedTimestamp && (
-          <div className="mt-2 p-2 bg-gray-100 rounded-lg flex justify-between items-center">
-            <span>{convertedTimestamp}</span>
-            <button 
-              onClick={() => copyToClipboard(convertedTimestamp)} 
-              className="text-green-500 hover:underline"
-            >
-              Copy
-            </button>
-          </div>
-        )}
-      </div>
 
-      {/* Batch Conversion */}
-      <div className="mb-6">
-        <label className="block text-gray-700 font-semibold mb-2">Batch Timestamp Conversion</label>
-        <textarea
-          placeholder="Enter multiple timestamps (one per line)"
-          value={batchInput}
-          onChange={(e) => setBatchInput(e.target.value)}
-          className="w-full border p-2 rounded-lg h-24"
-        />
-        <button 
-          onClick={handleBatchConvert} 
-          className="mt-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition"
-        >
-          Convert All
-        </button>
-        {batchResults.length > 0 && (
-          <div className="mt-2 space-y-2">
-            {batchResults.map((res, i) => (
-              <div key={i} className="p-2 bg-gray-100 rounded-lg flex justify-between">
-                <span>
-                  {res.input} → {res.output}
-                </span>
-                <button 
-                  onClick={() => copyToClipboard(res.output)} 
-                  className="text-purple-500 hover:underline"
-                >
-                  Copy
-                </button>
+        {/* Main Content */}
+        <div className="p-6">
+          {/* Timezone & Format Controls */}
+          <div className="flex flex-wrap gap-4 mb-6">
+            <div className="flex-1 min-w-[200px]">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Timezone</label>
+              <select 
+                value={timezone} 
+                onChange={(e) => setTimezone(e.target.value)} 
+                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="UTC">UTC</option>
+                <option value="LOCAL">Local</option>
+              </select>
+            </div>
+
+            <div className="flex-1 min-w-[200px]">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Format</label>
+              <select 
+                value={format} 
+                onChange={(e) => setFormat(e.target.value)} 
+                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="human">Human Readable</option>
+                <option value="iso">ISO 8601</option>
+                <option value="rfc">RFC 2822</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+
+            {format === "custom" && (
+              <div className="flex-1 min-w-[200px]">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Custom Format</label>
+                <input
+                  type="text"
+                  placeholder="YYYY-MM-DD HH:mm:ss"
+                  value={customFormat}
+                  onChange={(e) => setCustomFormat(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                />
               </div>
-            ))}
+            )}
           </div>
-        )}
-      </div>
 
-      {/* History */}
-      <div>
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="font-bold text-lg text-gray-800">Recent History</h3>
-          {history.length > 0 && (
-            <button 
-              onClick={clearHistory} 
-              className="text-red-500 hover:underline"
+          {/* Tabs */}
+          <div className="flex border-b border-gray-200 mb-6">
+            <button
+              className={`py-2 px-4 font-medium text-sm ${activeTab === "single" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-500 hover:text-gray-700"}`}
+              onClick={() => setActiveTab("single")}
             >
-              Clear History
+              Single Conversion
             </button>
-          )}
-        </div>
-        {history.length === 0 && <p className="text-gray-500">No recent conversions.</p>}
-        {history.map((h, i) => (
-          <div key={i} className="p-2 bg-gray-50 rounded-lg mb-1 flex justify-between">
-            <span>
-              {h.input} → {h.output}
-            </span>
-            <button 
-              onClick={() => copyToClipboard(h.output.toString())} 
-              className="text-blue-500 hover:underline"
+            <button
+              className={`py-2 px-4 font-medium text-sm ${activeTab === "batch" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-500 hover:text-gray-700"}`}
+              onClick={() => setActiveTab("batch")}
             >
-              Copy
+              Batch Conversion
             </button>
           </div>
-        ))}
+
+          {/* Single Conversion */}
+          {activeTab === "single" && (
+            <div className="space-y-6">
+              {/* Timestamp to Date */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Timestamp → Date</label>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <input
+                    type="text"
+                    placeholder="Enter timestamp (e.g., 1625097600)"
+                    value={timestamp}
+                    onChange={(e) => setTimestamp(e.target.value)}
+                    className="flex-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <button 
+                    onClick={handleTimestampConvert} 
+                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  >
+                    Convert
+                  </button>
+                </div>
+                {convertedDate && (
+                  <div className="mt-2 p-3 bg-gray-50 rounded-md border border-gray-200 flex justify-between items-center">
+                    <span className="font-mono text-sm sm:text-base">{convertedDate}</span>
+                    <button 
+                      onClick={() => copyToClipboard(convertedDate)} 
+                      className="text-blue-600 hover:text-blue-800 text-sm font-medium focus:outline-none"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Date to Timestamp */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Date → Timestamp</label>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <input
+                    type="datetime-local"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    className="flex-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <button 
+                    onClick={handleDateConvert} 
+                    className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  >
+                    Convert
+                  </button>
+                </div>
+                {convertedTimestamp && (
+                  <div className="mt-2 p-3 bg-gray-50 rounded-md border border-gray-200 flex justify-between items-center">
+                    <span className="font-mono text-sm sm:text-base">{convertedTimestamp}</span>
+                    <button 
+                      onClick={() => copyToClipboard(convertedTimestamp)} 
+                      className="text-green-600 hover:text-green-800 text-sm font-medium focus:outline-none"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Batch Conversion */}
+          {activeTab === "batch" && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Batch Timestamp Conversion</label>
+              <textarea
+                placeholder="Enter multiple timestamps (one per line)"
+                value={batchInput}
+                onChange={(e) => setBatchInput(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 h-32"
+              />
+              <button 
+                onClick={handleBatchConvert} 
+                className="mt-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+              >
+                Convert All
+              </button>
+              
+              {batchResults.length > 0 && (
+                <div className="mt-4 space-y-2">
+                  {batchResults.map((res, i) => (
+                    <div key={i} className="p-3 bg-gray-50 rounded-md border border-gray-200 flex justify-between items-center">
+                      <div className="font-mono text-xs sm:text-sm">
+                        <span className="font-medium">{res.input}</span> → {res.output}
+                      </div>
+                      <button 
+                        onClick={() => copyToClipboard(res.output)} 
+                        className="text-purple-600 hover:text-purple-800 text-sm font-medium focus:outline-none"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* History */}
+          <div className="mt-8">
+            <div className="flex justify-between items-center mb-3">
+              <h3 className="text-lg font-medium text-gray-900">Recent Conversions</h3>
+              {history.length > 0 && (
+                <button 
+                  onClick={clearHistory} 
+                  className="text-sm text-red-600 hover:text-red-800 focus:outline-none"
+                >
+                  Clear History
+                </button>
+              )}
+            </div>
+            
+            {history.length === 0 ? (
+              <p className="text-sm text-gray-500 p-3 bg-gray-50 rounded-md">No conversion history yet.</p>
+            ) : (
+              <div className="space-y-2">
+                {history.map((h, i) => (
+                  <div key={i} className="p-3 bg-gray-50 rounded-md border border-gray-200 flex justify-between items-center">
+                    <div className="font-mono text-xs sm:text-sm">
+                      <span className="font-medium">{h.input}</span> → {h.output}
+                    </div>
+                    <button 
+                      onClick={() => copyToClipboard(h.output.toString())} 
+                      className="text-blue-600 hover:text-blue-800 text-sm font-medium focus:outline-none"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
