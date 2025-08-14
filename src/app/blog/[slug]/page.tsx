@@ -1,17 +1,19 @@
-
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { getPostBySlug } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
 interface PageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export default async function PostPage({ params }: PageProps) {
+  const resolvedParams = await params // ✅ Await params
+  const slug = resolvedParams.slug
+
   try {
-    // Debugging check
-    console.log('Received slug:', params.slug) 
-    
-    const { content, frontmatter } = await getPostBySlug(params.slug)
+    console.log('Received slug:', slug)
+
+    const { content, frontmatter } = await getPostBySlug(slug)
 
     return (
       <article className="prose mx-auto py-8 px-4">
@@ -26,7 +28,7 @@ export default async function PostPage({ params }: PageProps) {
     return (
       <div className="text-center py-16">
         <h1 className="text-2xl font-bold">Post Not Found</h1>
-        <p>Couldn&lsquo;t find: {params.slug}</p>
+        <p>Couldn&lsquo;t find: {slug}</p>
       </div>
     )
   }
