@@ -1,54 +1,64 @@
-import { toolMetadata } from '@/lib/tools-config'
-// import dynamic from 'next/dynamic'
-import { Metadata } from 'next'
+// app/tools/[tool]/page.tsx
+import IPAddressTool from '@/components/tools/IPAddressLookup'
+import JSONFormatter from '@/components/tools/JSONEditor'
+import TimestampConverter from '@/components/tools/TimestampConverter'
+import SlugGenerator from '@/components/tools/SlugGenerator'
 
-// 1. Type your params
-interface PageParams {
-  params: { tool: string }
-}
+// Enable dynamic rendering
+export const dynamic = 'force-dynamic'
 
-// 2. Generate metadata (your existing code)
-export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
-  const defaultMetadata = {
-    name: 'Developer Tool',
-    description: 'Free online development utility',
+// SEO Metadata
+export async function generateMetadata({ params }: { params: { tool: string } }) {
+  const toolNameMap: Record<string, string> = {
+    'ip-address': 'IP Address Lookup',
+    'json-formatter': 'JSON Formatter',
+    'timestamp-converter': 'Timestamp Converter',
+    'slug-generator': 'Slug Generator'
   }
-  
-  const { name, description} = toolMetadata[params.tool] || defaultMetadata
+
+  const toolName = toolNameMap[params.tool] || 'Developer Tool'
+  const description = `Free online ${toolName.toLowerCase()} for developers`
 
   return {
-    title: `${name} | Dev Tools`,
+    title: `${toolName} | Dev Tools`,
     description,
+    alternates: {
+      canonical: `http://localhost:3000/tools/${params.tool}`
+    },
     openGraph: {
-      title: name,
+      type: 'website',
+      title: `${toolName} Tool`,
       description,
-      
+      url: `http://localhost:3000/tools/${params.tool}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${toolName} Tool`,
+      description,
+      images: [`https://yourdomain.com/images/tools/${params.tool}.jpg`]
+    },
+    robots: {
+      index: false, // Set to true if you want tools indexed
+      follow: true
     }
   }
 }
 
-// 3. Main page component
-export default function ToolPage({ params }: PageParams) {
-//   // 4. Dynamic import with error handling
-//   const ToolComponent = dynamic(() => import(`@/components/tools/${params.tool}`), {
-//     loading: () => <p>Loading tool...</p>,
-//     ssr: false // Only if client-side features are needed
-//   })
-
-  // 5. Validate tool exists
-  if (!toolMetadata[params.tool]) {
-    return (
-      <div className="text-center py-16">
-        <h2 className="text-2xl font-bold">Tool Not Found</h2>
-        <p>No tool exists with name: {params.tool}</p>
-      </div>
-    )
-  }
-
-//   // 6. Render the tool
-//   return (
-//     <main className="container mx-auto p-4">
-//       <ToolComponent />
-//     </main>
-//   )
+export default function ToolPage({ params }: { params: { tool: string } }) {
+  const tool = params.tool
+  
+  return (
+    <div className="tool-container">
+      {tool === 'ip-address' && <IPAddressTool />}
+      {tool === 'json-formatter' && <JSONFormatter />}
+      {tool === 'timestamp-converter' && <TimestampConverter />}
+      {tool === 'slug-generator' && <SlugGenerator />}
+      {!['ip-address', 'json-formatter', 'timestamp-converter', 'slug-generator'].includes(tool) && (
+        <div className="text-center py-16">
+          <h2 className="text-2xl font-bold">Tool Not Found</h2>
+          <p>No tool exists with name: {tool}</p>
+        </div>
+      )}
+    </div>
+  )
 }
