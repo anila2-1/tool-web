@@ -3,16 +3,23 @@ import IPAddressTool from '@/components/tools/IPAddressLookup'
 import JSONFormatter from '@/components/tools/JSONEditor'
 import TimestampConverter from '@/components/tools/TimestampConverter'
 import SlugGenerator from '@/components/tools/SlugGenerator'
+import { Metadata } from 'next'
 
 // Enable dynamic rendering
 export const dynamic = 'force-dynamic'
 
+// Define proper PageProps matching Next.js expectations
 interface PageProps {
-  params: { tool: string }
+  params: {
+    tool: string
+  }
+  searchParams?: {
+    [key: string]: string | string[] | undefined
+  }
 }
 
 // SEO Metadata
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const toolNameMap: Record<string, string> = {
     'ip-address': 'IP Address Lookup',
     'json-formatter': 'JSON Formatter',
@@ -22,8 +29,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   const toolName = toolNameMap[params.tool] || 'Developer Tool'
   const description = `Free online ${toolName.toLowerCase()} for developers`
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
-  const imageUrl = `${baseUrl}/images/tools/${params.tool}.jpg`
+  const baseUrl = 'http://localhost:3000'
 
   return {
     title: `${toolName} | Dev Tools`,
@@ -36,20 +42,12 @@ export async function generateMetadata({ params }: PageProps) {
       title: `${toolName} Tool`,
       description,
       url: `${baseUrl}/tools/${params.tool}`,
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: `${toolName} Tool Preview`
-        }
-      ]
+     
     },
     twitter: {
       card: 'summary_large_image',
       title: `${toolName} Tool`,
       description,
-      images: [imageUrl]
     },
     robots: {
       index: false,
