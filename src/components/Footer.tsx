@@ -31,8 +31,8 @@ const Footer = () => {
         <div className="mb-6 md:mb-0">
           <h3 className="text-lg font-semibold mb-2 text-black">Quick Links</h3>
           <ul className="space-y-1 text-sm">
-            <li><a href="#features" className="hover:text-blue-400">Features</a></li>
-            <li><a href="/tools" className="hover:text-blue-400">Tools</a></li>
+            <li><Link href="#features" className="hover:text-blue-400">Features</Link></li>
+            <li><Link href="/tools" className="hover:text-blue-400">Tools</Link></li>
             {/* <li><a href="#ai-suggestions" className="hover:text-blue-400">AI Tool</a></li> */}
           </ul>
         </div>
@@ -41,7 +41,7 @@ const Footer = () => {
         <div className="text-sm">
           <h3 className="text-lg font-semibold mb-2 text-black">Connect with Us</h3>
           <div className="flex space-x-4 mb-4">
-            <a
+            <Link
               href="https://github.com/anila2-1"
               target="_blank"
               rel="noopener noreferrer"
@@ -49,8 +49,8 @@ const Footer = () => {
               title="GitHub"
             >
               <FaGithub size={20} />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -58,8 +58,8 @@ const Footer = () => {
               title="Twitter"
             >
               <FaTwitter size={20} />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -67,14 +67,15 @@ const Footer = () => {
               title="LinkedIn"
             >
               <FaLinkedin size={20} />
-            </a>
-            <a
+            </Link>
+            <Link
+              target="_blank"
               href="https://facebook.com"
               className="hover:text-gray-800"
               title="Facebook"
             >
               <FaFacebook size={20} />
-            </a>
+            </Link>
           </div>
 
           {/* CTA Button */}
