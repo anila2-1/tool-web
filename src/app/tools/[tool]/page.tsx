@@ -1,17 +1,20 @@
 import { toolMetadata } from '@/lib/tools-config'
+import dynamic from 'next/dynamic'
+import { Metadata } from 'next'
 
-export async function generateMetadata({ params }: { params: { tool: string } }) {
+// 1. Type your params
+interface PageParams {
+  params: { tool: string }
+}
+
+// 2. Generate metadata (your existing code)
+export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
   const defaultMetadata = {
     name: 'Developer Tool',
     description: 'Free online development utility',
-    image: '/images/tools/default.jpg' // Make sure this exists
   }
   
-  const { name, description, image } = toolMetadata[params.tool] || defaultMetadata
-
-  // Ensure image URL is always valid
-  const imageUrl = image || defaultMetadata.image
-  const fullImageUrl = imageUrl.startsWith('http') ? imageUrl : `http://localhost:3000${imageUrl}`
+  const { name, description} = toolMetadata[params.tool] || defaultMetadata
 
   return {
     title: `${name} | Dev Tools`,
@@ -19,18 +22,33 @@ export async function generateMetadata({ params }: { params: { tool: string } })
     openGraph: {
       title: name,
       description,
-      images: [{
-        url: fullImageUrl,
-        width: 1200,
-        height: 630,
-        alt: `${name} Tool Preview`
-      }]
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: name,
-      description,
-      images: [fullImageUrl]
+      
     }
   }
+}
+
+// 3. Main page component
+export default function ToolPage({ params }: PageParams) {
+  // 4. Dynamic import with error handling
+  const ToolComponent = dynamic(() => import(`@/components/tools/${params.tool}`), {
+    loading: () => <p>Loading tool...</p>,
+    ssr: false // Only if client-side features are needed
+  })
+
+  // 5. Validate tool exists
+  if (!toolMetadata[params.tool]) {
+    return (
+      <div className="text-center py-16">
+        <h2 className="text-2xl font-bold">Tool Not Found</h2>
+        <p>No tool exists with name: {params.tool}</p>
+      </div>
+    )
+  }
+
+  // 6. Render the tool
+  return (
+    <main className="container mx-auto p-4">
+      <ToolComponent />
+    </main>
+  )
 }
