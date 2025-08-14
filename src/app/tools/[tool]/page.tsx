@@ -29,11 +29,11 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 
 // 3. Main page component
 export default function ToolPage({ params }: PageParams) {
-  // 4. Dynamic import with error handling
-  const ToolComponent = dynamic(() => import(`@/components/tools/${params.tool}`), {
-    loading: () => <p>Loading tool...</p>,
-    ssr: false // Only if client-side features are needed
-  })
+//   // 4. Dynamic import with error handling
+//   const ToolComponent = dynamic(() => import(`@/components/tools/${params.tool}`), {
+//     loading: () => <p>Loading tool...</p>,
+//     ssr: false // Only if client-side features are needed
+//   })
 
   // 5. Validate tool exists
   if (!toolMetadata[params.tool]) {
@@ -45,10 +45,10 @@ export default function ToolPage({ params }: PageParams) {
     )
   }
 
-  // 6. Render the tool
-  return (
-    <main className="container mx-auto p-4">
-      <ToolComponent />
-    </main>
-  )
+//   // 6. Render the tool
+//   return (
+//     <main className="container mx-auto p-4">
+//       <ToolComponent />
+//     </main>
+//   )
 }
