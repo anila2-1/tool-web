@@ -7,8 +7,12 @@ import SlugGenerator from '@/components/tools/SlugGenerator'
 // Enable dynamic rendering
 export const dynamic = 'force-dynamic'
 
+interface PageProps {
+  params: { tool: string }
+}
+
 // SEO Metadata
-export async function generateMetadata({ params }: { params: { tool: string } }) {
+export async function generateMetadata({ params }: PageProps) {
   const toolNameMap: Record<string, string> = {
     'ip-address': 'IP Address Lookup',
     'json-formatter': 'JSON Formatter',
@@ -18,33 +22,43 @@ export async function generateMetadata({ params }: { params: { tool: string } })
 
   const toolName = toolNameMap[params.tool] || 'Developer Tool'
   const description = `Free online ${toolName.toLowerCase()} for developers`
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
+  const imageUrl = `${baseUrl}/images/tools/${params.tool}.jpg`
 
   return {
     title: `${toolName} | Dev Tools`,
     description,
     alternates: {
-      canonical: `http://localhost:3000/tools/${params.tool}` // Changed from localhost
+      canonical: `${baseUrl}/tools/${params.tool}`
     },
     openGraph: {
       type: 'website',
       title: `${toolName} Tool`,
       description,
-      url: `http://localhost:3000//tools/${params.tool}`, // Changed from localhost
-     
+      url: `${baseUrl}/tools/${params.tool}`,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${toolName} Tool Preview`
+        }
+      ]
     },
     twitter: {
       card: 'summary_large_image',
       title: `${toolName} Tool`,
       description,
+      images: [imageUrl]
     },
     robots: {
-      index: false, // Set to true if you want tools indexed
+      index: false,
       follow: true
     }
   }
 }
 
-export default function ToolPage({ params }: { params: { tool: string } }) {
+export default function ToolPage({ params }: PageProps) {
   const tool = params.tool
   
   return (
