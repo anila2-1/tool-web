@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { getPostBySlug } from '@/lib/mdx'
+import { getPostBySlug, getAllPosts } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -7,6 +7,42 @@ import Footer from '@/components/Footer'
 interface PageProps {
   params: Promise<{ slug: string }>
 }
+
+// Static Generation
+export async function generateStaticParams() {
+  const posts = await getAllPosts()
+  return posts.map(post => ({
+    slug: post.slug
+  }))
+}
+
+// SEO Metadata
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params // ✅ Await params in Next.js 15+
+  const post = await getPostBySlug((await params).slug)
+  
+  return {
+    title: `${post.frontmatter.title} | Tech Blog`,
+    description: post.frontmatter.excerpt,
+    alternates: {
+      canonical: `http://localhost:3000/blog/${(await params).slug}`
+    },
+    openGraph: {
+      type: 'article',
+      title: post.frontmatter.title,
+      description: post.frontmatter.excerpt,
+      publishedTime: post.frontmatter.date,
+      url: `http://localhost:3000/blog/${(await params).slug}`,
+      
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.frontmatter.title,
+      description: post.frontmatter.excerpt,
+    }
+  }
+}
+
 
 export default async function PostPage({ params }: PageProps) {
   const { slug } = await params // ✅ Await params in Next.js 15+
