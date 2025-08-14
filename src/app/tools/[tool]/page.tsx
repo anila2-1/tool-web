@@ -23,19 +23,19 @@ export async function generateMetadata({ params }: { params: { tool: string } })
     title: `${toolName} | Dev Tools`,
     description,
     alternates: {
-      canonical: `http://localhost:3000/tools/${params.tool}`
+      canonical: `http://localhost:3000/tools/${params.tool}` // Changed from localhost
     },
     openGraph: {
       type: 'website',
       title: `${toolName} Tool`,
       description,
-      url: `http://localhost:3000/tools/${params.tool}`,
+      url: `http://localhost:3000//tools/${params.tool}`, // Changed from localhost
+     
     },
     twitter: {
       card: 'summary_large_image',
       title: `${toolName} Tool`,
       description,
-      images: [`https://yourdomain.com/images/tools/${params.tool}.jpg`]
     },
     robots: {
       index: false, // Set to true if you want tools indexed
