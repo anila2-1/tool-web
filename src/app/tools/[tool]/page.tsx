@@ -1,5 +1,5 @@
 import { toolMetadata } from '@/lib/tools-config'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import { Metadata } from 'next'
 
 // 1. Type your params
