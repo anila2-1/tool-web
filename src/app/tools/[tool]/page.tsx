@@ -8,16 +8,16 @@ import SlugGenerator from '@/components/tools/SlugGenerator'
 
 export const dynamic = 'force-dynamic'
 
-// Apna custom props type
+// ✅ Props type for Next.js 15
 type ToolPageProps = {
-  params: {
-    tool: string
-  }
+  params: Promise<{ tool: string }> | { tool: string }
 }
 
 export async function generateMetadata(
-  { params }: ToolPageProps
+  props: ToolPageProps
 ): Promise<Metadata> {
+  const { tool } = await props.params
+
   const toolNameMap: Record<string, string> = {
     'ip-address': 'IP Address Lookup',
     'json-formatter': 'JSON Formatter',
@@ -25,20 +25,20 @@ export async function generateMetadata(
     'slug-generator': 'Slug Generator'
   }
 
-  const toolName = toolNameMap[params.tool] || 'Developer Tool'
+  const toolName = toolNameMap[tool] || 'Developer Tool'
   const description = `Free online ${toolName.toLowerCase()} for developers`
 
   return {
     title: `${toolName} | Dev Tools`,
     description,
     alternates: {
-      canonical: `http://localhost:3000/tools/${params.tool}`
+      canonical: `http://localhost:3000/tools/${tool}`
     },
     openGraph: {
       type: 'website',
       title: `${toolName} Tool`,
       description,
-      url: `http://localhost:3000/tools/${params.tool}`,
+      url: `http://localhost:3000/tools/${tool}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -52,8 +52,8 @@ export async function generateMetadata(
   }
 }
 
-export default function ToolPage({ params }: ToolPageProps) {
-  const tool = params.tool
+export default async function ToolPage(props: ToolPageProps) {
+  const { tool } = await props.params
 
   return (
     <div className="tool-container">
