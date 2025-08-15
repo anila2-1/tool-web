@@ -3,12 +3,19 @@ import IPAddressTool from '@/components/tools/IPAddressLookup'
 import JSONFormatter from '@/components/tools/JSONEditor'
 import TimestampConverter from '@/components/tools/TimestampConverter'
 import SlugGenerator from '@/components/tools/SlugGenerator'
+import type { Metadata } from 'next'
 
 // Enable dynamic rendering
 export const dynamic = 'force-dynamic'
 
+interface ToolPageProps {
+  params: { tool: string }
+}
+
 // SEO Metadata
-export async function generateMetadata({ params }: { params: { tool: string } }) {
+export async function generateMetadata(
+  { params }: ToolPageProps
+): Promise<Metadata> {
   const toolNameMap: Record<string, string> = {
     'ip-address': 'IP Address Lookup',
     'json-formatter': 'JSON Formatter',
@@ -23,14 +30,13 @@ export async function generateMetadata({ params }: { params: { tool: string } })
     title: `${toolName} | Dev Tools`,
     description,
     alternates: {
-      canonical: `http://localhost:3000/tools/${params.tool}` // Changed from localhost
+      canonical: `https://yourdomain.com/tools/${params.tool}`
     },
     openGraph: {
       type: 'website',
       title: `${toolName} Tool`,
       description,
-      url: `http://localhost:3000/tools/${params.tool}`, // Changed from localhost
-     
+      url: `https://yourdomain.com/tools/${params.tool}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -44,7 +50,7 @@ export async function generateMetadata({ params }: { params: { tool: string } })
   }
 }
 
-export default function ToolPage({ params }: { params: { tool: string } }) {
+export default function ToolPage({ params }: ToolPageProps) {
   const tool = params.tool
   
   return (
