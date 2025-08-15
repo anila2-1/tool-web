@@ -1,18 +1,20 @@
-// app/tools/[tool]/page.tsx
+// src/app/tools/[tool]/page.tsx
+import type { Metadata } from 'next'
+
 import IPAddressTool from '@/components/tools/IPAddressLookup'
 import JSONFormatter from '@/components/tools/JSONEditor'
 import TimestampConverter from '@/components/tools/TimestampConverter'
 import SlugGenerator from '@/components/tools/SlugGenerator'
-import type { Metadata } from 'next'
 
-// Enable dynamic rendering
 export const dynamic = 'force-dynamic'
 
-interface ToolPageProps {
-  params: { tool: string }
+// Apna custom props type
+type ToolPageProps = {
+  params: {
+    tool: string
+  }
 }
 
-// SEO Metadata
 export async function generateMetadata(
   { params }: ToolPageProps
 ): Promise<Metadata> {
@@ -30,13 +32,13 @@ export async function generateMetadata(
     title: `${toolName} | Dev Tools`,
     description,
     alternates: {
-      canonical: `https://yourdomain.com/tools/${params.tool}`
+      canonical: `http://localhost:3000/tools/${params.tool}`
     },
     openGraph: {
       type: 'website',
       title: `${toolName} Tool`,
       description,
-      url: `https://yourdomain.com/tools/${params.tool}`,
+      url: `http://localhost:3000/tools/${params.tool}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -44,7 +46,7 @@ export async function generateMetadata(
       description,
     },
     robots: {
-      index: false, // Set to true if you want tools indexed
+      index: false,
       follow: true
     }
   }
@@ -52,7 +54,7 @@ export async function generateMetadata(
 
 export default function ToolPage({ params }: ToolPageProps) {
   const tool = params.tool
-  
+
   return (
     <div className="tool-container">
       {tool === 'ip-address' && <IPAddressTool />}
