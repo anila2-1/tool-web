@@ -8,15 +8,16 @@ import SlugGenerator from '@/components/tools/SlugGenerator'
 
 export const dynamic = 'force-dynamic'
 
-// ✅ Props type for Next.js 15
-type ToolPageProps = {
-  params: Promise<{ tool: string }> | { tool: string }
+// ✅ Props ka type — params is ALWAYS a Promise in Next.js 15
+interface ToolPageProps {
+  params: Promise<{ tool: string }>
 }
 
+// SEO Metadata
 export async function generateMetadata(
-  props: ToolPageProps
+  { params }: ToolPageProps
 ): Promise<Metadata> {
-  const { tool } = await props.params
+  const { tool } = await params // ✅ always await
 
   const toolNameMap: Record<string, string> = {
     'ip-address': 'IP Address Lookup',
@@ -52,8 +53,8 @@ export async function generateMetadata(
   }
 }
 
-export default async function ToolPage(props: ToolPageProps) {
-  const { tool } = await props.params
+export default async function ToolPage({ params }: ToolPageProps) {
+  const { tool } = await params // ✅ always await
 
   return (
     <div className="tool-container">
