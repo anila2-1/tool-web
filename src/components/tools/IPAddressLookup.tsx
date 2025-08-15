@@ -1,7 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { FaCopy, FaGlobe, FaMapMarkerAlt, FaClock, FaHistory, FaShieldAlt } from "react-icons/fa";
+import {
+  FaCopy,
+  FaGlobe,
+  FaMapMarkerAlt,
+  FaClock,
+  FaHistory,
+  FaShieldAlt,
+} from "react-icons/fa";
 
 export default function IpChecker() {
   const [ip, setIp] = useState("");
@@ -66,14 +73,17 @@ export default function IpChecker() {
     }
   };
 
-  const addToHistory = (ipAddress: string, info: { city: unknown; country_name: unknown; }) => {
+  const addToHistory = (
+    ipAddress: string,
+    info: { city: unknown; country_name: unknown }
+  ) => {
     const newEntry = {
       ip: ipAddress,
       city: info.city,
       country: info.country_name,
       date: new Date().toLocaleString(),
     };
-    const updatedHistory = [newEntry, ...history].slice(0, 5); // keep last 5
+    const updatedHistory = [newEntry, ...history].slice(0, 5);
     setHistory(updatedHistory);
     localStorage.setItem("ipSearchHistory", JSON.stringify(updatedHistory));
   };
@@ -92,13 +102,14 @@ export default function IpChecker() {
   };
 
   return (
-    <div id="ip-address" className="max-w- mb-10 mx-auto p-6 bg-white shadow-xl rounded-3xl mt-10 border border-gray-100 hover:shadow-3xl transition-all duration-300">
+    <div className="max-w-3xl mx-auto mb-10 p-6 bg-gradient-to-br from-white/70 to-white/40 backdrop-blur-xl shadow-2xl rounded-3xl mt-10 border border-white/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-500">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 text-white p-5 rounded-2xl mb-6 shadow-md">
-        <h1 className="text-3xl font-extrabold flex items-center justify-center gap-3 tracking-wide">
-          <FaGlobe className="text-yellow-300" /> IP Address Checker
+      <div className="bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 text-white p-6 rounded-2xl mb-6 shadow-lg relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagonal-stripes.png')] opacity-20"></div>
+        <h1 className="text-3xl font-extrabold flex items-center justify-center gap-3 tracking-wide relative z-10">
+          <FaGlobe className="text-yellow-300 drop-shadow" /> IP Address Checker
         </h1>
-        <p className="text-sm mt-1 opacity-80">
+        <p className="text-sm mt-1 opacity-90 relative z-10">
           Get your IP, location, and network details instantly.
         </p>
       </div>
@@ -114,19 +125,21 @@ export default function IpChecker() {
         />
         <button
           onClick={handleManualSearch}
-          className="px-6 bg-indigo-600 text-white rounded-r-lg hover:bg-indigo-700 transition-colors"
+          className="px-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-r-lg hover:from-indigo-700 hover:to-purple-700 transition-all"
         >
           Search
         </button>
       </div>
 
-      {loading && <p className="text-center text-gray-500 animate-pulse">Loading...</p>}
+      {loading && (
+        <p className="text-center text-gray-500 animate-pulse">Loading...</p>
+      )}
 
       {/* IP Info */}
       {ipInfo && (
         <div className="space-y-5">
           {/* IP Display */}
-          <div className="flex items-center justify-between bg-gray-100 p-4 rounded-xl shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between bg-white/60 backdrop-blur-md p-4 rounded-xl shadow border border-gray-200 hover:shadow-lg transition">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-gray-800">Your IP:</span>
               <span className="text-gray-700">{ip}</span>
@@ -140,7 +153,7 @@ export default function IpChecker() {
           </div>
 
           {/* Location Info */}
-          <div className="bg-gray-50 p-5 rounded-xl shadow-inner border border-gray-100">
+          <div className="bg-gradient-to-br from-blue-50 to-white p-5 rounded-xl shadow-inner border border-blue-100">
             <div className="flex items-center gap-2 mb-3">
               <FaMapMarkerAlt className="text-red-500" />
               <span className="font-bold">Location:</span>
@@ -157,10 +170,22 @@ export default function IpChecker() {
                 </span>
               </span>
             </div>
-            <p><strong>ISP:</strong> <span className="text-gray-700">{ipInfo.org}</span></p>
-            <p><strong>ASN:</strong> <span className="text-gray-700">{ipInfo.asn || "N/A"}</span></p>
-            <p><strong>Network:</strong> <span className="text-gray-700">{ipInfo.network || "N/A"}</span></p>
-            <p><strong>Timezone:</strong> <span className="text-gray-700">{ipInfo.timezone}</span></p>
+            <p>
+              <strong>ISP:</strong>{" "}
+              <span className="text-gray-700">{ipInfo.org}</span>
+            </p>
+            <p>
+              <strong>ASN:</strong>{" "}
+              <span className="text-gray-700">{ipInfo.asn || "N/A"}</span>
+            </p>
+            <p>
+              <strong>Network:</strong>{" "}
+              <span className="text-gray-700">{ipInfo.network || "N/A"}</span>
+            </p>
+            <p>
+              <strong>Timezone:</strong>{" "}
+              <span className="text-gray-700">{ipInfo.timezone}</span>
+            </p>
           </div>
 
           {/* Local Time */}
@@ -168,7 +193,9 @@ export default function IpChecker() {
             <FaClock className="text-blue-500" />
             <span className="text-gray-700">
               Local Time:{" "}
-              {new Date().toLocaleString("en-US", { timeZone: ipInfo.timezone })}
+              {new Date().toLocaleString("en-US", {
+                timeZone: ipInfo.timezone,
+              })}
             </span>
           </div>
 
@@ -178,7 +205,7 @@ export default function IpChecker() {
               title="map"
               width="100%"
               height="250"
-              className="rounded-xl border border-gray-200 shadow-md"
+              className="rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition"
               src={`https://maps.google.com/maps?q=${ipInfo.latitude},${ipInfo.longitude}&z=12&output=embed`}
             ></iframe>
           )}
@@ -187,7 +214,7 @@ export default function IpChecker() {
 
       {/* History */}
       {history.length > 0 && (
-        <div className="mt-8 bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm">
+        <div className="mt-8 bg-white/60 backdrop-blur-md p-4 rounded-xl border border-gray-200 shadow">
           <h2 className="flex items-center gap-2 font-bold text-gray-800 mb-3">
             <FaHistory className="text-indigo-500" /> Search History
           </h2>
@@ -202,7 +229,7 @@ export default function IpChecker() {
       )}
 
       {/* Privacy Tips */}
-      <div className="mt-6 bg-yellow-50 p-4 rounded-xl border border-yellow-200 shadow-inner">
+      <div className="mt-6 bg-yellow-50/80 backdrop-blur-sm p-4 rounded-xl border border-yellow-200 shadow-inner">
         <h2 className="flex items-center gap-2 font-bold text-yellow-700 mb-2">
           <FaShieldAlt /> Privacy Tips
         </h2>
