@@ -33,13 +33,13 @@ export async function generateMetadata(
     title: `${toolName} | Dev Tools`,
     description,
     alternates: {
-      canonical: `http://localhost:3000/tools/${tool}`
+      canonical: `https://tool-web-zmdw.vercel.app/tools/${tool}`
     },
     openGraph: {
       type: 'website',
       title: `${toolName} Tool`,
       description,
-      url: `http://localhost:3000/tools/${tool}`,
+      url: `https://tool-web-zmdw.vercel.app/tools/${tool}`,
     },
     twitter: {
       card: 'summary_large_image',

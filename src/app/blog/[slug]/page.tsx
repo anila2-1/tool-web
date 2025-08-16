@@ -26,14 +26,14 @@ export async function generateMetadata({ params }: PageProps) {
     title: `${post.frontmatter.title} | Tech Blog`,
     description: post.frontmatter.excerpt,
     alternates: {
-      canonical: `http://localhost:3000/blog/${(await params).slug}`
+      canonical: `https://tool-web-zmdw.vercel.app/blog/${(await params).slug}`
     },
     openGraph: {
       type: 'article',
       title: post.frontmatter.title,
       description: post.frontmatter.excerpt,
       publishedTime: post.frontmatter.date,
-      url: `http://localhost:3000/blog/${(await params).slug}`,
+      url: `https://tool-web-zmdw.vercel.app/blog/${(await params).slug}`,
       
     },
     twitter: {
