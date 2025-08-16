@@ -1,31 +1,43 @@
 ---
-title: "My First Blog Post"
+title: "How IP Addresses Work: Digital Device Identification"
 date: "2023-01-01"
-excerpt: "This is my first blog post"
-slug: "first-post"
+excerpt: "Learn about IP addresses, their types, and examples."
 ---
 
-# What is an IP Address?
-
-An **IP Address** (Internet Protocol Address) is a unique identifier for a device on a network.  
-It allows devices to communicate with each other over the internet or a local network.
-
-
-## Types of IP Addresses
-
-1. **IPv4 (Internet Protocol Version 4)**  
-   - Format: `192.168.1.1`  
-   - Uses **32-bit** numbers.  
-   - Most common but limited in unique addresses.
-
-2. **IPv6 (Internet Protocol Version 6)**  
-   - Format: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`  
-   - Uses **128-bit** numbers.  
-   - Provides a huge number of unique addresses.
+<div className="prose max-w-none">
+  {/* Main Heading */}
+  <h1 className="text-3xl font-bold my-6">What is an IP Address?</h1>
+  
+  {/* Remove the p tag wrapper - let MDX handle paragraphs */}
+  An <strong>IP Address</strong> (Internet Protocol Address) is a unique identifier for a device on a network.  
+  It allows devices to communicate with each other over the internet or a local network.
 
 
-## Example IP Address
+  {/* Types Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">Types of IP Addresses</h2>
+  
+  <h3 className="text-xl font-semibold my-4 text-blue-600">IPv4 (Internet Protocol Version 4)</h3>
+  <ul className="list-disc pl-6 mb-6">
+    <li className="mb-2">Format: <code className="bg-gray-100 px-1.5 py-0.5 rounded">192.168.1.1</code></li>
+    <li className="mb-2">Uses <strong>32-bit</strong> numbers</li>
+    <li>Most common but limited in unique addresses</li>
+  </ul>
 
-```txt
-IPv4: 192.168.0.101
-IPv6: 2400:cb00:2048:1::c629:d7a2
+  <h3 className="text-xl font-semibold my-4 text-blue-600">IPv6 (Internet Protocol Version 6)</h3>
+  <ul className="list-disc pl-6 mb-6">
+    <li className="mb-2">Format: <code className="bg-gray-100 px-1.5 py-0.5 rounded">2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+    <li className="mb-2">Uses <strong>128-bit</strong> numbers</li>
+    <li>Provides a huge number of unique addresses</li>
+  </ul>
+
+  {/* Examples Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">Example IP Addresses</h2>
+  <div className="bg-gray-50 p-4 rounded-lg mb-6">
+    <pre className="text-sm overflow-x-auto">
+      <code>
+        IPv4: 192.168.0.101{"\n"}
+        IPv6: 2400:cb00:2048:1::c629:d7a2
+      </code>
+    </pre>
+  </div>
+</div>

@@ -8,6 +8,8 @@ module.exports = {
   },
   plugins: [
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    require("@tailwindcss/typography")
+    require("@tailwindcss/typography")({
+      className: 'prose' // Ensure this matches your className
+    }),
   ],
 }

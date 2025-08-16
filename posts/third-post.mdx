@@ -1,0 +1,107 @@
+---
+title: "Slugify Explained: Creating URL-Friendly Strings"
+date: "2023-01-01"
+excerpt: "Learn how to convert strings into SEO-friendly slugs for URLs and filenames."
+---
+
+<div className="prose max-w-none">
+  {/* Main Heading */}
+  <h1 className="text-3xl font-bold my-6">What is Slugify?</h1>
+  
+  <div className="text-gray-700 mb-6">
+    <strong>Slugify</strong> is the process of converting strings into URL-friendly slugs by:
+  </div>
+
+  <ul className="list-disc pl-6 mb-6">
+    <li className="mb-2">Converting to lowercase</li>
+    <li className="mb-2">Replacing spaces with hyphens</li>
+    <li>Removing special characters</li>
+  </ul>
+
+  {/* Syntax Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">Slugify Rules</h2>
+  
+  <div className="bg-gray-50 p-4 rounded-lg mb-6">
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Input: <code className="bg-gray-100 px-1.5 py-0.5 rounded">"My Awesome Post!"</code></li>
+      <li>Output: <code className="bg-gray-100 px-1.5 py-0.5 rounded">"my-awesome-post"</code></li>
+      <li>Converts accented characters: <code>é → e</code></li>
+      <li>Removes punctuation: <code>Hello, World! → hello-world</code></li>
+    </ul>
+  </div>
+
+  {/* Implementation Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">How to Implement Slugify</h2>
+  
+  <div className="overflow-x-auto mb-6">
+    <table className="min-w-full bg-white border border-gray-200">
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="py-2 px-4 border-b text-left">Language</th>
+          <th className="py-2 px-4 border-b text-left">Implementation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="py-2 px-4 border-b">JavaScript</td>
+          <td className="py-2 px-4 border-b">
+            <code>npm install slugify</code>
+          </td>
+        </tr>
+        <tr className="bg-gray-50">
+          <td className="py-2 px-4 border-b">Python</td>
+          <td className="py-2 px-4 border-b">
+            <code>pip install python-slugify</code>
+          </td>
+        </tr>
+        <tr>
+          <td className="py-2 px-4 border-b">PHP</td>
+          <td className="py-2 px-4 border-b">
+            <code>composer require cocur/slugify</code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  {/* Examples Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">JavaScript Example</h2>
+  <div className="bg-gray-800 p-4 rounded-lg mb-6">
+    <pre className="text-sm text-gray-100 overflow-x-auto">
+      <code>
+{`// Using slugify package
+const slugify = require('slugify');
+
+const title = "How to Create SEO-Friendly URLs";
+const slug = slugify(title); 
+
+console.log(slug); // "how-to-create-seo-friendly-urls"
+
+// With custom options
+const slug2 = slugify(title, {
+  lower: true,
+  strict: true,
+  locale: 'en'
+});`}
+      </code>
+    </pre>
+  </div>
+
+  {/* Best Practices Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">Slugify Best Practices</h2>
+  <ul className="list-disc pl-6 mb-6">
+    <li className="mb-2">Keep slugs short but descriptive</li>
+    <li className="mb-2">Use hyphens (-) not underscores (_)</li>
+    <li className="mb-2">Include target keywords when possible</li>
+    <li>Maintain consistency across your site</li>
+  </ul>
+
+  {/* Common Usage Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">Common Use Cases</h2>
+  <ul className="list-disc pl-6">
+    <li className="mb-2">Blog post URLs</li>
+    <li className="mb-2">E-commerce product pages</li>
+    <li className="mb-2">Documentation paths</li>
+    <li>SEO-friendly filenames</li>
+  </ul>
+</div>

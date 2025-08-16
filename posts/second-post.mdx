@@ -1,26 +1,112 @@
 ---
-title: "My Second Blog Post"
+title: "JSON Explained: The Universal Data Format for Web Development"
 date: "2023-01-01"
-excerpt: "This is my second blog post"
+excerpt: "Learn about JSON syntax, structure, and practical usage in web applications."
 ---
 
-## Welcome to My Blog
+<div className="prose max-w-none">
+  {/* Main Heading */}
+  <h1 className="text-3xl font-bold my-6">What is JSON?</h1>
+  
+  <div className="text-gray-700 mb-6">
+    <strong>JSON</strong> (JavaScript Object Notation) is a lightweight data-interchange format that is:
+  </div>
 
-This is the content of my second post.
+  <ul className="list-disc pl-6 mb-6">
+    <li className="mb-2">Easy for humans to read and write</li>
+    <li className="mb-2">Simple for machines to parse and generate</li>
+    <li>Language-independent (works across all programming languages)</li>
+  </ul>
 
+  {/* Syntax Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">JSON Syntax Rules</h2>
+  
+  <div className="bg-gray-50 p-4 rounded-lg mb-6">
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Data is represented as key-value pairs: <code className="bg-gray-100 px-1.5 py-0.5 rounded">"key": "value"</code></li>
+      <li>Data is separated by commas</li>
+      <li>Curly braces <code>{}</code> hold objects</li>
+      <li>Square brackets <code>[]</code> hold arrays</li>
+      <li>Strings must use double quotes <code>""</code></li>
+    </ul>
+  </div>
 
+  {/* Data Types Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">JSON Data Types</h2>
+  
+  <div className="overflow-x-auto mb-6">
+    <table className="min-w-full bg-white border border-gray-200">
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="py-2 px-4  text-left">Type</th>
+          <th className="py-2 px-4  text-left">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="py-2 px-4 ">String</td>
+          <td className="py-2 px-4 "><code>{"\"name\": \"John\""}</code></td>
+        </tr>
+        <tr className="bg-gray-50">
+          <td className="py-2 px-4 ">Number</td>
+          <td className="py-2 px-4 "><code>{"\"age\": 30"}</code></td>
+        </tr>
+        <tr>
+          <td className="py-2 px-4 ">Boolean</td>
+          <td className="py-2 px-4 "><code>{"\"isActive\": true"}</code></td>
+        </tr>
+        <tr className="bg-gray-50">
+          <td className="py-2 px-4 ">Array</td>
+          <td className="py-2 px-4 "><code>{"\"skills\": [\"JavaScript\", \"React\"]"}</code></td>
+        </tr>
+        <tr>
+          <td className="py-2 px-4 ">Object</td>
+          <td className="py-2 px-4 "><code>{"\"address\": {\"city\": \"New York\"}"}</code></td>
+        </tr>
+        <tr className="bg-gray-50">
+          <td className="py-2 px-4 ">null</td>
+          <td className="py-2 px-4 "><code>{"\"middleName\": null"}</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-## What is JSON?
+  {/* Examples Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">Complete JSON Example</h2>
+  <div className="bg-gray-800 p-4 rounded-lg mb-6">
+    <pre className="text-sm text-gray-100 overflow-x-auto">
+      <code>
+{`{
+  "user": {
+    "id": 12345,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "isVerified": true,
+    "preferences": {
+      "theme": "dark",
+      "notifications": true
+    },
+    "skills": [
+      "JavaScript",
+      "React",
+      "Node.js"
+    ]
+  },
+  "metadata": {
+    "createdAt": "2023-01-15",
+    "lastUpdated": null
+  }
+}`}
+      </code>
+    </pre>
+  </div>
 
-**JSON** stands for **JavaScript Object Notation**.  
-It’s a simple data format used to store and exchange data — especially in APIs.
-
-Example JSON object:
-
-```json
-{
-  "name": "Ali",
-  "age": 25,
-  "skills": ["JavaScript", "Next.js",
-  "Tailwind CSS"]
-}
+  {/* Usage Section */}
+  <h2 className="text-2xl font-bold my-6 pb-2">Common JSON Usage</h2>
+  <ul className="list-disc pl-6 mb-6">
+    <li className="mb-2">API responses (REST, GraphQL)</li>
+    <li className="mb-2">Configuration files (package.json, tsconfig.json)</li>
+    <li className="mb-2">Data storage (NoSQL databases like MongoDB)</li>
+    <li>Client-server communication</li>
+  </ul>
+</div>
