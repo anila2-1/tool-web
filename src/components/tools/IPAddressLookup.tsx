@@ -3,11 +3,9 @@
 import React, { useEffect, useState } from "react";
 import {
   FaCopy,
-  FaGlobe,
   FaMapMarkerAlt,
   FaClock,
   FaHistory,
-  FaShieldAlt,
 } from "react-icons/fa";
 
 export default function IpChecker() {
@@ -101,7 +99,7 @@ export default function IpChecker() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mb-10 p-6 ">
+    <div className="max-w-3xl mx-auto mb-10 p-6">
       {/* Manual Search */}
       <div className="flex mb-5">
         <input
