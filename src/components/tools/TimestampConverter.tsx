@@ -150,13 +150,12 @@ export default function TimestampConverter() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="min-h-screen py-8 px-4 mt-0.5 sm:px-6">
+      <div className="max-w-4xl mx-auto overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-white">
-          <h1 className="text-2xl sm:text-3xl font-bold text-center">Unix Timestamp Converter</h1>
-          <div className="text-center mt-4">
-            <p className="text-sm sm:text-base font-medium">Current Timestamp:</p>
+        <div className="bg-white p-6 text-gray-900">
+          <div className="text-center mt-1">
+            <p className="text-xl sm:text-base font-medium">Current Timestamp:</p>
             <p className="font-mono text-xl sm:text-2xl font-bold mt-1">{currentTimestamp}</p>
           </div>
         </div>
