@@ -26,7 +26,7 @@ export async function generateMetadata(
     'slug-generator': 'Slug Generator'
   }
 
-  const toolName = toolNameMap[tool] || 'Developer Tool'
+  const toolName = toolNameMap[tool] || 'Dev Tools'
   const description = `Free online ${toolName.toLowerCase()} for developers`
 
   return {

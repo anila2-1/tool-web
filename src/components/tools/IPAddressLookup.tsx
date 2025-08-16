@@ -38,13 +38,12 @@ export default function IpChecker() {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
 
   useEffect(() => {
-    // Load search history from localStorage
     const savedHistory = localStorage.getItem("ipSearchHistory");
     if (savedHistory) {
       setHistory(JSON.parse(savedHistory));
     }
     fetchUserIp();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchUserIp = async () => {
@@ -102,18 +101,7 @@ export default function IpChecker() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mb-10 p-6 bg-gradient-to-br from-white/70 to-white/40 backdrop-blur-xl shadow-2xl rounded-3xl mt-10 border border-white/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-500">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 text-white p-6 rounded-2xl mb-6 shadow-lg relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagonal-stripes.png')] opacity-20"></div>
-        <h1 className="text-3xl font-extrabold flex items-center justify-center gap-3 tracking-wide relative z-10">
-          <FaGlobe className="text-yellow-300 drop-shadow" /> IP Address Checker
-        </h1>
-        <p className="text-sm mt-1 opacity-90 relative z-10">
-          Get your IP, location, and network details instantly.
-        </p>
-      </div>
-
+    <div className="max-w-3xl mx-auto mb-10 p-6 ">
       {/* Manual Search */}
       <div className="flex mb-5">
         <input
@@ -152,40 +140,45 @@ export default function IpChecker() {
             </button>
           </div>
 
-          {/* Location Info */}
-          <div className="bg-gradient-to-br from-blue-50 to-white p-5 rounded-xl shadow-inner border border-blue-100">
-            <div className="flex items-center gap-2 mb-3">
-              <FaMapMarkerAlt className="text-red-500" />
-              <span className="font-bold">Location:</span>
-              <span className="text-gray-700">
-                {ipInfo.city}, {ipInfo.region}, {ipInfo.country_name}{" "}
-                <span className="text-xl">
-                  {ipInfo.country_code &&
-                    String.fromCodePoint(
-                      ...ipInfo.country_code
-                        .toUpperCase()
-                        .split("")
-                        .map((c) => 127397 + c.charCodeAt(0))
-                    )}
-                </span>
-              </span>
-            </div>
-            <p>
-              <strong>ISP:</strong>{" "}
-              <span className="text-gray-700">{ipInfo.org}</span>
-            </p>
-            <p>
-              <strong>ASN:</strong>{" "}
-              <span className="text-gray-700">{ipInfo.asn || "N/A"}</span>
-            </p>
-            <p>
-              <strong>Network:</strong>{" "}
-              <span className="text-gray-700">{ipInfo.network || "N/A"}</span>
-            </p>
-            <p>
-              <strong>Timezone:</strong>{" "}
-              <span className="text-gray-700">{ipInfo.timezone}</span>
-            </p>
+          {/* Info Table */}
+          <div className="overflow-x-auto">
+            <table className="w-full border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+              <tbody className="divide-y divide-gray-200">
+                <tr className="bg-gray-50">
+                  <td className="p-3 font-semibold flex items-center gap-2">
+                    <FaMapMarkerAlt className="text-red-500" /> Location
+                  </td>
+                  <td className="p-3">
+                    {ipInfo.city}, {ipInfo.region}, {ipInfo.country_name}{" "}
+                    <span className="text-lg">
+                      {ipInfo.country_code &&
+                        String.fromCodePoint(
+                          ...ipInfo.country_code
+                            .toUpperCase()
+                            .split("")
+                            .map((c) => 127397 + c.charCodeAt(0))
+                        )}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-semibold">ISP</td>
+                  <td className="p-3">{ipInfo.org}</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="p-3 font-semibold">ASN</td>
+                  <td className="p-3">{ipInfo.asn || "N/A"}</td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-semibold">Network</td>
+                  <td className="p-3">{ipInfo.network || "N/A"}</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="p-3 font-semibold">Timezone</td>
+                  <td className="p-3">{ipInfo.timezone}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           {/* Local Time */}
@@ -198,17 +191,6 @@ export default function IpChecker() {
               })}
             </span>
           </div>
-
-          {/* Map */}
-          {ipInfo.latitude && ipInfo.longitude && (
-            <iframe
-              title="map"
-              width="100%"
-              height="250"
-              className="rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition"
-              src={`https://maps.google.com/maps?q=${ipInfo.latitude},${ipInfo.longitude}&z=12&output=embed`}
-            ></iframe>
-          )}
         </div>
       )}
 
@@ -228,18 +210,6 @@ export default function IpChecker() {
         </div>
       )}
 
-      {/* Privacy Tips */}
-      <div className="mt-6 bg-yellow-50/80 backdrop-blur-sm p-4 rounded-xl border border-yellow-200 shadow-inner">
-        <h2 className="flex items-center gap-2 font-bold text-yellow-700 mb-2">
-          <FaShieldAlt /> Privacy Tips
-        </h2>
-        <ul className="list-disc list-inside text-sm text-yellow-800 space-y-1">
-          <li>Use a VPN to hide your IP address.</li>
-          <li>Avoid sharing your IP publicly.</li>
-          <li>Be cautious on public Wi-Fi networks.</li>
-          <li>Regularly check your IP for security.</li>
-        </ul>
-      </div>
     </div>
   );
 }
