@@ -36,8 +36,10 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center">
           {/* Brand Info */}
           <div className="mb-6 md:mb-0">
-            <h2 className="text-2xl font-bold text-black">DevTool</h2>
-            <p className="text-sm text-gray-900 mt-2 max-w-sm">
+            <Link href="/" className="flex items-center">
+          <span className="text-2xl font-bold text-black">DevTools</span>
+        </Link>
+            <p className="text-sm text-gray-800 mt-2 max-w-sm">
               Effortlessly generate SEO-friendly, clean slugs with AI. Supports
               English & Roman Urdu.
             </p>
@@ -63,48 +65,65 @@ const Footer = () => {
           </div>
 
           {/* Social + CTA */}
-          <div className="text-sm">
-            <h3 className="text-lg font-semibold mb-2 text-black">
-              Connect with Us
-            </h3>
-            <div className="flex space-x-4 mb-4">
-              <Link
-                href="https://github.com/anila2-1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-gray-800"
-                title="GitHub"
-              >
-                <FaGithub size={20} />
-              </Link>
-              <Link
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-gray-800"
-                title="Twitter"
-              >
-                <FaTwitter size={20} />
-              </Link>
-              <Link
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-gray-800"
-                title="LinkedIn"
-              >
-                <FaLinkedin size={20} />
-              </Link>
-              <Link
-                target="_blank"
-                href="https://facebook.com"
-                className="hover:text-gray-800"
-                title="Facebook"
-              >
-                <FaFacebook size={20} />
-              </Link>
-            </div>
-          </div>
+<div className="text-sm">
+  <h3 className="text-lg font-semibold mb-6 text-gray-900 dark:text-white tracking-wide">
+    Connect with Us
+  </h3>
+  <div className="flex space-x-5">
+    {/* GitHub */}
+    <Link
+      href="https://github.com/anila2-1"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="p-3 rounded-full backdrop-blur-md bg-white/30 dark:bg-gray-800/30 
+                 hover:bg-blue-500 hover:text-white hover:scale-110 hover:shadow-xl 
+                 transition-all duration-300 ease-in-out"
+      title="GitHub"
+    >
+      <FaGithub size={22} />
+    </Link>
+
+    {/* Twitter */}
+    <Link
+      href="https://twitter.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="p-3 rounded-full backdrop-blur-md bg-white/30 dark:bg-gray-800/30 
+                 hover:bg-sky-500 hover:text-white hover:scale-110 hover:shadow-xl 
+                 transition-all duration-300 ease-in-out"
+      title="Twitter"
+    >
+      <FaTwitter size={22} />
+    </Link>
+
+    {/* LinkedIn */}
+    <Link
+      href="https://linkedin.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="p-3 rounded-full backdrop-blur-md bg-white/30 dark:bg-gray-800/30 
+                 hover:bg-blue-600 hover:text-white hover:scale-110 hover:shadow-xl 
+                 transition-all duration-300 ease-in-out"
+      title="LinkedIn"
+    >
+      <FaLinkedin size={22} />
+    </Link>
+
+    {/* Facebook */}
+    <Link
+      target="_blank"
+      href="https://facebook.com"
+      className="p-3 rounded-full backdrop-blur-md bg-white/30 dark:bg-gray-800/30 
+                 hover:bg-blue-500 hover:text-white hover:scale-110 hover:shadow-xl 
+                 transition-all duration-300 ease-in-out"
+      title="Facebook"
+    >
+      <FaFacebook size={22} />
+    </Link>
+  </div>
+</div>
+
+
         </div>
 
         {/* Copyright */}
