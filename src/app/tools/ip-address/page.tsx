@@ -11,11 +11,11 @@ export default function IPAddressPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl p-4 font-bold mb-2 bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
               IP Address Checker
             </h1>
             <p className='max-w-2xl mx-auto text-lg text-gray-600'>
-              Get detailed geolocation and network information for any IP address
+              Get detailed <strong>geolocation and network information</strong> for any IP address
             </p>
           </div>
              </div>
@@ -30,11 +30,11 @@ export default function IPAddressPage() {
             </div>
           
           {/* Article Section */}
-<section className="mt-8 p-6 sm:p-8 prose prose-lg max-w-none">
+<section className="mt-[-90] p-6 sm:p-8 prose prose-lg max-w-none">
   
   {/* Heading */}
   <h2 className="text-3xl font-bold text-gray-900 mb-6">
-    🌍 IP Location Discoverer – Check Location of Public IP
+    IP Location Discoverer – Check Location of Public IP
   </h2>
   
   {/* Intro */}
@@ -122,9 +122,11 @@ export default function IPAddressPage() {
         <li>Check ISP, ASN, Proxy & Threat level</li>
         <li>View approximate map coordinates</li>
       </ul>
-      <p className="text-gray-800 font-medium bg-yellow-100 p-4 rounded-lg">
+      <div className='text-gray-800 font-medium bg-yellow-100 rounded-lg p-4 mt-6'>
+      <p className="text-blue-900">
         ⚠️ <span className="font-semibold text-red-600">Note:</span> IP-based location is <u>approximate</u>, only your ISP knows your exact address.
       </p>
+      </div>
     </div>
   </div>
 </section>

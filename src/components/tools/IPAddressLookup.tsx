@@ -99,7 +99,7 @@ export default function IpChecker() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mb-10 p-6">
+    <div className="max-w-3xl mx-auto mt-[-80] mb-10 p-6">
       {/* Manual Search */}
       <div className="flex mb-5">
         <input

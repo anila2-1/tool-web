@@ -150,10 +150,10 @@ export default function TimestampConverter() {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 mt-0.5 sm:px-6">
-      <div className="max-w-4xl mx-auto overflow-hidden">
+    <section className="py-20 px-6 relative mt-0.5 z-10">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="bg-white p-6 text-gray-900">
+        <div className="flex justify-center mt-[-150] mb-8">
           <div className="text-center mt-1">
             <p className="text-xl sm:text-base font-medium">Current Timestamp:</p>
             <p className="font-mono text-xl sm:text-2xl font-bold mt-1">{currentTimestamp}</p>
@@ -236,7 +236,7 @@ export default function TimestampConverter() {
                   />
                   <button 
                     onClick={handleTimestampConvert} 
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg px-4 py-2 rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   >
                     Convert
                   </button>
@@ -266,7 +266,7 @@ export default function TimestampConverter() {
                   />
                   <button 
                     onClick={handleDateConvert} 
-                    className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg px-4 py-2 rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   >
                     Convert
                   </button>
@@ -338,11 +338,11 @@ export default function TimestampConverter() {
             </div>
             
             {history.length === 0 ? (
-              <p className="text-sm text-gray-500 p-3 bg-gray-50 rounded-md">No conversion history yet.</p>
+              <p className="text-sm text-gray-500 p-3 bg-gray-100 rounded-md">No conversion history yet.</p>
             ) : (
               <div className="space-y-2">
                 {history.map((h, i) => (
-                  <div key={i} className="p-3 bg-gray-50 rounded-md border border-gray-200 flex justify-between items-center">
+                  <div key={i} className="p-3 bg-gray-100 rounded-md border border-gray-200 flex justify-between items-center">
                     <div className="font-mono text-xs sm:text-sm">
                       <span className="font-medium">{h.input}</span> → {h.output}
                     </div>
@@ -359,6 +359,6 @@ export default function TimestampConverter() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

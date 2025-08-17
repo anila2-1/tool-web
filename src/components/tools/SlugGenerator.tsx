@@ -90,29 +90,30 @@ const SlugGenerator: React.FC = () => {
       <div className="max-w-6xl mx-auto">
 
         {/* Tabs */}
-        <div className="flex justify-center mt-[-100] mb-6">
+        <div className="flex justify-center mt-[-150] mb-8">
           <div className="inline-flex bg-white/80 backdrop-blur-md rounded-full shadow-lg p-1">
-            <button
-              onClick={() => setActiveTab("batch")}
-              className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                activeTab === "batch"
-                  ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-            >
-              Batch Mode
-            </button>
-            <button
-              onClick={() => setActiveTab("single")}
-              className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                activeTab === "single"
-                  ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-            >
-              Single with AI
-            </button>
-          </div>
+  <button
+    onClick={() => setActiveTab("batch")}
+    className={`px-6 py-2 rounded-full font-semibold transition-all ${
+      activeTab === "batch"
+        ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg"
+        : "text-gray-600 hover:bg-pink-100"
+    }`}
+  >
+    Batch Mode
+  </button>
+  <button
+    onClick={() => setActiveTab("single")}
+    className={`px-6 py-2 rounded-full font-semibold transition-all ${
+      activeTab === "single"
+        ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg"
+        : "text-gray-600 hover:bg-purple-100"
+    }`}
+  >
+    Single with AI
+  </button>
+</div>
+
         </div>
 
         <div className="grid md:grid-cols-2 gap-10 items-stretch">
@@ -127,13 +128,13 @@ const SlugGenerator: React.FC = () => {
             <div className="mt-4 flex flex-wrap gap-4">
               <button
                 onClick={activeTab === "batch" ? handleBatchGenerate : handleSingleGenerate}
-                className="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold px-6 py-2.5 rounded-full flex items-center gap-2 hover:scale-105 shadow-lg transition-transform"
+                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold px-6 py-2.5 rounded-full flex items-center gap-2 hover:scale-105 shadow-lg transition-transform"
               >
                 <FaMagic /> Generate
               </button>
               <button
                 onClick={handleClear}
-                className="bg-gray-200 text-gray-800 font-semibold px-6 py-2.5 rounded-full flex items-center gap-2 hover:bg-gray-300 hover:scale-105 transition-transform"
+                className="bg-gradient-to-r from-gray-300 to-gray-300 text-black font-semibold px-6 py-2.5 rounded-full flex items-center gap-2 hover:bg-gray-300 hover:scale-105 transition-transform"
               >
                 <FaTrash /> Clear
               </button>

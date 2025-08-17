@@ -80,16 +80,20 @@ export default async function PostPage({ params }: PageProps) {
 
             {/* Back to Blog Link */}
             <div className="mt-16 border-t border-gray-200 pt-8">
-              <Link
-                href="/blog" 
-                className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
-              >
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Back to all articles
-              </Link>
-            </div>
+  <Link
+    href="/blog" 
+    className="inline-flex items-center font-medium 
+               text-transparent bg-clip-text 
+               bg-gradient-to-r from-purple-500 to-pink-500 
+               hover:from-pink-500 hover:to-purple-500 transition-colors"
+  >
+    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    </svg>
+    Back to all articles
+  </Link>
+</div>
+
           </article>
         </main>
         <Footer />

@@ -57,7 +57,7 @@ const JSONNode = ({ data, name = "object", level = 0 }: JSONNodeProps) => {
 const templates = {
   "Blog Post": `{
   "title": "How to Build a JSON Viewer",
-  "author": "Anila Amanat",
+  "author": "Ava",
   "date": "2025-07-25",
   "tags": ["React", "JSON", "UI"],
   "published": true,
@@ -68,9 +68,9 @@ const templates = {
   }
 }`,
   "Resume": `{
-  "name": "Anila Amanat",
+  "name": "Ava",
   "title": "Frontend Developer",
-  "email": "anila@example.com",
+  "email": "ava@example.com",
   "location": "Pakistan",
   "skills": ["React", "Next.js", "Tailwind CSS", "UI/UX"],
   "experience": [
@@ -89,16 +89,7 @@ const templates = {
 }
 
 const JSONEditor = () => {
-  const [input, setInput] = useState(`{
-  "name": "Anila",
-  "age": 23,
-  "email": "anilaamanat@example.com",
-  "address": {
-    "street": "123 Main St",
-    "city": "Pakistan",
-    "zip": "10001"
-  }
-}`)
+  const [input, setInput] = useState("")
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [parsedJSON, setParsedJSON] = useState<any>(null)
   const [error, setError] = useState("")
@@ -205,12 +196,11 @@ const JSONEditor = () => {
 
   return (
     <section 
-      id="json-tool"
-      className="py-8 px-4 sm:px-6 "
+      className="py-20 px-6 relative mt-0.5 z-10 "
     >
-      <div className="max-w-6xl mx-auto relative">
+      <div className="max-w-6xl mx-auto">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 justify-center mt-[-130] mb-8">
           <div className="space-y-4">
             <div className="flex flex-wrap gap-2 mb-2">
               {Object.keys(templates).map((templateName) => (
@@ -317,7 +307,7 @@ const JSONEditor = () => {
           </div>
 
           <div className="rounded-xl shadow-xl bg-white dark:bg-gray-800 overflow-hidden">
-            <div className="p-4 border-b bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+            <div className="p-4 bg-white text-xl font-bold mb-6 text-blue-700">
               <h3 className="text-lg font-semibold">JSON Viewer</h3>
             </div>
             <div className="p-4 overflow-auto max-h-[32rem]">
