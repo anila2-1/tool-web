@@ -13,7 +13,7 @@ export default function Home() {
       <Hero />
       <Features />
       
-<section className="relative overflow-hidden bg-gradient-to-r from-indigo-900 via-purple-800 to-fuchsia-700 text-white py-20 px-6">
+<section className="relative overflow-hidden bg-gradient-to-r from-indigo-800 via-purple-700 to-fuchsia-700 text-white py-20 px-6">
   {/* Background Glow Effect */}
   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent)]"></div>
   
