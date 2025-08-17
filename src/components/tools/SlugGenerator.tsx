@@ -43,6 +43,7 @@ const SlugGenerator: React.FC = () => {
   const [slugs, setSlugs] = useState<BatchSlug[]>([]);
   const [aiSlugs, setAiSlugs] = useState<AiSlugSet>({});
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [copiedType, setCopiedType] = useState<Tone | "">("");
   const [activeTab, setActiveTab] = useState<"batch" | "single">("batch");
 
