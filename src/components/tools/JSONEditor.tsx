@@ -200,7 +200,7 @@ const JSONEditor = () => {
     >
       <div className="max-w-6xl mx-auto">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 justify-center mt-[-130] mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-white rounded-3xl shadow-xl border border-gray-200 p-10 sm:p-8 justify-center mt-[-130]  mb-8">
           <div className="space-y-4">
             <div className="flex flex-wrap gap-2 mb-2">
               {Object.keys(templates).map((templateName) => (
@@ -306,21 +306,38 @@ const JSONEditor = () => {
             </div>
           </div>
 
-          <div className="rounded-xl shadow-xl bg-white dark:bg-gray-800 overflow-hidden">
-            <div className="p-4 bg-white text-xl font-bold mb-6 text-blue-700">
-              <h3 className="text-lg font-semibold">JSON Viewer</h3>
-            </div>
-            <div className="p-4 overflow-auto max-h-[32rem]">
-              {parsedJSON ? (
-                <JSONNode data={parsedJSON} />
-              ) : (
-                <div className="p-8 text-center text-gray-400">
-                  {error ? "Invalid JSON - Please correct your input" : "Enter valid JSON to visualize"}
-                </div>
-              )}
-            </div>
+          <div className="rounded-2xl bg-gray-50 border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+  {/* Header */}
+  <div className="px-5 py-4 bg-white border-b border-gray-200">
+    <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+      JSON Viewer
+    </h3>
+  </div>
+
+  {/* Content */}
+  <div className="p-4 overflow-auto max-h-[480px] min-h-[200px] ">
+    {parsedJSON ? (
+      <JSONNode data={parsedJSON} />
+    ) : (
+      <div className="p-8 text-center text-gray-500 italic transition-opacity duration-200">
+        {error ? (
+          <div className="flex flex-col items-center gap-2 text-red-600">
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+            </svg>
+            <span className="text-sm">Invalid JSON — Please correct your input</span>
           </div>
-        </div>
+        ) : (
+          <p className="text-sm">Enter valid JSON to visualize the structure</p>
+        )}
+      </div>
+    )}
+  </div>
+</div>
+</div>
 
       </div>
     </section>

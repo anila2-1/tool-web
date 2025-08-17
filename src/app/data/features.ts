@@ -14,6 +14,7 @@ export const features = [
     name: 'IP Address Lookup',
     icon: FiGlobe,
     iconClassName: "text-purple-500",
+    description: 'Get information about an IP address, including geolocation and ISP',
     path: '/tools/ip-address',
     uniqueFact: 'Detects VPN/Proxy usage with 90% accuracy',
     bg: 'from-purple-50 to-purple-100'

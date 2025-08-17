@@ -2,6 +2,7 @@
 import { getAllPosts } from '@/lib/mdx'
 import Navbar from '@/components/Navbar'
 import BlogCard from '@/components/blog/BlogCard'
+import Footer from '@/components/Footer'
 
 export default async function BlogPage() {
   const posts = await getAllPosts()
@@ -40,11 +41,11 @@ export default async function BlogPage() {
             </div>
           </div>
         ) : (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {posts.map((post) => (
+    <BlogCard key={post.slug} post={post} />
+  ))}
+</div>
         )}
 
         {/* Floating background elements */}
@@ -54,6 +55,7 @@ export default async function BlogPage() {
           <div className="absolute bottom-1/3 left-1/2 w-80 h-80 bg-gradient-to-bl from-cyan-100/20 to-blue-100/20 rounded-full filter blur-3xl animate-float-fast" />
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

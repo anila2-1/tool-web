@@ -16,49 +16,51 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="bg-gradient-to-r from-indigo-600 to-purple-500 text-white py-5 px-10 sm:px-6 sticky top-0 z-50">
+    <nav className="bg-indigo-900 text-white py-4 px-6 sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link href="/" className="flex items-center">
-          <span className="text-2xl font-bold text-white">DevTools</span>
+        {/* Logo */}
+        <Link href="/" className="flex items-center group">
+          <span className="text-2xl font-extrabold bg-gradient-to-r from-blue-300 to-purple-200 bg-clip-text text-transparent transition-all duration-300 group-hover:scale-105">
+            DevTools
+          </span>
         </Link>
-        
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
-          <Link href="/" className="text-white font-bold">
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-10">
+          <Link
+            href="/"
+            className="text-white font-medium transition-all duration-300 hover:text-blue-200 hover:scale-105 relative group"
+          >
             Home
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
           </Link>
-          
+
           {/* Tools Dropdown */}
-          <div className="relative">
-            <button 
+          <div className="relative group">
+            <button
               onClick={() => setIsToolsOpen(!isToolsOpen)}
-              className="flex items-white font-bold"
+              className="flex items-center font-medium text-white transition-all duration-300 hover:text-blue-200 hover:scale-105 group"
             >
               Tools
-              {isToolsOpen ? (
-                <FiChevronUp className="ml-1" />
-              ) : (
-                <FiChevronDown className="ml-1" />
-              )}
+              <span className="ml-1 mt-0.5 transition-transform duration-300 group-hover:rotate-180">
+                {isToolsOpen ? <FiChevronUp /> : <FiChevronDown />}
+              </span>
             </button>
-            
-            {isToolsOpen && (
+
+            {/* Dropdown Menu */}
+          {isToolsOpen && (
   <div
-    className="absolute left-1/2 transform -translate-x-1/2 mt-4 
-               w-62 max-w-[90vw]
-               bg-white/80 backdrop-blur-md 
-               rounded-2xl shadow-2xl 
-               py-4 px-2 
-               z-50 border border-white/40 animate-fadeIn"
+    className="absolute left-1/2 transform -translate-x-1/2 mt-3 w-64 max-w-[90vw] 
+               bg-gradient-to-br from-cyan-100/80 via-blue-50/70 to-teal-100/60 
+               backdrop-blur-lg rounded-xl shadow-2xl border border-white/30 
+               overflow-hidden z-50 animate-fadeIn"
   >
     {tools.map((tool) => (
       <Link
         key={tool.path}
         href={tool.path}
-        className="block px-5 py-3 text-gray-800 font-medium 
-                   rounded-lg transition-all duration-200
-                   hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-500 
-                   hover:text-white hover:shadow-md"
+        className="block px-5 py-3 text-gray-800 font-medium transition-all duration-200
+                   hover:bg-white/40 hover:shadow-md hover:scale-101"
         onClick={() => setIsToolsOpen(false)}
       >
         {tool.name}
@@ -66,17 +68,20 @@ export default function Navbar() {
     ))}
   </div>
 )}
-
           </div>
 
-          <Link href="/blog" className="text-white font-bold">
+          <Link
+            href="/blog"
+            className="text-white font-medium transition-all duration-300 hover:text-blue-200 hover:scale-105 relative group"
+          >
             Blog
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
           </Link>
         </div>
 
-        {/* Mobile menu button */}
-        <button 
-          className="md:hidden p-2 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2 rounded-lg text-white hover:bg-white/20 transition"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -85,36 +90,32 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white pt-2 pb-4 px-4 shadow-md">
-          <div className="flex flex-col space-y-3">
-            <Link 
-              href="/" 
-              className="block py-2 px-3 rounded text-black font-bold"
+        <div className="md:hidden bg-indigo-800/95 backdrop-blur-md rounded-b-xl mt-2 mx-4 overflow-hidden shadow-xl">
+          <div className="flex flex-col space-y-1 px-4 py-3">
+            <Link
+              href="/"
+              className="py-3 px-4 text-white font-medium rounded-lg hover:bg-white/20 transition-all duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Home
             </Link>
-            
-            <div className="relative">
-              <button 
+
+            <div className="border-t border-white/20 pt-3">
+              <button
                 onClick={() => setIsToolsOpen(!isToolsOpen)}
-                className="w-full justify-between items-center text-black py-2 px-3 rounded flex items-white font-bold"
+                className="w-full flex justify-between items-center text-white font-medium py-3 px-4 rounded-lg hover:bg-white/20 transition"
               >
                 Tools
-                {isToolsOpen ? (
-                  <FiChevronUp className="ml-1" />
-                ) : (
-                  <FiChevronDown className="ml-1" />
-                )}
+                {isToolsOpen ? <FiChevronUp /> : <FiChevronDown />}
               </button>
-              
+
               {isToolsOpen && (
-                <div className="pl-4 mt-1 space-y-2">
+                <div className="pl-5 mt-2 space-y-2 border-l-2 border-indigo-500">
                   {tools.map((tool) => (
                     <Link
                       key={tool.path}
                       href={tool.path}
-                      className="block py-2 px-3 rounded text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition"
+                      className="block py-2 px-3 text-blue-100 hover:text-white hover:bg-white/10 rounded transition-all duration-200"
                       onClick={() => {
                         setIsToolsOpen(false)
                         setIsMobileMenuOpen(false)
@@ -127,9 +128,9 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link 
-              href="/blog" 
-              className="block py-2 px-3 rounded text-black font-bold"
+            <Link
+              href="/blog"
+              className="py-3 px-4 text-white font-medium rounded-lg hover:bg-white/20 transition-all duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Blog
@@ -140,3 +141,6 @@ export default function Navbar() {
     </nav>
   )
 }
+
+
+

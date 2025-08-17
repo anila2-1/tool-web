@@ -3,15 +3,21 @@
 import React, { useState } from "react";
 import { FaMagic, FaTrash, FaDownload, FaCopy, FaCheck } from "react-icons/fa";
 
-const stopwords = ["ka","ki","ko","se","me","mai","kaun","kyun","kya","hai","ho","hua","wala","the","a","an","and","or","but","for","to","of","with","is"];
+// Stopwords for SEO-friendly slugs
+const stopwords = [
+  "ka", "ki", "ko", "se", "me", "mai", "kaun", "kyun", "kya", "hai", "ho", "hua", "wala",
+  "the", "a", "an", "and", "or", "but", "for", "to", "of", "with", "is"
+];
 
+// Fun & engaging endings
 const funnyEndings = [
-  "done-right-bro","like-a-pro","noob-proof","not-a-joke","lit-af","with-extra-cheese",
-  "banana-approved","totally-serious","no-clickbait","just-for-fun","nailed-it","totally-epic","savage","you-wont-believe","mind-blown"
+  "done-right-bro", "like-a-pro", "noob-proof", "not-a-joke", "lit-af", "with-extra-cheese",
+  "banana-approved", "totally-serious", "no-clickbait", "just-for-fun", "nailed-it", "totally-epic",
+  "savage", "you-wont-believe", "mind-blown"
 ];
 
 const casualEndings = [
-  "made-easy","real-talk","in-style","for-fun","beginner-friendly","quick-peek","no-pressure","keep-it-simple"
+  "made-easy", "real-talk", "in-style", "for-fun", "beginner-friendly", "quick-peek", "no-pressure", "keep-it-simple"
 ];
 
 type Tone = "professional" | "casual" | "funny";
@@ -20,6 +26,7 @@ interface BatchSlug {
   original: string;
   slug: string;
 }
+
 interface AiSlugSet {
   professional?: string;
   casual?: string;
@@ -27,24 +34,34 @@ interface AiSlugSet {
 }
 
 const generateSlug = (text: string, tone: Tone = "professional"): string => {
-  let slug = text.toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, " ").trim();
+  let slug = text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
   if (tone === "professional") {
     const stopwordRegex = new RegExp(`\\b(${stopwords.join("|")})\\b`, "gi");
     slug = slug.replace(stopwordRegex, "").replace(/\s+/g, " ").trim();
   }
+
   slug = slug.replace(/\s+/g, "-");
-  if (tone === "casual") slug += `-${casualEndings[Math.floor(Math.random() * casualEndings.length)]}`;
-  if (tone === "funny") slug += `-${funnyEndings[Math.floor(Math.random() * funnyEndings.length)]}`;
+
+  if (tone === "casual") {
+    slug += `-${casualEndings[Math.floor(Math.random() * casualEndings.length)]}`;
+  }
+  if (tone === "funny") {
+    slug += `-${funnyEndings[Math.floor(Math.random() * funnyEndings.length)]}`;
+  }
+
   return slug;
 };
 
-const SlugGenerator: React.FC = () => {
+const SlugGenerator = () => {
   const [input, setInput] = useState("");
   const [slugs, setSlugs] = useState<BatchSlug[]>([]);
   const [aiSlugs, setAiSlugs] = useState<AiSlugSet>({});
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [copiedType, setCopiedType] = useState<Tone | "">("");
   const [activeTab, setActiveTab] = useState<"batch" | "single">("batch");
 
   const handleBatchGenerate = () => {
@@ -63,7 +80,10 @@ const SlugGenerator: React.FC = () => {
   };
 
   const handleClear = () => {
-    setInput(""); setSlugs([]); setAiSlugs({}); setCopiedIndex(null); setCopiedType("");
+    setInput("");
+    setSlugs([]);
+    setAiSlugs({});
+    setCopiedIndex(null);
   };
 
   const handleDownload = () => {
@@ -71,140 +91,156 @@ const SlugGenerator: React.FC = () => {
     const blob = new Blob([text], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = url; a.download = "slugs.txt"; a.click();
+    a.href = url;
+    a.download = "slugs.txt";
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
-  const handleCopy = (text: string, indexOrType: number | Tone) => {
+  const handleCopy = (text: string, index: number) => {
     navigator.clipboard.writeText(text);
-    if (typeof indexOrType === "number") {
-      setCopiedIndex(indexOrType);
-      setTimeout(() => setCopiedIndex(null), 1500);
-    } else {
-      setCopiedType(indexOrType);
-      setTimeout(() => setCopiedType(""), 1500);
-    }
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 1500);
   };
 
   return (
-    <section className="py-20 px-6 relative mt-0.5 z-10">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-16 px-6 relative z-10">
+      {/* ✅ Main Card Container with White Background */}
+      <div className="max-w-6xl px-8 pt-8 pb-6 mx-auto bg-white rounded-3xl mt-[-100] shadow-xl border border-gray-200 overflow-hidden">
+        
+        {/* Header */}
 
-        {/* Tabs */}
-        <div className="flex justify-center mt-[-150] mb-8">
-          <div className="inline-flex bg-white/80 backdrop-blur-md rounded-full shadow-lg p-1">
-  <button
-    onClick={() => setActiveTab("batch")}
-    className={`px-6 py-2 rounded-full font-semibold transition-all ${
-      activeTab === "batch"
-        ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg"
-        : "text-gray-600 hover:bg-pink-100"
-    }`}
-  >
-    Batch Mode
-  </button>
-  <button
-    onClick={() => setActiveTab("single")}
-    className={`px-6 py-2 rounded-full font-semibold transition-all ${
-      activeTab === "single"
-        ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg"
-        : "text-gray-600 hover:bg-purple-100"
-    }`}
-  >
-    Single with AI
-  </button>
-</div>
-
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-10 items-stretch">
-          {/* Input Panel */}
-          <div className="bg-white/70 backdrop-blur-md rounded-2xl p-8 shadow-md border border-gray-100 flex flex-col h-[460px]">
-            <textarea
-              className="w-full flex-1 p-4 rounded-xl border border-gray-300 focus:ring-4 focus:ring-blue-300 text-gray-800 resize-none transition-all"
-              placeholder={activeTab === "batch" ? "✍️ Enter one title per line..." : "✨ Enter a single title for AI slug variants..."}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-            <div className="mt-4 flex flex-wrap gap-4">
+        <div className="p-6">
+          {/* Tabs */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex bg-white rounded-full shadow-md p-1 border border-gray-200">
               <button
-                onClick={activeTab === "batch" ? handleBatchGenerate : handleSingleGenerate}
-                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold px-6 py-2.5 rounded-full flex items-center gap-2 hover:scale-105 shadow-lg transition-transform"
+                onClick={() => setActiveTab("batch")}
+                className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 ${
+                  activeTab === "batch"
+                    ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-100"
+                }`}
               >
-                <FaMagic /> Generate
+                Batch Mode
               </button>
               <button
-                onClick={handleClear}
-                className="bg-gradient-to-r from-gray-300 to-gray-300 text-black font-semibold px-6 py-2.5 rounded-full flex items-center gap-2 hover:bg-gray-300 hover:scale-105 transition-transform"
+                onClick={() => setActiveTab("single")}
+                className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 ${
+                  activeTab === "single"
+                    ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-100"
+                }`}
               >
-                <FaTrash /> Clear
+                AI Suggestions
               </button>
-              {slugs.length > 0 && activeTab === "batch" && (
-                <button
-                  onClick={handleDownload}
-                  className="bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold px-6 py-2.5 rounded-full flex items-center gap-2 hover:scale-105 shadow-lg transition-transform"
-                >
-                  <FaDownload /> Download
-                </button>
-              )}
             </div>
           </div>
 
-          {/* Output Panel */}
-          <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-md p-8 border border-gray-100 flex flex-col h-[460px] overflow-auto">
-            {activeTab === "batch" ? (
-              <>
-                <h4 className="text-xl font-bold mb-6 text-blue-700">
-                  {slugs.length > 0 ? "✨ Generated Slugs:" : "Slugs will appear here"}
-                </h4>
-                {slugs.length > 0 ? (
-                  <ul className="space-y-4">
-                    {slugs.map((item, index) => (
-                      <li
-                        key={index}
-                        className="bg-gray-50 rounded-xl border border-gray-200 p-4 flex justify-between items-center hover:shadow-md transition"
-                      >
-                        <div>
-                          <p className="text-sm text-gray-500 mb-1">{item.original}</p>
-                          <p className="font-semibold text-gray-900">{item.slug}</p>
-                        </div>
-                        <button
-                          onClick={() => handleCopy(item.slug, index)}
-                          className="text-blue-600 hover:text-blue-800 transition"
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Input Panel */}
+            <div className=" flex flex-col h-[480px]">
+              <textarea
+                className="w-full flex-1 p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 text-gray-800 resize-none shadow-sm transition-all"
+                placeholder={activeTab === "batch" ? "✍️ Enter one title per line..." : "✨ Enter a single title for AI slug variants..."}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                spellCheck="false"
+              />
+              <div className="mt-4 flex flex-wrap gap-3">
+                <button
+                  onClick={activeTab === "batch" ? handleBatchGenerate : handleSingleGenerate}
+                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg hover:scale-105 transition-all shadow"
+                >
+                  <FaMagic /> Generate
+                </button>
+                <button
+                  onClick={handleClear}
+                  className="flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-800 font-semibold rounded-xl hover:bg-gray-300 hover:scale-105 transition-all"
+                >
+                  <FaTrash /> Clear
+                </button>
+                {slugs.length > 0 && activeTab === "batch" && (
+                  <button
+                    onClick={handleDownload}
+                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl hover:from-green-600 hover:to-green-700 hover:shadow-lg hover:scale-105 transition-all shadow"
+                  >
+                    <FaDownload /> Download
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Output Panel */}
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 flex flex-col h-[480px] overflow-auto">
+              {activeTab === "batch" ? (
+                <>
+                  <h4 className="text-xl font-bold mb-6 text-gray-800">
+                    {slugs.length > 0 ? "✨ Generated Slugs" : "Results will appear here"}
+                  </h4>
+                  {slugs.length > 0 ? (
+                    <ul className="space-y-3">
+                      {slugs.map((item, index) => (
+                        <li
+                          key={index}
+                          className="bg-white rounded-xl border border-gray-200 p-4 flex justify-between items-center hover:shadow-md transition-all group"
                         >
-                          {copiedIndex === index ? <FaCheck /> : <FaCopy />}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-gray-400 italic">Enter titles and click generate to see results</p>
-                )}
-              </>
-            ) : (
-              <>
-                <h4 className="text-xl font-bold mb-6 text-blue-700">
-                  {aiSlugs.professional ? "🤖 AI Slug Suggestions:" : "AI suggestions will appear here"}
-                </h4>
-                {aiSlugs.professional ? (
-                  <div className="space-y-6">
-                    <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg">
-                      <p className="font-bold text-blue-700">📌 Professional</p>
-                      <p className="text-gray-800">{aiSlugs.professional}</p>
+                          <div>
+                            <p className="text-xs text-gray-500 mb-1 truncate max-w-xs">
+                              {item.original}
+                            </p>
+                            <p className="font-mono text-sm text-gray-800 break-all">
+                              {item.slug}
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => handleCopy(item.slug, index)}
+                            className="text-indigo-600 hover:text-indigo-800 transition-colors p-2"
+                            title="Copy Slug"
+                          >
+                            {copiedIndex === index ? (
+                              <FaCheck className="text-green-500" />
+                            ) : (
+                              <FaCopy />
+                            )}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-gray-400 italic text-center mt-8">
+                      Enter titles and click &ldquo;Generate&rdquo; to see results
+                    </p>
+                  )}
+                </>
+              ) : (
+                <>
+                  <h4 className="text-xl font-bold mb-6 text-gray-800">
+                    {aiSlugs.professional ? "🤖 AI Slug Suggestions" : "AI suggestions will appear here"}
+                  </h4>
+                  {aiSlugs.professional ? (
+                    <div className="space-y-4">
+                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-indigo-500 p-4 rounded-xl">
+                        <p className="font-semibold text-indigo-700 text-sm">📌 Professional</p>
+                        <p className="font-mono text-sm text-gray-800 mt-1 break-all">{aiSlugs.professional}</p>
+                      </div>
+                      <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 p-4 rounded-xl">
+                        <p className="font-semibold text-green-700 text-sm">😎 Casual</p>
+                        <p className="font-mono text-sm text-gray-800 mt-1 break-all">{aiSlugs.casual}</p>
+                      </div>
+                      <div className="bg-gradient-to-r from-pink-50 to-rose-50 border-l-4 border-pink-500 p-4 rounded-xl">
+                        <p className="font-semibold text-pink-700 text-sm">🤣 Funny</p>
+                        <p className="font-mono text-sm text-gray-800 mt-1 break-all">{aiSlugs.funny}</p>
+                      </div>
                     </div>
-                    <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg">
-                      <p className="font-bold text-green-700">😎 Casual</p>
-                      <p className="text-gray-800">{aiSlugs.casual}</p>
-                    </div>
-                    <div className="bg-pink-50 border-l-4 border-pink-500 p-4 rounded-lg">
-                      <p className="font-bold text-pink-700">🤣 Funny</p>
-                      <p className="text-gray-800">{aiSlugs.funny}</p>
-                    </div>
-                  </div>
-                ) : (
-                  <p className="text-gray-400 italic">Enter a title and click generate to see AI suggestions</p>
-                )}
-              </>
-            )}
+                  ) : (
+                    <p className="text-gray-400 italic text-center mt-8">
+                      Enter a title and click &ldquo;Generate&ldquo; to see AI suggestions
+                    </p>
+                  )}
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

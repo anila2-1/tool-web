@@ -7,34 +7,34 @@ const tools = [
   {
     name: 'IP Address Lookup',
     description: 'Get geolocation and network information for any IP',
-    icon: <FaGlobe className="text-blue-500 text-2xl" />,
+    icon: <FaGlobe className="text-blue-600 text-2xl" />,
     path: '/tools/ip-address',
     bgColor: 'bg-blue-50',
-    borderColor: 'border-blue-100'
+    hoverColor: 'hover:from-blue-50 hover:to-blue-100'
   },
   {
     name: 'Timestamp Converter',
     description: 'Convert between Unix timestamps and readable dates',
-    icon: <FaClock className="text-purple-500 text-2xl" />,
+    icon: <FaClock className="text-purple-600 text-2xl" />,
     path: '/tools/timestamp-converter',
     bgColor: 'bg-purple-50',
-    borderColor: 'border-purple-100'
+    hoverColor: 'hover:from-purple-50 hover:to-purple-100'
   },
   {
     name: 'JSON Formatter',
     description: 'Beautify and validate JSON data with syntax highlighting',
-    icon: <FaCode className="text-green-500 text-2xl" />,
+    icon: <FaCode className="text-green-600 text-2xl" />,
     path: '/tools/json-formatter',
     bgColor: 'bg-green-50',
-    borderColor: 'border-green-100'
+    hoverColor: 'hover:from-green-50 hover:to-green-100'
   },
   {
     name: 'Slug Generator',
     description: 'Create SEO-friendly URL slugs from any text',
-    icon: <FaLink className="text-orange-500 text-2xl" />,
+    icon: <FaLink className="text-orange-600 text-2xl" />,
     path: '/tools/slug-generator',
     bgColor: 'bg-orange-50',
-    borderColor: 'border-orange-100'
+    hoverColor: 'hover:from-orange-50 hover:to-orange-100'
   }
 ]
 
@@ -42,64 +42,76 @@ export default function ToolsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
-        <div className="text-center mt-8 mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 relative z-10 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent sm:text-5xl sm:tracking-tight lg:text-6xl">
+        <div className="text-center mb-14">
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-5 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent leading-tight tracking-tight">
             Developer Tools
           </h1>
-          <p className="mt-5 max-w-xl mx-auto text-xl text-gray-500">
-            Essential utilities to streamline your development workflow
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Essential utilities to streamline your development workflow — fast, accurate, and free.
           </p>
         </div>
 
         {/* Tools Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
           {tools.map((tool) => (
             <Link
               key={tool.path}
               href={tool.path}
-              className={`${tool.bgColor} ${tool.borderColor} group relative p-6 rounded-xl border-2 hover:border-indigo-300 transition-all duration-200 hover:shadow-lg overflow-hidden`}
+              className={`${tool.bgColor} group relative p-6 rounded-2xl border border-gray-200 
+                          hover:border-indigo-300 hover:shadow-xl transition-all duration-300 
+                          transform hover:scale-105 hover:-translate-y-1 overflow-hidden`}
             >
+              {/* Icon & Title */}
               <div className="flex items-center mb-4">
-                <div className="flex-shrink-0">
+                <div className="p-2 rounded-lg bg-white shadow-sm">
                   {tool.icon}
                 </div>
-                <h2 className="ml-4 text-xl font-bold text-gray-800 group-hover:text-indigo-600 transition-colors">
+                <h2 className="ml-4 text-lg font-bold text-gray-800 group-hover:text-indigo-700 transition-colors duration-200">
                   {tool.name}
                 </h2>
               </div>
-              <p className="text-gray-600 mb-6">{tool.description}</p>
-              
-              <div className="absolute bottom-4 left-6 flex items-center text-indigo-600 group-hover:text-indigo-800 transition-colors">
+
+              {/* Description */}
+              <p className="text-gray-600 text-sm leading-relaxed mb-5">
+                {tool.description}
+              </p>
+
+              {/* Hover Arrow */}
+              <div className="flex items-center text-indigo-600 group-hover:text-indigo-800 transition-colors duration-200">
                 <span className="text-sm font-medium">Use tool</span>
-                <FaArrowRight className="ml-2 text-sm" />
+                <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
               </div>
-              
-              {/* Hover effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              {/* Subtle Gradient Overlay on Hover */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${tool.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl`}></div>
             </Link>
           ))}
         </div>
 
         {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <h3 className="text-lg font-medium text-gray-900">
-            Looking for something else?
+        <div className="mt-20 text-center">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+            Need a Tool We Don’t Have?
           </h3>
-          <p className="mt-2 text-gray-600 max-w-xl mx-auto">
-            We&apos;re constantly adding new tools. Let us know what you&apos;d like to see next!
+          <p className="text-gray-600 max-w-xl mx-auto mb-6 text-lg">
+            We’re always expanding. Suggest a tool and help shape the future of DevTools.
           </p>
-          <div className="mt-6">
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
-            >
-              Suggest a Tool
-            </Link>
-          </div>
+          <Link
+            href="/contact"
+            className="inline-flex items-center px-7 py-4 text-base font-semibold rounded-xl 
+                       shadow-lg hover:shadow-2xl text-white bg-gradient-to-r from-indigo-600 to-purple-600 
+                       hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 
+                       transition-all duration-300 ease-in-out"
+          >
+            Suggest a Tool
+            <FaArrowRight className="ml-3" />
+          </Link>
         </div>
-      </div>
+      </main>
+
       <Footer />
     </div>
   )
