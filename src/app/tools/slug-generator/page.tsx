@@ -4,17 +4,17 @@ import Footer from '@/components/Footer'
 
 export default function SlugGeneratorPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-50 via-white to-blue-50">
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-16 sm:py-20 text-center">
+      <section className="py-16 sm:py-20 mb-[-50px] text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-2">
             Slug Generator
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-            Create clean, SEO-friendly slugs from any text in seconds.
+            Create clean, <strong>SEO-friendly slugs</strong> from any text in seconds.
           </p>
         </div>
       </section>
@@ -22,15 +22,126 @@ export default function SlugGeneratorPage() {
       {/* Main Content */}
       <main className="flex-1 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
-            <div className="p-6 sm:p-8">
-              <SlugGenerator />
-            </div>
+          {/* Tool Section */}
+          <div className="p-6 sm:p-8">
+            <SlugGenerator />
           </div>
+
+          {/* Article Section */}
+<section className="mt-8 p-6 sm:p-8  prose prose-lg max-w-none">
+  <h2 className="text-3xl font-bold text-gray-900 mb-6">
+    🔗 What is a URL Slug?
+  </h2>
+  <p className="text-gray-700 mb-4">
+    A <strong>URL slug</strong> is the part of a web address that comes after the 
+    <strong> domain name</strong> and identifies a specific page or post.  
+    It is a <strong>human-readable, SEO-friendly</strong> segment of the URL that helps 
+    users and search engines understand the content of the page.
+  </p>
+  <p className="text-gray-700 mb-6">
+    Example:  
+    In the URL:  
+    <code className="bg-gray-200 px-2 py-1 rounded text-sm">
+      https://www.example.com/blog/how-to-create-url-slugs
+    </code>  
+    The slug is:  
+    <strong>how-to-create-url-slugs</strong>
+  </p>
+
+  <h3 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+    📈 Why Are URL Slugs Important for SEO?
+  </h3>
+  <ul className="list-disc list-inside text-gray-700 mb-6">
+    <li>✅ <strong>Keyword Relevance</strong> – Helps search engines rank your page for relevant terms.</li>
+    <li>✅ <strong>Improved CTR</strong> – Clear slugs encourage users to click.</li>
+    <li>✅ <strong>Better User Experience</strong> – Easy to understand before visiting.</li>
+    <li>✅ <strong>Higher Shareability</strong> – Clean URLs are more shareable.</li>
+  </ul>
+
+  <h3 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+    🛠 How to Create an SEO-Friendly URL Slug
+  </h3>
+  <ol className="list-decimal list-inside text-gray-700 mb-6">
+    <li>
+      <strong>Keep It Short & Simple</strong>  
+      <br />❌ how-to-create-the-best-url-slugs-for-your-website  
+      <br />✅ how-to-create-url-slugs
+    </li>
+    <li className="mt-4">
+      <strong>Use Target Keywords</strong>  
+      <br />❌ post-123  
+      <br />✅ best-seo-practices-2024
+    </li>
+    <li className="mt-4">
+      <strong>Use Hyphens (-) Instead of Underscores (_)</strong>  
+      <br />❌ how_to_use_url_slugs  
+      <br />✅ how-to-use-url-slugs
+    </li>
+    <li className="mt-4">
+      <strong>Avoid Special Characters & Capital Letters</strong>  
+      <br />❌ How%20to%20Make%20a%20Slug?  
+      <br />✅ how-to-make-a-slug
+    </li>
+    <li className="mt-4">
+      <strong>Remove Stop Words (If Possible)</strong>  
+      <br />❌ the-ultimate-guide-to-url-slugs  
+      <br />✅ ultimate-guide-url-slugs
+    </li>
+  </ol>
+
+  <h3 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+    ⚡ What is a URL Slug Generator?
+  </h3>
+  <p className="text-gray-700 mb-4">
+    A <strong>URL slug generator</strong> is a tool that automatically converts titles 
+    or phrases into SEO-friendly slugs by:
+  </p>
+  <ul className="list-disc list-inside text-gray-700 mb-6">
+    <li>✔ Removing spaces & special characters</li>
+    <li>✔ Converting text to lowercase</li>
+    <li>✔ Replacing spaces with hyphens</li>
+  </ul>
+  <p className="text-gray-700 mb-6">
+    Example:  
+    Input: <code className="bg-gray-200 px-2 py-1 rounded text-sm">10 Best SEO Tools in 2024</code>  
+    Output: <strong>10-best-seo-tools-2024</strong>
+  </p>
+
+  <h3 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+    🚀 Benefits of Using a URL Slug Generator
+  </h3>
+  <ul className="list-disc list-inside text-gray-700 mb-6">
+    <li>🚀 <strong>Saves Time</strong> – No manual formatting needed.</li>
+    <li>🔍 <strong>Improves SEO</strong> – Ensures keyword-rich, clean URLs.</li>
+    <li>📌 <strong>Maintains Consistency</strong> – Uniform format across site.</li>
+    <li>❌ <strong>Avoids Errors</strong> – Reduces typos & mistakes.</li>
+  </ul>
+
+  <h3 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+    📝 How to Use TripleDart’s URL Slug Generator (Step-by-Step)
+  </h3>
+  <ol className="list-decimal list-inside text-gray-700 mb-6">
+    <li>Enter your title (e.g., <strong>&ldquo;How to Optimize URL Slugs for SEO&ldquo;</strong>).</li>
+    <li>Customize output (remove stop words, adjust length).</li>
+    <li>Copy & implement the generated slug:  
+      <code className="bg-gray-200 px-2 py-1 rounded text-sm">how-to-optimize-url-slugs-seo</code>
+    </li>
+  </ol>
+  <p className="text-gray-700 mb-6">
+    Works with: <strong>WordPress, Shopify, and any CMS</strong> where URLs are editable.
+  </p>
+
+  <p className="text-gray-800 font-medium bg-yellow-100 p-4 rounded-lg">
+    🎯 <strong>Final Thoughts:</strong>  
+    A well-optimized URL slug improves <strong>SEO rankings, user experience, and CTR</strong>.  
+    By following best practices and using a slug generator, you can ensure your URLs are 
+    clean, readable, and search-engine friendly.
+  </p>
+</section>
+
         </div>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   )
