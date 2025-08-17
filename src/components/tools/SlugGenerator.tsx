@@ -90,7 +90,7 @@ const SlugGenerator: React.FC = () => {
       <div className="max-w-6xl mx-auto">
 
         {/* Tabs */}
-        <div className="flex justify-center mb-10">
+        <div className="flex justify-center mt-[-100] mb-6">
           <div className="inline-flex bg-white/80 backdrop-blur-md rounded-full shadow-lg p-1">
             <button
               onClick={() => setActiveTab("batch")}

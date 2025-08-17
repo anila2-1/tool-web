@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { FaGlobe, FaClock, FaCode, FaLink, FaArrowRight } from 'react-icons/fa'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 const tools = [
   {
@@ -39,10 +41,11 @@ const tools = [
 export default function ToolsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+        <div className="text-center mt-8 mb-12">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 relative z-10 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent sm:text-5xl sm:tracking-tight lg:text-6xl">
             Developer Tools
           </h1>
           <p className="mt-5 max-w-xl mx-auto text-xl text-gray-500">
@@ -97,6 +100,7 @@ export default function ToolsPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

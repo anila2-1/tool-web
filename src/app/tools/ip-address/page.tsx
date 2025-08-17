@@ -8,115 +8,127 @@ export default function IPAddressPage() {
       <Navbar />
       
       <main className="flex-1 py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
-          <div className="text-center mb-0.5">
-            <h1 className="text-4xl font-extrabold text-gray-900 mb-3 tracking-tight">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
               IP Address Checker
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className='max-w-2xl mx-auto text-lg text-gray-600'>
               Get detailed geolocation and network information for any IP address
             </p>
           </div>
+             </div>
+      </main>
           
           {/* Lookup Box */}
-          <div className="">
+                <main className="flex-1 pb-16">
+
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="p-6 sm:p-10">
               <IPAddressLookup />
             </div>
-          </div>
           
           {/* Article Section */}
-<div className="mt-0.5">
-  <h2 className="text-2xl font-bold text-gray-900 mb-5 pb-2">
-    IP Location Discoverer – Check Location of Public IP
+<section className="mt-8 p-6 sm:p-8 prose prose-lg max-w-none">
+  
+  {/* Heading */}
+  <h2 className="text-3xl font-bold text-gray-900 mb-6">
+    🌍 IP Location Discoverer – Check Location of Public IP
   </h2>
-  <p className="text-gray-700 leading-relaxed mb-4">
-When you type a website address into your browser, the internet connects you to the correct site rapidly. 
-But have you ever wondered how websites know it’s you making the request? The answer lies in your IP Address.
-  </p>
-
-  <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-4">
-    What is an IP Address?
-  </h3>
-  <p className="text-gray-700 leading-relaxed mb-4">
-    An IP (Internet Protocol) address is a unique numeric identifier assigned to every device connected to the internet—
-    whether it’s a computer, mobile, tablet, or server. Without an IP address, you cannot send or receive data online.
-  </p>
-  <p className="text-gray-700 leading-relaxed mb-4">
-    👉 Example format: <span className="font-mono">192.168.0.1</span> (IPv4) or a longer hexadecimal (IPv6).
-  </p>
+  
+  {/* Intro */}
   <p className="text-gray-700 leading-relaxed mb-6">
-    Your ISP (Internet Service Provider) assigns you an IP whenever you go online. This allows websites, apps, and servers to recognize your device.
+    When you type a website address into your browser, the internet connects you to the correct site rapidly. 
+    But have you ever wondered how websites know it’s you making the request? 
+    The answer lies in your <span className="font-semibold text-indigo-600">IP Address</span>.
   </p>
 
-  <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-4">
-    Versions of IP Address
-  </h3>
-  <ul className="list-disc pl-5 text-gray-700 space-y-2">
-    <li><span className="font-medium text-gray-900">IPv4:</span> The older and most common format (32-bit). Limited to ~4 billion addresses.</li>
-    <li><span className="font-medium text-gray-900">IPv6:</span> The newer format (128-bit). It provides a nearly endless supply of addresses and will eventually take over from IPv4.</li>
-  </ul>
+  {/* Sub Sections */}
+  <div className="space-y-8">
+    
+    {/* What is IP */}
+    <div>
+      <h3 className="text-2xl font-bold text-gray-900 mb-3">🔑 What is an IP Address?</h3>
+      <p className="text-gray-700 leading-relaxed mb-3">
+        An IP (Internet Protocol) address is a unique numeric identifier assigned to every device connected to the internet— 
+        whether it’s a computer, mobile, tablet, or server.
+      </p>
+      <p className="text-gray-700 leading-relaxed mb-3">
+        👉 Example: <code className="bg-gray-100 px-2 py-1 rounded text-pink-600 font-mono">192.168.0.1</code> (IPv4) or a longer hexadecimal (IPv6).
+      </p>
+      <p className="text-gray-700 leading-relaxed">
+        Your ISP assigns you an IP whenever you go online. This allows websites, apps, and servers to recognize your device.
+      </p>
+    </div>
 
-  <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-4">
-    Types of IP Address
-  </h3>
-  <p className="text-gray-700 leading-relaxed mb-4">
-    Public IP – Used for direct communication on the internet (e.g., websites, servers).<br />
-    Private IP – Used inside local networks (e.g., your Wi-Fi router).
-  </p>
-  <ul className="list-disc pl-5 text-gray-700 space-y-2">
-    <li><span className="font-medium text-gray-900">Dynamic:</span> Changes frequently, usually assigned by ISP.</li>
-    <li><span className="font-medium text-gray-900">Static:</span> Fixed, used by servers or networks.</li>
-  </ul>
+    {/* Versions */}
+    <div>
+      <h3 className="text-2xl font-bold text-gray-900 mb-3">⚡ Versions of IP Address</h3>
+      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+        <li><span className="font-semibold text-indigo-600">IPv4:</span> The older 32-bit format (~4 billion addresses)</li>
+        <li><span className="font-semibold text-indigo-600">IPv6:</span> The newer 128-bit format, nearly infinite addresses</li>
+      </ul>
+    </div>
 
-  <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-4">
-    Why is Checking IP Location Important?
-  </h3>
-  <p className="text-gray-700 leading-relaxed mb-4">
-    Your IP address reveals:
-  </p>
-  <ul className="list-disc pl-5 text-gray-700 space-y-2">
-    <li>Approximate country, city, and region</li>
-    <li>ISP (Internet Service Provider)</li>
-    <li>Organization or ASN details</li>
-    <li>Device activity source (useful for tracking unusual logins)</li>
-  </ul>
+    {/* Types */}
+    <div>
+      <h3 className="text-2xl font-bold text-gray-900 mb-3">📌 Types of IP Address</h3>
+      <p className="text-gray-700 mb-3">
+        Public IP – Used for internet<br />Private IP – Used inside local networks
+      </p>
+      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+        <li><span className="font-semibold text-indigo-600">Dynamic:</span> Changes often (assigned by ISP)</li>
+        <li><span className="font-semibold text-indigo-600">Static:</span> Fixed, used by servers</li>
+      </ul>
+    </div>
 
-  <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-4">
-    Common Uses
-  </h3>
-  <ul className="list-disc pl-5 text-gray-700 space-y-2">
-    <li><span className="font-medium text-gray-900">Security:</span> Detect hacking attempts, block malicious IPs</li>
-    <li><span className="font-medium text-gray-900">Privacy:</span> VPNs hide your real IP to access geo-restricted content</li>
-    <li><span className="font-medium text-gray-900">E-commerce & Streaming:</span> Websites show location-based products or content (e.g., Netflix regions)</li>
-    <li><span className="font-medium text-gray-900">Email Tracing:</span> Find sender’s location from headers</li>
-  </ul>
+    {/* Importance */}
+    <div>
+      <h3 className="text-2xl font-bold text-gray-900 mb-3">🎯 Why Check IP Location?</h3>
+      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+        <li>Country, city & region info</li>
+        <li>ISP & organization (ASN)</li>
+        <li>Track unusual logins</li>
+        <li>Enhance online security</li>
+      </ul>
+    </div>
 
-  <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-4">
-    Can Your IP Stay the Same?
-  </h3>
-  <p className="text-gray-700 leading-relaxed mb-6">
-    No. Your IP often changes depending on your ISP, Wi-Fi, or location (home, office, library). 
-    Only a static IP stays constant.
-  </p>
+    {/* Uses */}
+    <div>
+      <h3 className="text-2xl font-bold text-gray-900 mb-3">🚀 Common Uses</h3>
+      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+        <li><span className="font-semibold text-indigo-600">Security:</span> Detect hacking attempts, block malicious IPs</li>
+        <li><span className="font-semibold text-indigo-600">Privacy:</span> VPNs hide your real IP</li>
+        <li><span className="font-semibold text-indigo-600">Streaming:</span> Location-based content (e.g., Netflix regions)</li>
+        <li><span className="font-semibold text-indigo-600">Email:</span> Trace sender’s location</li>
+      </ul>
+    </div>
 
-  <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-4">
-    About IP Tools
-  </h3>
-  <p className="text-gray-700 leading-relaxed mb-4">
-    Services like IPLocation.io or our IP Location Discoverer allow you to:
-  </p>
-  <ul className="list-disc pl-5 text-gray-700 space-y-2">
-    <li>Find your public IP instantly</li>
-    <li>Check ISP, ASN, network type, proxy status, and threat level</li>
-    <li>View approximate map coordinates</li>
-  </ul>
-  <p className="text-gray-700 leading-relaxed mt-4">
-    ⚠️ <span className="font-medium text-gray-900">Note:</span> IP-based location is approximate, not exact. 
-    Only your ISP knows your precise location.
-  </p>
-</div>
+    {/* Same IP */}
+    <div>
+      <h3 className="text-2xl font-bold text-gray-900 mb-3">🔄 Can Your IP Stay the Same?</h3>
+      <p className="text-gray-700 leading-relaxed">
+        No. Most IPs change depending on your ISP, Wi-Fi, or location. 
+        Only a <span className="font-semibold text-pink-600">Static IP</span> stays constant.
+      </p>
+    </div>
+
+    {/* Tools */}
+    <div>
+      <h3 className="text-2xl font-bold text-gray-900 mb-3">🛠️ About IP Tools</h3>
+      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+        <li>Find your public IP instantly</li>
+        <li>Check ISP, ASN, Proxy & Threat level</li>
+        <li>View approximate map coordinates</li>
+      </ul>
+      <p className="text-gray-800 font-medium bg-yellow-100 p-4 rounded-lg">
+        ⚠️ <span className="font-semibold text-red-600">Note:</span> IP-based location is <u>approximate</u>, only your ISP knows your exact address.
+      </p>
+    </div>
+  </div>
+</section>
+
         </div>
       </main>
       

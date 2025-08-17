@@ -332,9 +332,6 @@ const JSONEditor = () => {
           </div>
         </div>
 
-        <div className="text-center text-sm text-gray-400">
-          Made with ❤️ by Anila Amanat
-        </div>
       </div>
     </section>
   )

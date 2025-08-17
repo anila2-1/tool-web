@@ -8,16 +8,19 @@ export default function SlugGeneratorPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-16 sm:py-20 mb-[-50px] text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-2">
+      <main className="flex-1 py-12 sm:py-20 mb-[-50px] text-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className='text-center mb-8'>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
             Slug Generator
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-gray-600">
             Create clean, <strong>SEO-friendly slugs</strong> from any text in seconds.
           </p>
+          </div>
+          
         </div>
-      </section>
+      </main>
 
       {/* Main Content */}
       <main className="flex-1 pb-16">
@@ -28,7 +31,7 @@ export default function SlugGeneratorPage() {
           </div>
 
           {/* Article Section */}
-<section className="mt-8 p-6 sm:p-8  prose prose-lg max-w-none">
+<section className="mt-8 p-6 sm:p-8 prose prose-lg max-w-none">
   <h2 className="text-3xl font-bold text-gray-900 mb-6">
     🔗 What is a URL Slug?
   </h2>
