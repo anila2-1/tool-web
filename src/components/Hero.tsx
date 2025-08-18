@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section className="relative mt-[-100px] mb-16 bg-gradient-to-br from-[#eecdff] via-[#a6fbff] to-[#f7d6ff] text-black overflow-hidden">
+    <section className="relative mt-[-70px] mb-16 bg-gradient-to-br from-[#eecdff] via-[#a6fbff] to-[#f7d6ff] text-black overflow-hidden">
       {/* Floating Blobs */}
       <div className="absolute w-96 h-96 bg-pink-300/30 rounded-full blur-3xl top-[-120px] left-[-120px] animate-pulse"></div>
       <div className="absolute w-80 h-80 bg-blue-300/30 rounded-full blur-3xl bottom-[-100px] right-[-100px] animate-pulse"></div>
