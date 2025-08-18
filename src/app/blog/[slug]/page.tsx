@@ -4,6 +4,8 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import Image from 'next/image'
+import { image } from 'framer-motion/client'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -25,6 +27,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `${post.frontmatter.title} | Tech Blog`,
     description: post.frontmatter.excerpt,
+    image: post.frontmatter.image,
     alternates: {
       canonical: `https://tool-web-zmdw.vercel.app/blog/${slug}`
     },
@@ -80,6 +83,19 @@ export default async function PostPage({ params }: PageProps) {
                   day: 'numeric'
                 })}
               </div>
+             <div className="relative group my-6 overflow-hidden rounded-2xl shadow-lg border border-gray-200 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+  <Image
+    src={frontmatter.image}
+    alt={frontmatter.title}
+    width={900}
+    height={600}
+    className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105"
+  />
+
+  {/* Gradient Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-60 group-hover:opacity-75 transition-opacity duration-500"></div>
+</div>
+
             </header>
 
             {/* Content Section */}

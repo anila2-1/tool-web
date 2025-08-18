@@ -55,6 +55,7 @@ export async function getPostBySlug(slug: string) {
       title: data.title || 'Untitled Post',
       date: data.date || new Date().toISOString(),
       excerpt: data.excerpt || '',
+      image: data.image || '',
       ...data
     }
   }
