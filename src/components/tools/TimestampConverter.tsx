@@ -26,7 +26,6 @@ export default function TimestampConverter() {
   const [customFormat, setCustomFormat] = useState("YYYY-MM-DD HH:mm:ss");
   const [activeTab, setActiveTab] = useState<"single" | "batch">("single");
 
-  // Live clock
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTimestamp(Math.floor(Date.now() / 1000));
@@ -34,7 +33,6 @@ export default function TimestampConverter() {
     return () => clearInterval(interval);
   }, []);
 
-  // Load history from localStorage
   useEffect(() => {
     const savedHistory = localStorage.getItem("timestamp_history");
     if (savedHistory) {
@@ -144,38 +142,37 @@ export default function TimestampConverter() {
   };
 
   return (
-    <section className="py-16 px-6 relative z-10">
-      {/* ✅ Main Card Container with White Background */}
-      <div className="max-w-6xl mx-auto bg-white rounded-3xl mt-[-110] shadow-xl border border-gray-200 overflow-hidden">
+    <section className="py-10 px-4 sm:px-6 lg:px-10 mb-20 relative z-10">
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl mt-[-100] shadow-lg border border-gray-200 overflow-hidden">
+        <div className="p-4 sm:p-6 lg:p-8">
 
-        <div className="p-6">
           {/* Current Timestamp */}
-          <div className="text-center mb-8">
-            <p className="text-sm font-medium text-gray-600">Current Unix Timestamp (UTC)</p>
-            <p className="font-mono text-2xl font-bold text-gray-800 mt-1">{currentTimestamp}</p>
+          <div className="text-center mb-6 sm:mb-8">
+            <p className="text-xs sm:text-sm font-medium text-gray-600">Current Unix Timestamp (UTC)</p>
+            <p className="font-mono text-xl sm:text-2xl font-bold text-indigo-700 mt-1">{currentTimestamp}</p>
           </div>
 
           {/* Controls */}
-          <div className="flex flex-wrap gap-4 mb-6">
-            <div className="flex-1 min-w-[180px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Timezone</label>
               <select
                 value={timezone}
                 onChange={(e) => setTimezone(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all bg-white"
+                className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
               >
                 <option value="UTC">UTC</option>
                 <option value="LOCAL">Local</option>
               </select>
             </div>
 
-            <div className="flex-1 min-w-[180px]">
+            <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Format</label>
               <select
                 value={format}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onChange={(e) => setFormat(e.target.value as any)}
-                className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all bg-white"
+                className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
               >
                 <option value="human">Human Readable</option>
                 <option value="iso">ISO 8601</option>
@@ -185,24 +182,24 @@ export default function TimestampConverter() {
             </div>
 
             {format === "custom" && (
-              <div className="flex-1 min-w-[180px]">
+              <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Custom Format</label>
                 <input
                   type="text"
                   placeholder="YYYY-MM-DD HH:mm:ss"
                   value={customFormat}
                   onChange={(e) => setCustomFormat(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all"
+                  className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
                 />
               </div>
             )}
           </div>
 
           {/* Tabs */}
-          <div className="flex border-b border-gray-200 mb-6">
+          <div className="flex flex-wrap border-b border-gray-200 mb-6">
             <button
               onClick={() => setActiveTab("single")}
-              className={`py-3 px-5 font-semibold text-sm transition-colors border-b-2 ${
+              className={`py-2 px-4 sm:px-6 text-sm font-semibold border-b-2 transition-all ${
                 activeTab === "single"
                   ? "text-indigo-600 border-indigo-600"
                   : "text-gray-500 hover:text-gray-700 border-transparent"
@@ -212,9 +209,9 @@ export default function TimestampConverter() {
             </button>
             <button
               onClick={() => setActiveTab("batch")}
-              className={`py-3 px-5 font-semibold text-sm transition-colors border-b-2 ${
+              className={`py-2 px-4 sm:px-6 text-sm font-semibold border-b-2 transition-all ${
                 activeTab === "batch"
-                  ? "text-indigo-600 border-indigo-600"
+                  ? "text-purple-600 border-purple-600"
                   : "text-gray-500 hover:text-gray-700 border-transparent"
               }`}
             >
@@ -222,7 +219,7 @@ export default function TimestampConverter() {
             </button>
           </div>
 
-          {/* Single Conversion */}
+          {/* ✅ Single Conversion */}
           {activeTab === "single" && (
             <div className="space-y-6">
               {/* Timestamp → Date */}
@@ -234,21 +231,21 @@ export default function TimestampConverter() {
                     placeholder="1625097600"
                     value={timestamp}
                     onChange={(e) => setTimestamp(e.target.value)}
-                    className="flex-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all"
+                    className="flex-1 p-3 border border-gray-300 rounded-xl w-full"
                   />
                   <button
                     onClick={handleTimestampConvert}
-                    className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-xl hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg transform hover:scale-105 transition-all shadow"
+                    className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-xl shadow-md hover:scale-105 transition-transform"
                   >
                     Convert
                   </button>
                 </div>
                 {convertedDate && (
-                  <div className="mt-3 p-4 bg-gray-50 rounded-xl border border-gray-200 flex justify-between items-center hover:shadow-md transition-all">
-                    <code className="text-sm text-gray-800 font-mono break-all">{convertedDate}</code>
+                  <div className="mt-3 p-3 sm:p-4 bg-gray-50 rounded-xl border text-xs sm:text-sm flex justify-between items-center overflow-x-auto">
+                    <code className="font-mono">{convertedDate}</code>
                     <button
                       onClick={() => copyToClipboard(convertedDate)}
-                      className="text-indigo-600 hover:text-indigo-800 font-medium text-sm px-3 py-1.5 bg-white rounded-lg shadow-sm hover:shadow transition-colors"
+                      className="ml-3 text-indigo-600 text-xs sm:text-sm px-3 py-1 bg-white rounded-lg shadow hover:bg-indigo-50"
                     >
                       Copy
                     </button>
@@ -264,21 +261,21 @@ export default function TimestampConverter() {
                     type="datetime-local"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="flex-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all"
+                    className="flex-1 p-3 border border-gray-300 rounded-xl w-full"
                   />
                   <button
                     onClick={handleDateConvert}
-                    className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-xl hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg transform hover:scale-105 transition-all shadow"
+                    className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg hover:scale-105 transition-all shadow text-sm sm:text-base"
                   >
                     Convert
                   </button>
                 </div>
                 {convertedTimestamp && (
-                  <div className="mt-3 p-4 bg-gray-50 rounded-xl border border-gray-200 flex justify-between items-center hover:shadow-md transition-all">
-                    <code className="text-sm text-gray-800 font-mono">{convertedTimestamp}</code>
+                  <div className="mt-3 p-3 sm:p-4 bg-gray-50 rounded-xl border text-xs sm:text-sm flex justify-between items-center overflow-x-auto">
+                    <code className="font-mono">{convertedTimestamp}</code>
                     <button
                       onClick={() => copyToClipboard(convertedTimestamp)}
-                      className="text-indigo-600 hover:text-indigo-800 font-medium text-sm px-3 py-1.5 bg-white rounded-lg shadow-sm hover:shadow transition-colors"
+                      className="ml-3 text-indigo-600 text-xs sm:text-sm px-3 py-1 bg-white rounded-lg shadow hover:bg-indigo-50"
                     >
                       Copy
                     </button>
@@ -288,7 +285,7 @@ export default function TimestampConverter() {
             </div>
           )}
 
-          {/* Batch Conversion */}
+          {/* ✅ Batch Conversion */}
           {activeTab === "batch" && (
             <div className="space-y-4">
               <label className="block text-sm font-medium text-gray-800">Batch Timestamp Conversion</label>
@@ -296,11 +293,11 @@ export default function TimestampConverter() {
                 placeholder="Enter one timestamp per line..."
                 value={batchInput}
                 onChange={(e) => setBatchInput(e.target.value)}
-                className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all h-32 resize-none"
+                className="w-full p-3 sm:p-4 border border-gray-300 rounded-xl h-32 resize-y text-sm sm:text-base"
               />
               <button
                 onClick={handleBatchConvert}
-                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium rounded-xl hover:from-purple-700 hover:to-indigo-700 hover:shadow-lg transform hover:scale-105 transition-all shadow"
+                className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg hover:scale-105 transition-all shadow text-sm sm:text-base"
               >
                 Convert All
               </button>
@@ -310,12 +307,12 @@ export default function TimestampConverter() {
                   {batchResults.map((res, i) => (
                     <div
                       key={i}
-                      className="p-4 bg-gray-50 rounded-xl border border-gray-200 flex justify-between items-center hover:shadow-md transition-all"
+                      className="p-3 sm:p-4 bg-gray-50 rounded-xl border text-xs sm:text-sm flex justify-between items-center overflow-x-auto"
                     >
-                      <code className="text-sm text-gray-800 font-mono break-all flex-1">{res.output}</code>
+                      <code className="font-mono flex-1">{res.output}</code>
                       <button
                         onClick={() => copyToClipboard(res.output)}
-                        className="ml-3 text-indigo-600 hover:text-indigo-800 font-medium text-sm px-3 py-1.5 bg-white rounded-lg shadow-sm hover:shadow transition-colors"
+                        className="ml-3 text-indigo-600 text-xs sm:text-sm px-3 py-1 bg-white rounded-lg shadow hover:bg-indigo-50"
                       >
                         Copy
                       </button>
@@ -326,14 +323,14 @@ export default function TimestampConverter() {
             </div>
           )}
 
-          {/* History */}
+          {/* ✅ History */}
           <div className="mt-10">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Recent Conversions</h3>
+            <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800">Recent Conversions</h3>
               {history.length > 0 && (
                 <button
                   onClick={clearHistory}
-                  className="text-sm text-red-600 hover:text-red-800 font-medium transition-colors"
+                  className="text-xs sm:text-sm text-red-600 hover:text-red-800 font-medium"
                 >
                   Clear History
                 </button>
@@ -341,20 +338,22 @@ export default function TimestampConverter() {
             </div>
 
             {history.length === 0 ? (
-              <p className="p-6 text-center text-gray-500 bg-gray-50 rounded-xl italic">No history yet. Start converting!</p>
+              <p className="p-4 sm:p-6 text-center text-gray-500 bg-gray-100 rounded-xl text-sm italic">
+                No history yet. Start converting!
+              </p>
             ) : (
               <div className="space-y-2">
                 {history.map((h, i) => (
                   <div
                     key={i}
-                    className="p-4 bg-gray-50 rounded-xl border border-gray-200 flex justify-between items-center hover:shadow-md transition-all"
+                    className="p-3 sm:p-4 bg-gray-100 rounded-xl border text-xs sm:text-sm flex justify-between items-center overflow-x-auto"
                   >
-                    <div className="text-sm font-mono text-gray-800 break-all flex-1">
+                    <div className="font-mono flex-1 break-all">
                       <span className="font-medium">{h.input}</span> → {h.output}
                     </div>
                     <button
                       onClick={() => copyToClipboard(h.output.toString())}
-                      className="ml-3 text-indigo-600 hover:text-indigo-800 font-medium text-sm px-3 py-1.5 bg-white rounded-lg shadow-sm hover:shadow transition-colors"
+                      className="ml-3 text-indigo-600 text-xs sm:text-sm px-3 py-1 bg-white rounded-lg shadow hover:bg-indigo-50"
                     >
                       Copy
                     </button>
