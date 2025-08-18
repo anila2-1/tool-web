@@ -10,8 +10,8 @@ export default function IPAddressPage() {
       {/* Hero Section */}
       <main className="flex-1 py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-6 sm:mb-10">
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3 bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl sm:text-4xl p-4 font-bold mb-2 bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
               IP Address Checker
             </h1>
             <p className="max-w-2xl mx-auto text-base sm:text-lg text-gray-600 px-2">
