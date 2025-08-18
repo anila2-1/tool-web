@@ -5,6 +5,7 @@ export interface BlogPost {
   title: string
   date: string
   excerpt?: string
+  image?: string
   [key: string]: unknown
 }
 // lib/mdx.ts
