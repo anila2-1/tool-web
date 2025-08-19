@@ -35,7 +35,7 @@
               </h2>
 
               <p className="text-gray-700 leading-relaxed mb-4">
-                JSON Formatter helps you instantly <span className="font-semibold">beautify, validate, and
+                JSON Formatter helps you instantly <span className="font-semibold text-indigo-600">beautify, validate, and
                 minify</span> JSON. Paste raw JSON and get readable output with proper indentation, or compress
                 it for production. It also catches common errors ⚡ so you can fix them fast.
               </p>

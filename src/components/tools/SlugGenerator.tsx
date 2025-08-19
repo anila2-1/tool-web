@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { FaMagic, FaTrash, FaDownload, FaCopy, FaCheck } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 // Stopwords for SEO-friendly slugs
 const stopwords = [
@@ -9,7 +10,6 @@ const stopwords = [
   "the", "a", "an", "and", "or", "but", "for", "to", "of", "with", "is"
 ];
 
-// Fun & engaging endings
 const funnyEndings = [
   "done-right-bro", "like-a-pro", "noob-proof", "not-a-joke", "lit-af", "with-extra-cheese",
   "banana-approved", "totally-serious", "no-clickbait", "just-for-fun", "nailed-it", "totally-epic",
@@ -104,65 +104,64 @@ const SlugGenerator = () => {
   };
 
   return (
-    <section className="py-10 px-4 sm:px-6 md:px-8 mb-20 relative z-10">
-      {/* ✅ Main Card */}
-      <div className="max-w-6xl mx-auto bg-white rounded-3xl mt-[-100] shadow-xl border border-gray-200 overflow-hidden">
-        <div className="p-4 sm:p-6 md:p-8">
+    <section className="py-16 px-6 mb-20 relative z-10">
+      {/* Glassmorphism Card */}
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="max-w-6xl mx-auto bg-white/70 backdrop-blur-xl mt-[-110] rounded-3xl shadow-2xl border border-gray-200/60 overflow-hidden"
+      >
+        <div className="p-6 sm:p-10">
           {/* Tabs */}
-          <div className="flex justify-center mb-6 sm:mb-8">
-            <div className="inline-flex bg-white rounded-full shadow-md p-1 border border-gray-200">
-              <button
-                onClick={() => setActiveTab("batch")}
-                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-200 ${
-                  activeTab === "batch"
-                    ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
-              >
-                Batch Mode
-              </button>
-              <button
-                onClick={() => setActiveTab("single")}
-                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-200 ${
-                  activeTab === "single"
-                    ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
-              >
-                AI Suggestions
-              </button>
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex bg-gray-100 rounded-full shadow-md p-1 border border-gray-200">
+              {["batch", "single"].map((tab) => (
+                <button
+                  key={tab}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  onClick={() => setActiveTab(tab as any)}
+                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                    activeTab === tab
+                      ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md"
+                      : "text-gray-600 hover:bg-gray-200"
+                  }`}
+                >
+                  {tab === "batch" ? "📑 Batch Mode" : "🤖 AI Suggestions"}
+                </button>
+              ))}
             </div>
           </div>
 
           {/* Panels */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             {/* Input Panel */}
-            <div className="flex flex-col min-h-[350px] sm:min-h-[400px] md:min-h-[480px]">
+            <div className="flex flex-col min-h-[450px]">
               <textarea
-                className="w-full flex-1 p-3 sm:p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 text-gray-800 resize-none shadow-sm transition-all text-sm sm:text-base"
+                className="w-full flex-1 p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-200 focus:border-indigo-500 text-gray-800 resize-none shadow-sm transition-all text-base bg-white/60"
                 placeholder={activeTab === "batch" ? "✍️ Enter one title per line..." : "✨ Enter a single title for AI slug variants..."}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 spellCheck="false"
               />
-              <div className="mt-3 sm:mt-4 flex flex-wrap gap-2 sm:gap-3">
+              <div className="mt-5 flex flex-wrap gap-3">
                 <button
                   onClick={activeTab === "batch" ? handleBatchGenerate : handleSingleGenerate}
-                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg hover:scale-105 transition-all shadow text-sm sm:text-base"
+                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg hover:scale-105 transition-all shadow-md"
                 >
                   <FaMagic /> Generate
                 </button>
                 <button
                   onClick={handleClear}
-                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-200 text-gray-800 font-semibold rounded-xl hover:bg-gray-300 hover:scale-105 transition-all text-sm sm:text-base"
+                  className="flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-800 font-semibold rounded-xl hover:bg-gray-300 hover:scale-105 transition-all"
                 >
                   <FaTrash /> Clear
                 </button>
                 {slugs.length > 0 && activeTab === "batch" && (
                   <button
                     onClick={handleDownload}
-                    className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl hover:from-green-600 hover:to-green-700 hover:shadow-lg hover:scale-105 transition-all shadow text-sm sm:text-base"
+                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl hover:from-green-600 hover:to-green-700 hover:shadow-lg hover:scale-105 transition-all shadow-md"
                   >
                     <FaDownload /> Download
                   </button>
@@ -171,70 +170,73 @@ const SlugGenerator = () => {
             </div>
 
             {/* Output Panel */}
-            <div className="bg-gray-50 rounded-2xl p-4 sm:p-6 border border-gray-200 flex flex-col min-h-[350px] sm:min-h-[400px] md:min-h-[480px] overflow-auto">
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-200 shadow-inner flex flex-col min-h-[450px] overflow-auto">
               {activeTab === "batch" ? (
                 <>
-                  <h4 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-gray-800">
-                    {slugs.length > 0 ? "✨ Generated Slugs" : "Results will appear here"}
+                  <h4 className="text-xl font-bold mb-6 text-gray-800">
+                    {slugs.length > 0 ? "✨ Generated Slugs" : "⚡ Results will appear here"}
                   </h4>
                   {slugs.length > 0 ? (
                     <ul className="space-y-3">
                       {slugs.map((item, index) => (
-                        <li
+                        <motion.li
                           key={index}
-                          className="bg-white rounded-xl border border-gray-200 p-3 sm:p-4 flex justify-between items-center hover:shadow-md transition-all group"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.05 }}
+                          className="bg-white/80 backdrop-blur rounded-xl border border-gray-200 p-4 flex justify-between items-center hover:shadow-lg transition-all group"
                         >
-                          <div className="pr-2">
-                            <p className="text-xs text-gray-500 mb-1 truncate max-w-[200px] sm:max-w-xs">
+                          <div className="pr-3">
+                            <p className="text-xs text-gray-500 mb-1 truncate max-w-xs">
                               {item.original}
                             </p>
-                            <p className="font-mono text-xs sm:text-sm text-gray-800 break-all">
+                            <p className="font-mono text-sm text-gray-800 break-all">
                               {item.slug}
                             </p>
                           </div>
                           <button
                             onClick={() => handleCopy(item.slug, index)}
-                            className="text-indigo-600 hover:text-indigo-800 transition-colors p-2"
+                            className="text-indigo-600 hover:text-indigo-800 transition-all p-2"
                             title="Copy Slug"
                           >
                             {copiedIndex === index ? (
-                              <FaCheck className="text-green-500" />
+                              <FaCheck className="text-green-500 animate-bounce" />
                             ) : (
                               <FaCopy />
                             )}
                           </button>
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-gray-400 italic text-center mt-6 sm:mt-8 text-sm sm:text-base">
-                      Enter titles and click &ldquo;Generate&rdquo; to see results
+                    <p className="text-gray-400 italic text-center mt-12">
+                      Enter titles and click <b>Generate</b> 🚀
                     </p>
                   )}
                 </>
               ) : (
                 <>
-                  <h4 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-gray-800">
-                    {aiSlugs.professional ? "🤖 AI Slug Suggestions" : "AI suggestions will appear here"}
+                  <h4 className="text-xl font-bold mb-6 text-gray-800">
+                    {aiSlugs.professional ? "🤖 AI Slug Suggestions" : "💡 AI will suggest here"}
                   </h4>
                   {aiSlugs.professional ? (
                     <div className="space-y-4">
                       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-indigo-500 p-4 rounded-xl">
-                        <p className="font-semibold text-indigo-700 text-xs sm:text-sm">📌 Professional</p>
-                        <p className="font-mono text-xs sm:text-sm text-gray-800 mt-1 break-all">{aiSlugs.professional}</p>
+                        <p className="font-semibold text-indigo-700">📌 Professional</p>
+                        <p className="font-mono text-sm text-gray-800 mt-1 break-all">{aiSlugs.professional}</p>
                       </div>
                       <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 p-4 rounded-xl">
-                        <p className="font-semibold text-green-700 text-xs sm:text-sm">😎 Casual</p>
-                        <p className="font-mono text-xs sm:text-sm text-gray-800 mt-1 break-all">{aiSlugs.casual}</p>
+                        <p className="font-semibold text-green-700">😎 Casual</p>
+                        <p className="font-mono text-sm text-gray-800 mt-1 break-all">{aiSlugs.casual}</p>
                       </div>
                       <div className="bg-gradient-to-r from-pink-50 to-rose-50 border-l-4 border-pink-500 p-4 rounded-xl">
-                        <p className="font-semibold text-pink-700 text-xs sm:text-sm">🤣 Funny</p>
-                        <p className="font-mono text-xs sm:text-sm text-gray-800 mt-1 break-all">{aiSlugs.funny}</p>
+                        <p className="font-semibold text-pink-700">🤣 Funny</p>
+                        <p className="font-mono text-sm text-gray-800 mt-1 break-all">{aiSlugs.funny}</p>
                       </div>
                     </div>
                   ) : (
-                    <p className="text-gray-400 italic text-center mt-6 sm:mt-8 text-sm sm:text-base">
-                      Enter a title and click &ldquo;Generate&ldquo; to see AI suggestions
+                    <p className="text-gray-400 italic text-center mt-12">
+                      Enter a title and click <b>Generate</b> ✨
                     </p>
                   )}
                 </>
@@ -242,7 +244,7 @@ const SlugGenerator = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

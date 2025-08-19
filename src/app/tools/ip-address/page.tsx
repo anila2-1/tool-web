@@ -60,72 +60,160 @@ export default function IPAddressPage() {
               </div>
 
               {/* Versions */}
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">⚡ Versions of IP Address</h3>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                  <li><span className="font-semibold text-indigo-600">IPv4:</span> The older 32-bit format (~4 billion addresses)</li>
-                  <li><span className="font-semibold text-indigo-600">IPv6:</span> The newer 128-bit format, nearly infinite addresses</li>
-                </ul>
-              </div>
+<div className="mt-10">
+  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+    ⚡ Versions of IP Address
+  </h3>
+  <ul className="space-y-3">
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-200 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300">
+      <span className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-full bg-blue-500 text-white text-base">
+        🌐
+      </span>
+      <p className="text-gray-700">
+        <span className="font-semibold text-indigo-600">IPv4:</span> 
+        The older 32-bit format (~4 billion addresses)
+      </p>
+    </li>
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-200 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300">
+      <span className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-full bg-green-500 text-white text-base">
+        🚀
+      </span>
+      <p className="text-gray-700">
+        <span className="font-semibold text-indigo-600">IPv6:</span> 
+        The newer 128-bit format, nearly infinite addresses
+      </p>
+    </li>
+  </ul>
+</div>
 
-              {/* Types */}
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">📌 Types of IP Address</h3>
-                <p className="text-gray-700 mb-3">
-                  Public IP – Used for internet<br />Private IP – Used inside local networks
-                </p>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                  <li><span className="font-semibold text-indigo-600">Dynamic:</span> Changes often (assigned by ISP)</li>
-                  <li><span className="font-semibold text-indigo-600">Static:</span> Fixed, used by servers</li>
-                </ul>
-              </div>
 
-              {/* Importance */}
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">🎯 Why Check IP Location?</h3>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                  <li>Country, city & region info</li>
-                  <li>ISP & organization (ASN)</li>
-                  <li>Track unusual logins</li>
-                  <li>Enhance online security</li>
-                </ul>
-              </div>
+             {/* Types of IP Address */}
+<div className="mt-10">
+  <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+    📌 Types of IP Address
+  </h3>
 
-              {/* Uses */}
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">🚀 Common Uses</h3>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                  <li><span className="font-semibold text-indigo-600">Security:</span> Detect hacking attempts, block malicious IPs</li>
-                  <li><span className="font-semibold text-indigo-600">Privacy:</span> VPNs hide your real IP</li>
-                  <li><span className="font-semibold text-indigo-600">Streaming:</span> Location-based content (e.g., Netflix regions)</li>
-                  <li><span className="font-semibold text-indigo-600">Email:</span> Trace sender’s location</li>
-                </ul>
-              </div>
+  <div className="grid md:grid-cols-2 gap-4">
+    {/* Public vs Private */}
+    <div className="p-4 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-gradient-to-br from-blue-50 to-white">
+      <h4 className="font-semibold text-indigo-700 text-lg mb-2">🌍 Public IP</h4>
+      <p className="text-gray-700">
+        Used for internet communication, unique across the world.
+      </p>
+    </div>
 
-              {/* Same IP */}
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">🔄 Can Your IP Stay the Same?</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  No. Most IPs change depending on your ISP, Wi-Fi, or location. 
-                  Only a <span className="font-semibold text-pink-600">Static IP</span> stays constant.
-                </p>
-              </div>
+    <div className="p-4 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-gradient-to-br from-green-50 to-white">
+      <h4 className="font-semibold text-green-700 text-lg mb-2">🏠 Private IP</h4>
+      <p className="text-gray-700">
+        Used inside local networks (home, office, LAN).
+      </p>
+    </div>
 
-              {/* Tools */}
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">🛠️ About IP Tools</h3>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                  <li>Find your public IP instantly</li>
-                  <li>Check ISP, ASN, Proxy & Threat level</li>
-                  <li>View approximate map coordinates</li>
-                </ul>
+    {/* Dynamic */}
+    <div className="p-4 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-gradient-to-br from-yellow-50 to-white">
+      <h4 className="font-semibold text-yellow-700 text-lg mb-2">🔄 Dynamic</h4>
+      <p className="text-gray-700">
+        Changes often, assigned automatically by your ISP.
+      </p>
+    </div>
+
+    {/* Static */}
+    <div className="p-4 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-gradient-to-br from-pink-50 to-white">
+      <h4 className="font-semibold text-pink-700 text-lg mb-2">📌 Static</h4>
+      <p className="text-gray-700">
+        Fixed address, often used by servers & websites.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+    🎯 Why Check IP Location?
+  </h3>
+  <ul className="space-y-3">
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-blue-50 border border-blue-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white text-sm">🌍</span>
+      <p className="text-gray-700">Country, city & region info</p>
+    </li>
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-indigo-50 border border-indigo-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-indigo-500 text-white text-sm">🏢</span>
+      <p className="text-gray-700">ISP & organization (ASN)</p>
+    </li>
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-green-50 border border-green-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-green-500 text-white text-sm">🔍</span>
+      <p className="text-gray-700">Track unusual logins</p>
+    </li>
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-pink-50 border border-pink-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-pink-500 text-white text-sm">🛡️</span>
+      <p className="text-gray-700">Enhance online security</p>
+    </li>
+  </ul>
+</div>
+
+{/* 🚀 Common Uses */}
+<div className="mt-10">
+  <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+    🚀 Common Uses
+  </h3>
+  <ul className="space-y-3">
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-yellow-50 border border-yellow-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-yellow-500 text-white text-sm">🔐</span>
+      <p className="text-gray-700"><span className="font-semibold text-indigo-600">Security:</span> Detect hacking attempts, block malicious IPs</p>
+    </li>
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-purple-50 border border-purple-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-purple-500 text-white text-sm">🕶️</span>
+      <p className="text-gray-700"><span className="font-semibold text-indigo-600">Privacy:</span> VPNs hide your real IP</p>
+    </li>
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-red-50 border border-red-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-red-500 text-white text-sm">📺</span>
+      <p className="text-gray-700"><span className="font-semibold text-indigo-600">Streaming:</span> Location-based content (e.g., Netflix regions)</p>
+    </li>
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-teal-50 border border-teal-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-teal-500 text-white text-sm">✉️</span>
+      <p className="text-gray-700"><span className="font-semibold text-indigo-600">Email:</span> Trace sender’s location</p>
+    </li>
+  </ul>
+</div>
+
+{/* 🔄 Can Your IP Stay the Same? */}
+<div className="mt-10">
+  <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+    🔄 Can Your IP Stay the Same?
+  </h3>
+  <div className="p-4 rounded-xl bg-gradient-to-br from-pink-50 to-white border border-pink-200 shadow-sm hover:shadow-md transition-all duration-300">
+    <p className="text-gray-700 leading-relaxed">
+      No. Most IPs change depending on your ISP, Wi-Fi, or location. <br />
+      Only a <span className="font-semibold text-pink-600">Static IP</span> stays constant.
+    </p>
+  </div>
+</div>
+
+{/* 🛠️ About IP Tools */}
+<div className="mt-10">
+  <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+    🛠️ About IP Tools
+  </h3>
+  <ul className="space-y-3">
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-cyan-50 border border-cyan-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-cyan-500 text-white text-sm">⚡</span>
+      <p className="text-gray-700">Find your public IP instantly</p>
+    </li>
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-green-50 border border-green-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-green-500 text-white text-sm">🛰️</span>
+      <p className="text-gray-700">Check ISP, ASN, Proxy & Threat level</p>
+    </li>
+    <li className="flex items-start gap-3 p-3 rounded-xl bg-orange-50 border border-orange-200 shadow-sm hover:shadow-md transition-all duration-300">
+      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-orange-500 text-white text-sm">🗺️</span>
+      <p className="text-gray-700">View approximate map coordinates</p>
+    </li>
+  </ul>
+  </div>
                 <div className="text-gray-800 font-medium bg-yellow-100 rounded-lg p-4 mt-6">
                   <p className="text-blue-900">
                     ⚠️ <span className="font-semibold text-red-600">Note:</span> IP-based location is <u>approximate</u>, only your ISP knows your exact address.
                   </p>
                 </div>
-              </div>
-            </div>
           </section>
         </div>
       </section>

@@ -51,19 +51,36 @@ export default function TimestampPage() {
             <p className="text-gray-700 mb-4">
               To change a Unix timestamp into a standard date and time format:
             </p>
-            <ul className="list-disc list-inside text-gray-700 mb-4">
-              <li>📥 Input the timestamp into a Unix to Date Converter tool.</li>
-              <li>🕒 The converter provides the correct date and time based on your timezone.</li>
-            </ul>
+            <ul className="space-y-3">
+  <li className="flex items-start gap-3 p-3 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+    <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-indigo-500 text-white text-sm">📥</span>
+    <p className="text-gray-700">
+      <span className="font-semibold text-indigo-600">Input:</span> Enter the Unix timestamp into the converter tool.
+    </p>
+  </li>
 
-            {/* Example */}
-            <div className="bg-white border rounded-lg p-4 mb-6">
-              <p className="text-gray-800 font-medium">🔹 Example:</p>
-              <p className="text-gray-700 mt-2">
-                Unix Timestamp: <code className="bg-gray-100 px-2 py-1 rounded text-pink-600 font-mono">1672531200</code>  
-                → Date: <span className="font-semibold text-indigo-600">January 1, 2023 00:00:00 (UTC)</span>
-              </p>
-            </div>
+  <li className="flex items-start gap-3 p-3 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+    <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-green-500 text-white text-sm">🕒</span>
+    <p className="text-gray-700">
+      <span className="font-semibold text-indigo-600">Convert:</span> The tool will display the correct date and time according to your timezone.
+    </p>
+  </li>
+</ul>
+
+           {/* Example */}
+<div className="bg-gradient-to-br mt-6 from-blue-50 to-white border border-gray-200 rounded-2xl p-5 mb-6 shadow-sm hover:shadow-md transition-all duration-300">
+  <div className="flex items-center gap-2 mb-3">
+    <span className="text-lg">🔹</span>
+    <p className="text-gray-800 font-semibold text-lg">Example:</p>
+  </div>
+  <p className="text-gray-700 mt-2 text-sm sm:text-base">
+    Unix Timestamp: 
+    <code className="bg-gray-100 px-2 py-1 rounded text-pink-600 font-mono mx-1">1672531200</code>  
+    → Date: 
+    <span className="font-semibold text-indigo-600">January 1, 2023 00:00:00 (UTC)</span>
+  </p>
+</div>
+
 
             <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-2">
               🔄 Converting a Readable Date into a Unix Timestamp
@@ -71,19 +88,37 @@ export default function TimestampPage() {
             <p className="text-gray-700 mb-4">
               The process can also be reversed:
             </p>
-            <ul className="list-disc list-inside text-gray-700 mb-4">
-              <li>📝 Enter a specific date and time into the Date to Unix Converter tool.</li>
-              <li>⚡ The tool will return the corresponding Unix timestamp.</li>
-            </ul>
+            {/* Steps */}
+<ul className="space-y-3">
+  <li className="flex items-start gap-3 p-3 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+    <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-indigo-500 text-white text-sm">📝</span>
+    <p className="text-gray-700">
+      <span className="font-semibold text-indigo-600">Input:</span> Enter a specific date and time into the Date to Unix Converter tool.
+    </p>
+  </li>
 
-            {/* Example */}
-            <div className="bg-white border rounded-lg p-4 mb-6">
-              <p className="text-gray-800 font-medium">🔹 Example:</p>
-              <p className="text-gray-700 mt-2">
-                Date: <span className="font-semibold text-indigo-600">March 10, 2025 15:30:00 (UTC)</span>  
-                → Unix Timestamp: <code className="bg-gray-100 px-2 py-1 rounded text-pink-600 font-mono">1741620600</code>
-              </p>
-            </div>
+  <li className="flex items-start gap-3 p-3 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+    <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-green-500 text-white text-sm">⚡</span>
+    <p className="text-gray-700">
+      <span className="font-semibold text-indigo-600">Convert:</span> The tool will return the corresponding Unix timestamp.
+    </p>
+  </li>
+</ul>
+
+{/* Example */}
+<div className="bg-gradient-to-br mt-6 from-blue-50 to-white border border-gray-200 rounded-2xl p-5 mb-6 shadow-sm hover:shadow-md transition-all duration-300">
+  <div className="flex items-center gap-2 mb-3">
+    <span className="text-lg">🔹</span>
+    <p className="text-gray-800 font-semibold text-lg">Example:</p>
+  </div>
+  <p className="text-gray-700 mt-2 text-sm sm:text-base">
+    Date: 
+    <span className="font-semibold text-indigo-600 mx-1">March 10, 2025 15:30:00 (UTC)</span>  
+    → Unix Timestamp: 
+    <code className="bg-gray-100 px-2 py-1 rounded text-pink-600 font-mono mx-1">1741620600</code>
+  </p>
+</div>
+
 
             <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-2">
               🌐 Can Unix Timestamps Be Changed Based on Time Zones?
