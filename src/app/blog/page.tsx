@@ -18,7 +18,7 @@ export default async function BlogPage() {
           <div className="absolute -bottom-5 -right-5 w-24 h-24 bg-blue-200/30 rounded-full filter blur-xl animate-float-medium" />
           
           <h1 className="text-5xl md:text-6xl font-bold mb-4 relative z-10">
-            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-sm">
               Blog Insights
             </span>
           </h1>
