@@ -6,32 +6,49 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section className="relative mt-[-70px] mb-16 bg-gradient-to-br from-[#eecdff] via-[#a6fbff] to-[#f7d6ff] text-black overflow-hidden">
-      {/* Floating Blobs */}
-      <div className="absolute w-96 h-96 bg-pink-300/30 rounded-full blur-3xl top-[-120px] left-[-120px] animate-pulse"></div>
-      <div className="absolute w-80 h-80 bg-blue-300/30 rounded-full blur-3xl bottom-[-100px] right-[-100px] animate-pulse"></div>
+    <section className="relative mt-[-70px] mb-16 bg-gradient-to-br from-[#fdf3ff] via-[#c0f1ff] to-[#fbefff] text-black overflow-hidden">
+      {/* Floating Gradient Blobs */}
+      <motion.div
+        className="absolute w-96 h-96 bg-pink-300/30 rounded-full blur-3xl top-[-120px] left-[-120px]"
+        animate={{ y: [0, -20, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 6, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute w-80 h-80 bg-blue-300/30 rounded-full blur-3xl bottom-[-100px] right-[-100px]"
+        animate={{ y: [0, 25, 0], scale: [1, 1.08, 1] }}
+        transition={{ duration: 7, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute w-72 h-72 bg-purple-300/30 rounded-full blur-3xl top-1/2 left-1/3"
+        animate={{ x: [0, 30, -30, 0] }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 text-center z-10">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
+          className="flex flex-col items-center text-center space-y-6"
         >
           {/* Tag */}
-          <div className="inline-flex items-center mb-6 px-5 py-2 rounded-full bg-white/60 backdrop-blur-md text-black/90 text-sm shadow-md hover:shadow-lg transition">
+          <div className="inline-flex items-center px-5 py-2 rounded-full bg-white/60 backdrop-blur-md text-black/90 text-sm shadow-md hover:shadow-lg transition">
             <FaBolt className="mr-2 text-yellow-500" />
             Developer Essentials
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
-            Supercharge Your{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-pink-500 drop-shadow-lg">
-              Workflow
-            </span>
-          </h1>
+          {/* Heading */}
+<div className="relative inline-block">
+  <h1 className="relative text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+    Supercharge Your{" "}
+    <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-orange-400 to-fuchsia-600 drop-shadow-lg">
+      Workflow
+    </span>
+  </h1>
+</div>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-black/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-black/80 max-w-2xl mx-auto leading-relaxed">
             Premium developer tools with zero setup. Optimized for speed, accuracy, and your productivity.
           </p>
 

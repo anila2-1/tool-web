@@ -25,118 +25,120 @@ const Footer = () => {
   return (
     <>
       {/* Footer */}
-      <footer className="bg-gray-100 py-12 px-6 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-gray-800">
+      <footer className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 py-16 px-6 border-t border-gray-200">
 
-            {/* Brand Info */}
-            <div className="space-y-4">
-              <Link href="/" className="flex items-center">
-                <span className="text-2xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  DevTools
+  {/* Background Accents (blur blobs for modern look) */}
+  <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-300/30 rounded-full blur-3xl animate-pulse"></div>
+  <div className="absolute top-40 -right-32 w-80 h-80 bg-indigo-300/20 rounded-full blur-3xl"></div>
+  <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-pink-300/20 rounded-full blur-3xl opacity-70"></div>
+
+  <div className="relative max-w-7xl mx-auto px-6 md:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-gray-800">
+      
+      {/* Brand Info */}
+      <div className="space-y-4 max-w-xs relative z-10">
+        <Link href="/" className="flex items-center space-x-2 group">
+          <span className="text-2xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent tracking-tight group-hover:tracking-wide transition-all duration-300">
+            DevTools
+          </span>
+        </Link>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 relative">
+          Effortlessly generate 
+          <span className="font-semibold text-indigo-600"> SEO-friendly</span>, clean slugs with 
+          <span className="font-semibold text-purple-600"> AI</span>.  
+          Supports <span className="italic text-indigo-500">English</span> & <span className="italic text-purple-500">Roman Urdu</span>.
+          <span className="absolute -bottom-2 left-0 w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full"></span>
+        </p>
+      </div>
+
+      {/* Quick Links */}
+      <div className="space-y-4 relative z-10">
+        <h3 className="text-lg font-semibold text-gray-900">Quick Links</h3>
+        <ul className="space-y-3 text-sm">
+          {[
+            { href: "/tools", label: "Tools" },
+            { href: "/blog", label: "Blog" },
+            { href: "/about", label: "About" },
+          ].map((link, idx) => (
+            <li key={idx}>
+              <Link
+                href={link.href}
+                className="group flex items-center space-x-2 text-gray-700 
+                           hover:text-indigo-600 font-medium transition-all duration-300"
+              >
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transform scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+                <span className="relative">
+                  {link.label}
+                  <span className="absolute left-0 -bottom-0.5 w-0 h-[2px] bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
                 </span>
               </Link>
-              <p className="text-sm leading-relaxed text-gray-600 max-w-xs">
-                Effortlessly generate SEO-friendly, clean slugs with AI. Supports English & Roman Urdu.
-              </p>
-            </div>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-            {/* Quick Links */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900">Quick Links</h3>
-              <ul className="space-y-2 text-sm">
-                
-                <li>
-                  <Link href="/tools" className="text-gray-700 hover:text-indigo-600 transition-colors duration-200">
-                    Tools
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog" className="text-gray-700 hover:text-indigo-600 transition-colors duration-200">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className="text-gray-700 hover:text-indigo-600 transition-colors duration-200">
-                    About
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Social + CTA */}
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Connect with Us</h3>
-                <div className="flex space-x-4">
-                  <Link
-                    href="https://github.com/anila2-1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-white shadow-sm hover:shadow-lg 
-                               hover:bg-gradient-to-r hover:from-gray-900 hover:to-gray-800 
-                               hover:text-white transform hover:scale-105 
-                               transition-all duration-300 ease-in-out border"
-                    title="GitHub"
-                  >
-                    <FaGithub size={20} />
-                  </Link>
-
-                  <Link
-                    href="https://twitter.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-white shadow-sm hover:shadow-lg 
-                               hover:bg-gradient-to-r hover:from-sky-500 hover:to-blue-400 
-                               hover:text-white transform hover:scale-105 
-                               transition-all duration-300 ease-in-out border"
-                    title="Twitter"
-                  >
-                    <FaTwitter size={20} />
-                  </Link>
-
-                  <Link
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-white shadow-sm hover:shadow-lg 
-                               hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 
-                               hover:text-white transform hover:scale-105 
-                               transition-all duration-300 ease-in-out border"
-                    title="LinkedIn"
-                  >
-                    <FaLinkedin size={20} />
-                  </Link>
-
-                  <Link
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-white shadow-sm hover:shadow-lg 
-                               hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 
-                               hover:text-white transform hover:scale-105 
-                               transition-all duration-300 ease-in-out border"
-                    title="Facebook"
-                  >
-                    <FaFacebook size={20} />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Divider */}
-          <hr className="my-8 border-gray-200" />
-
-          {/* Copyright */}
-          <div className="text-center text-sm text-gray-600">
-            © {new Date().getFullYear()}{" "}
-            <Link href="/" className="font-medium text-gray-800 hover:text-indigo-600 transition">
-              DevTools
-            </Link>. Built with using Next.js.
-          </div>
+      {/* Social + CTA */}
+      <div className="space-y-6 relative z-10">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Connect with Us</h3>
+        <div className="flex space-x-5">
+          {[
+            {
+              href: "https://github.com/anila2-1",
+              icon: <FaGithub size={22} />,
+              colors: "from-gray-800 via-gray-900 to-black",
+              title: "GitHub",
+            },
+            {
+              href: "https://twitter.com",
+              icon: <FaTwitter size={22} />,
+              colors: "from-sky-400 via-sky-500 to-blue-600",
+              title: "Twitter",
+            },
+            {
+              href: "https://linkedin.com",
+              icon: <FaLinkedin size={22} />,
+              colors: "from-blue-500 via-blue-600 to-blue-700",
+              title: "LinkedIn",
+            },
+            {
+              href: "https://facebook.com",
+              icon: <FaFacebook size={22} />,
+              colors: "from-blue-400 via-blue-600 to-blue-700",
+              title: "Facebook",
+            },
+          ].map((social, idx) => (
+            <Link
+              key={idx}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`relative flex items-center justify-center w-12 h-12
+                          rounded-2xl bg-gradient-to-tr ${social.colors} 
+                          text-white shadow-lg shadow-gray-700/40
+                          hover:shadow-2xl hover:-translate-y-2 hover:rotate-3 hover:scale-110
+                          transition-all duration-500 ease-out group`}
+              title={social.title}
+            >
+              <span className="absolute inset-0 rounded-2xl border-2 border-white/20 group-hover:border-white/40 animate-pulse"></span>
+              <span className="relative z-10 drop-shadow-md">{social.icon}</span>
+            </Link>
+          ))}
         </div>
-      </footer>
+      </div>
+    </div>
+
+    {/* Divider */}
+    <hr className="my-10 border-gray-300/70 relative z-10" />
+
+    {/* Copyright */}
+    <div className="text-center text-sm text-gray-600 relative z-10">
+      © {new Date().getFullYear()}{" "}
+      <Link href="/" className="font-medium text-gray-800 hover:text-indigo-600 transition">
+        DevTools
+      </Link>. Built with ❤️ using Next.js.
+    </div>
+  </div>
+</footer>
 
       {/* Scroll to Top Button */}
       {showButton && (
