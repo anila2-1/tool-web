@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section className="relative mt-[-70px] mb-16 bg-gradient-to-tl from-[#fdf3ff] to-[#c0f1ff] via-[#fbefff] text-black overflow-hidden">
+    <section className="relative mt-[-70px] mb-16 bg-gradient-to-tl from-[#fdf3ff] to-[#c0f1ff] via-[#f8e6ff] text-black overflow-hidden">
       {/* Floating Gradient Blobs */}
       <motion.div
         className="absolute w-96 h-96 bg-pink-300/30 rounded-full blur-3xl top-[-120px] left-[-120px]"
@@ -40,7 +40,7 @@ export default function Hero() {
           {/* Heading */}
 <div className="relative inline-block">
   {/* Wave ribbon background */}
-  <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-20 bg-gradient-to-r from-pink-300 via-yellow-100 to-purple-300 rounded-full blur-md opacity-80 -z-10"></span>
+  <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-20 bg-gradient-to-r from-pink-300 via-yellow-100 to-purple-400 rounded-full blur-md opacity-80 -z-10"></span>
 
   <h1 className="relative text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
     Supercharge Your{" "}
