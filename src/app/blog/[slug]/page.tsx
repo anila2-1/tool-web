@@ -84,13 +84,13 @@ export default async function PostPage({ params }: PageProps) {
                 })}
               </div>
              <div className="relative group my-6 overflow-hidden rounded-2xl shadow-lg border border-gray-200 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-  <Image
+  {/* <Image
     src={frontmatter.image}
     alt={frontmatter.title}
     width={900}
     height={600}
     className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105"
-  />
+  /> */}
 
   {/* Gradient Overlay */}
   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-60 group-hover:opacity-75 transition-opacity duration-500"></div>
