@@ -209,7 +209,7 @@ export default function IPAddressPage() {
     </li>
   </ul>
   </div>
-                <div className="text-gray-800 font-medium bg-yellow-100 rounded-lg p-4 mt-6">
+                <div className="text-gray-800 font-medium bg-gradient-to-r from-yellow-100 via-orange-100 to-pink-100 border border-yellow-200 rounded-xl p-5 mt-8 shadow-md hover:shadow-lg transition-all duration-300">
                   <p className="text-blue-900">
                     ⚠️ <span className="font-semibold text-red-600">Note:</span> IP-based location is <u>approximate</u>, only your ISP knows your exact address.
                   </p>
