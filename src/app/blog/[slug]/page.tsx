@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { getPostBySlug, getAllPosts } from '@/lib/mdx'
+import { getPostBySlug, getAllPosts } from '../../../lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
