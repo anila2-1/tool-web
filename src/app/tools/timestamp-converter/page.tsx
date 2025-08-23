@@ -2,6 +2,42 @@ import TimestampConverter from '@/components/tools/TimestampConverter'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
+
+import type { Metadata } from "next";
+
+// ✅ SEO metadata
+export const metadata: Metadata = {
+  title: "Free Online Timestamp Converter | Unix Time to Human Date",
+  description:
+    "Convert Unix timestamps to human-readable date and time instantly with our free Timestamp Converter tool. Supports UTC and local time.",
+  keywords: [
+    "Timestamp Converter",
+    "Unix Time Converter",
+    "Epoch Time Converter",
+    "Date to Timestamp",
+    "Time Converter Tool",
+    "Online Timestamp Converter",
+  ],
+  alternates: {
+    canonical: "http://localhost:3000/tools/timestamp-converter",
+  },
+  openGraph: {
+    title: "Free Online Timestamp Converter | Unix Time to Human Date",
+    description:
+      "Easily convert Unix timestamps into readable date formats or convert dates back to Unix time. Perfect for developers and students.",
+    url: "http://localhost:3000/tools/timestamp-converter",
+    siteName: "Tool Web",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free Online Timestamp Converter",
+    description:
+      "Instantly convert Unix timestamps to readable date/time formats with our free Timestamp Converter tool.",
+  },
+};
+
+
 export default function TimestampPage() {
   return (
     <div className="min-h-screen">

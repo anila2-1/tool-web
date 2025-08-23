@@ -8,53 +8,70 @@ import SlugGenerator from '@/components/tools/SlugGenerator'
 
 export const dynamic = 'force-dynamic'
 
-// ✅ Props ka type — params is ALWAYS a Promise in Next.js 15
+// ✅ Props type
 interface ToolPageProps {
   params: Promise<{ tool: string }>
 }
 
-// SEO Metadata
+// ✅ Metadata generator
 export async function generateMetadata(
   { params }: ToolPageProps
 ): Promise<Metadata> {
-  const { tool } = await params // ✅ always await
+  const { tool } = await params
 
-  const toolNameMap: Record<string, string> = {
-    'ip-address': 'IP Address Lookup',
-    'json-formatter': 'JSON Formatter',
-    'timestamp-converter': 'Timestamp Converter',
-    'slug-generator': 'Slug Generator'
+  // Har tool ka apna name aur description
+  const toolMeta: Record<string, { title: string; description: string }> = {
+    'ip-address': {
+      title: 'IP Address Lookup Tool',
+      description: 'Find your public IP address and get detailed IP information instantly.'
+    },
+    'json-formatter': {
+      title: 'JSON Formatter & Editor',
+      description: 'Format, validate, and edit your JSON data with our free online JSON Formatter.'
+    },
+    'timestamp-converter': {
+      title: 'Unix Timestamp Converter',
+      description: 'Convert between Unix timestamps and human-readable dates instantly.'
+    },
+    'slug-generator': {
+      title: 'AI Slug Generator Tool',
+      description: 'Generate SEO-friendly slugs for your blog posts, products, or websites instantly.'
+    }
   }
 
-  const toolName = toolNameMap[tool] || 'Dev Tools'
-  const description = `Free online ${toolName.toLowerCase()} for developers`
+  const meta = toolMeta[tool] || {
+    title: 'Developer Tools',
+    description: 'Free online tools for developers including JSON, IP, Slug Generator and more.'
+  }
 
   return {
-    title: `${toolName} | Dev Tools`,
-    description,
+    title: `${meta.title} | Dev Tools`,
+    description: meta.description,
     alternates: {
-      canonical: `https://tool-web-zmdw.vercel.app/tools/${tool}`
+      canonical: `http://localhost:3000/tools/${tool}`
     },
     openGraph: {
       type: 'website',
-      title: `${toolName} Tool`,
-      description,
-      url: `https://tool-web-zmdw.vercel.app/tools/${tool}`,
+      title: meta.title,
+      description: meta.description,
+      url: `http://localhost:3000/tools/${tool}`,
+      siteName: 'Dev Tools & Blog',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${toolName} Tool`,
-      description,
+      title: meta.title,
+      description: meta.description,
     },
     robots: {
-      index: false,
+      index: true,   // ✅ Google ab crawl karega
       follow: true
     }
   }
 }
 
+// ✅ Page renderer
 export default async function ToolPage({ params }: ToolPageProps) {
-  const { tool } = await params // ✅ always await
+  const { tool } = await params
 
   return (
     <div className="tool-container">

@@ -13,16 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tool-web-zmdw.vercel.app/'),
+  metadataBase: new URL("http://localhost:3000/"),
   title: {
-    default: 'Dev Tools & Blog',
-    template: '%s | Your Site Name'
+    default: "Dev Tools & Blog",
+    template: "%s | Dev Tools",
   },
-  description: 'Free developer tools and technical blog articles',
-  // verification: {
-  //   google: 'your-google-verification-code'
-  // }
-}
+  description: "Free developer tools and technical blog articles",
+  openGraph: {
+    siteName: "Dev Tools & Blog",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 
 export default function RootLayout({

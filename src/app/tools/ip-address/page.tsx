@@ -2,6 +2,42 @@ import IPAddressLookup from '@/components/tools/IPAddressLookup'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
+
+import type { Metadata } from "next";
+
+// ✅ SEO metadata
+export const metadata: Metadata = {
+  title: "Free Online IP Address Checker | Find Your Public IP Instantly",
+  description:
+    "Check your public IP address instantly with our free IP Checker tool. Get IPv4, IPv6, location details, and more in one click.",
+  keywords: [
+    "IP Address Checker",
+    "What is My IP",
+    "Find IP Address",
+    "Public IP Lookup",
+    "IPv4 Checker",
+    "IPv6 Checker",
+  ],
+  alternates: {
+    canonical: "http://localhost:3000/tools/ip-checker",
+  },
+  openGraph: {
+    title: "Free Online IP Address Checker | Find Your Public IP Instantly",
+    description:
+      "Quickly check your public IP address (IPv4 & IPv6) along with geolocation details. Simple and free IP lookup tool.",
+    url: "http://localhost:3000/tools/ip-checker",
+    siteName: "Tool Web",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free Online IP Address Checker",
+    description:
+      "Find your public IP address instantly with our free IP Checker tool. Supports IPv4, IPv6, and location lookup.",
+  },
+};
+
+
 export default function IPAddressPage() {
   return (
     <div className="min-h-screen">

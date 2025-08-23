@@ -4,6 +4,39 @@ import Navbar from '@/components/Navbar'
 import BlogCard from '@/components/blog/BlogCard'
 import Footer from '@/components/Footer'
 
+import type { Metadata } from "next";
+
+// ✅ SEO metadata for Blog main page
+export const metadata: Metadata = {
+  title: "Blog Insights",
+  description:
+    "Discover the latest articles and tutorials",
+  keywords: [
+    "IP Address",
+    "JSON Formatter",
+    "Slug Generator",
+    "Timestamp Converter",
+  ],
+  alternates: {
+    canonical: "http://localhost:3000/blog",
+  },
+  openGraph: {
+    title: "Blog Insights",
+    description:
+      "Discover the latest articles and tutorials",
+    url: "http://localhost:3000/blog",
+    siteName: "Blog Insights",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog Insights",
+    description:
+      "Latest blogs, tutorials, and guides on programming, SEO, and productivity.",
+  },
+};
+
+
 export default async function BlogPage() {
   const posts = await getAllPosts()
 
