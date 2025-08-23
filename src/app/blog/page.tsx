@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description:
       "Discover the latest articles and tutorials",
     url: "http://localhost:3000/blog",
-    siteName: "Blog Insights",
+    siteName: "Dev Tools",
     type: "website",
   },
   twitter: {
