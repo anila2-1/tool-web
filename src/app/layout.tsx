@@ -13,19 +13,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000/"),
+  metadataBase: new URL("http://localhost:3000"),
   title: {
     default: "Dev Tools & Blog",
     template: "%s | Dev Tools",
   },
   description: "Free developer tools and technical blog articles",
-  openGraph: {
-    siteName: "Dev Tools & Blog",
-    type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
+  alternates: {
+    canonical: "http://localhost:3000",
   },
 };
 

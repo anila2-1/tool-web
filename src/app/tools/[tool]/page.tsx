@@ -50,18 +50,7 @@ export async function generateMetadata(
     alternates: {
       canonical: `http://localhost:3000/tools/${tool}`
     },
-    openGraph: {
-      type: 'website',
-      title: meta.title,
-      description: meta.description,
-      url: `http://localhost:3000/tools/${tool}`,
-      siteName: 'Dev Tools & Blog',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: meta.title,
-      description: meta.description,
-    },
+ 
     robots: {
       index: true,   // ✅ Google ab crawl karega
       follow: true

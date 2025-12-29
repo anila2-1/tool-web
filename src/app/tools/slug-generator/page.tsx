@@ -6,34 +6,14 @@ import type { Metadata } from "next";
 
 // ✅ SEO metadata
 export const metadata: Metadata = {
-  title: "Free Online Slug Generator | SEO Friendly URL Maker",
+  title: "Free Online Slug Generator",
   description:
     "Generate clean, SEO-friendly slugs instantly with our free slug generator tool. Perfect for blogs, websites, and digital content.",
-  keywords: [
-    "Slug Generator",
-    "SEO Slug Maker",
-    "URL Slug Tool",
-    "Slugify Online",
-    "SEO Friendly URLs",
-    "Blog Slug Generator",
-  ],
+ 
   alternates: {
     canonical: "http://localhost:3000/tools/slug-generator",
   },
-  openGraph: {
-    title: "Free Online Slug Generator | SEO Friendly URL Maker",
-    description:
-      "Easily create clean, SEO-friendly slugs for your blogs, products, and websites using our slug generator tool.",
-    url: "http://localhost:3000/tools/slug-generator",
-    siteName: "Tool Web",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Free Online Slug Generator",
-    description:
-      "Generate SEO-friendly slugs for blogs, products, and websites with our free tool.",
-  },
+  
 };
 
 

@@ -6,34 +6,13 @@
 
 // ✅ SEO metadata
 export const metadata: Metadata = {
-  title: "Free Online JSON Formatter | Beautify & Validate JSON",
+  title: "Free Online JSON Formatter",
   description:
     "Use our free online JSON Formatter tool to beautify, validate, and format JSON instantly. Perfect for developers, students, and data analysts.",
-  keywords: [
-    "JSON Formatter",
-    "Online JSON Tool",
-    "Beautify JSON",
-    "Validate JSON",
-    "Format JSON",
-    "Developer Tools",
-  ],
   alternates: {
     canonical: "http://localhost:3000/tools/json-formatter",
   },
-  openGraph: {
-    title: "Free Online JSON Formatter | Beautify & Validate JSON",
-    description:
-      "Easily format, beautify, and validate JSON online with our free JSON Formatter tool.",
-    url: "http://localhost:3000/tools/json-formatter",
-    siteName: "Tool Web",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Free Online JSON Formatter",
-    description:
-      "Beautify, format, and validate JSON instantly using our online tool.",
-  },
+  
 };
 
   export default function JSONToolPage() {

@@ -20,20 +20,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "http://localhost:3000/blog",
   },
-  openGraph: {
-    title: "Blog Insights",
-    description:
-      "Discover the latest articles and tutorials",
-    url: "http://localhost:3000/blog",
-    siteName: "Dev Tools",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Blog Insights",
-    description:
-      "Latest blogs, tutorials, and guides on programming, SEO, and productivity.",
-  },
+ 
+
 };
 
 

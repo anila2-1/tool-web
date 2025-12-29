@@ -21,20 +21,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "http://localhost:3000/tools",
   },
-  openGraph: {
-    title: "Developer Tools",
-    description:
-      "Essential utilities to supercharge your workflow — fast, accurate, and beautifully designed.",
-    url: "http://localhost:3000/tools",
-    siteName: "Dev Tools",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Free Online Tools - All in One",
-    description:
-      "Access multiple free tools including Slug Generator, IP Checker, JSON Formatter, and Timestamp Converter.",
-  },
+  
+  
 };
 
 

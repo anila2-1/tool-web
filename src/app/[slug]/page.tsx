@@ -24,25 +24,18 @@ export async function generateMetadata({ params }: PageProps) {
   const post = await getPostBySlug(slug)
   
   return {
-    title: `${post.frontmatter.title} | Tech Blog`,
-    description: post.frontmatter.excerpt,
-    image: post.frontmatter.image,
-    alternates: {
-      canonical: `https://tool-web-zmdw.vercel.app/${slug}`
-    },
-    openGraph: {
-      type: 'article',
-      title: post.frontmatter.title,
-      description: post.frontmatter.excerpt,
-      publishedTime: post.frontmatter.date,
-      url: `https://tool-web-zmdw.vercel.app/${slug}`,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.frontmatter.title,
-      description: post.frontmatter.excerpt,
-    }
-  }
+  title: post.frontmatter.title,
+  description: post.frontmatter.excerpt,
+  alternates: {
+    canonical: `https://tool-web-zmdw.vercel.app/${slug}`,
+  },
+    images: [
+      {
+        url: post.frontmatter.image, // e.g., "/images/post-image.png"
+        alt: post.frontmatter.title,
+      },
+    ]
+}
 }
 
 export default async function PostPage({ params }: PageProps) {
@@ -83,14 +76,7 @@ export default async function PostPage({ params }: PageProps) {
                 })}
               </div>
              <div className="relative group my-6 overflow-hidden rounded-2xl shadow-lg border border-gray-200 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-  {/* <Image
-    src={frontmatter.image}
-    alt={frontmatter.title}
-    width={900}
-    height={600}
-    className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105"
-  /> */}
-
+  
   {/* Gradient Overlay */}
   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-60 group-hover:opacity-75 transition-opacity duration-500"></div>
 </div>
