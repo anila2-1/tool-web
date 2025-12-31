@@ -43,22 +43,9 @@ export default function BlogCard({ post }: { post: BlogPost }) {
               </h2>
             </Link>
 
-            {/* Date */}
-            <p className="text-sm text-gray-500 flex items-center gap-2">
-              <svg className="w-4 h-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-              })}
-            </p>
-
             {/* Excerpt */}
             {post.excerpt && (
-              <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+              <p className="text-gray-600 mt-3 text-sm leading-relaxed line-clamp-3">
                 {post.excerpt}
               </p>
             )}
@@ -68,7 +55,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           <Link
             href={`/${post.slug}`}
             className="inline-flex items-center gap-2 text-indigo-600 
-            hover:text-indigo-800 font-semibold text-sm mt-6 px-4 py-2 
+            hover:text-indigo-800 font-semibold text-sm mt-4 px-4 py-2 
             rounded-full border border-indigo-200 bg-indigo-50/60 
             hover:bg-indigo-100 transition-all duration-200"
           >
