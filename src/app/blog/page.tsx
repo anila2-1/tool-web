@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "Timestamp Converter",
   ],
   alternates: {
-    canonical: "http://localhost:3000/blog",
+    canonical: "https://zobitools.com/blog",
   },
  
 

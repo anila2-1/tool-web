@@ -48,7 +48,7 @@ export async function generateMetadata(
     title: `${meta.title} | Dev Tools`,
     description: meta.description,
     alternates: {
-      canonical: `http://localhost:3000/tools/${tool}`
+      canonical: `hhttps://zobitools.com/tools/${tool}`
     },
  
     robots: {

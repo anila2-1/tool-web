@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Use our free online JSON Formatter tool to beautify, validate, and format JSON instantly. Perfect for developers, students, and data analysts.",
   alternates: {
-    canonical: "http://localhost:3000/tools/json-formatter",
+    canonical: "https://zobitools.com/tools/json-formatter",
   },
   
 };

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Timestamp Converter",
   ],
   alternates: {
-    canonical: "http://localhost:3000/tools",
+    canonical: "https://zobitools.com/tools",
   },
   
   
@@ -123,7 +123,7 @@ export default function ToolsPage() {
             Need a Tool We Don’t Have?
           </h3>
           <p className="text-gray-600 max-w-xl mx-auto mb-8 text-lg">
-            We’re constantly growing. Suggest a tool and help shape the future of DevTools.
+            We’re constantly growing. Suggest a tool and help shape the future of ZobiTools.
           </p>
           <Link
             href="/contact"

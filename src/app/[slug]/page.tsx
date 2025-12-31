@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps) {
   title: post.frontmatter.title,
   description: post.frontmatter.excerpt,
   alternates: {
-    canonical: `https://tool-web-zmdw.vercel.app/${slug}`,
+    canonical: `https://zobitools.com/${slug}`,
   },
     images: [
       {

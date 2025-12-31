@@ -2,7 +2,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "http://localhost:3000";
+  const baseUrl = "https://zobitools.com";
 
   // Static routes
   const routes = [

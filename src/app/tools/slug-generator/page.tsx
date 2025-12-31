@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Generate clean, SEO-friendly slugs instantly with our free slug generator tool. Perfect for blogs, websites, and digital content.",
  
   alternates: {
-    canonical: "http://localhost:3000/tools/slug-generator",
+    canonical: "https://zobitools.com/tools/slug-generator",
   },
   
 };

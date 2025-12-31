@@ -22,7 +22,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <span className="text-3xl font-extrabold bg-gradient-to-r from-cyan-200 via-indigo-200 to-purple-200 bg-clip-text text-transparent tracking-tight drop-shadow-md group-hover:scale-105 transition-all duration-300">
-            DevTools
+            ZobiTools
           </span>
         </Link>
 

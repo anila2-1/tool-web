@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Convert Unix timestamps to human-readable date and time instantly with our free Timestamp Converter tool. Supports UTC and local time.",
  
   alternates: {
-    canonical: "http://localhost:3000/tools/timestamp-converter",
+    canonical: "https://zobitools.com/tools/timestamp-converter",
   },
   
 };

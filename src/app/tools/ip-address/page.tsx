@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Check your public IP address instantly with our free IP Checker tool. Get IPv4, IPv6, location details, and more in one click.",
 
   alternates: {
-    canonical: "http://localhost:3000/tools/ip-checker",
+    canonical: "https://zobitools.com/tools/ip-checker",
   },
 
  

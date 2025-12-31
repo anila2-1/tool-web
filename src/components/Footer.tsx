@@ -39,7 +39,7 @@ const Footer = () => {
       <div className="space-y-4 max-w-xs relative z-10">
         <Link href="/" className="flex items-center space-x-2 group">
           <span className="text-2xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent tracking-tight group-hover:tracking-wide transition-all duration-300">
-            DevTools
+            ZobiTools
           </span>
         </Link>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 relative">
@@ -134,7 +134,7 @@ const Footer = () => {
     <div className="text-center text-sm text-gray-600 relative z-10">
       © {new Date().getFullYear()}{" "}
       <Link href="/" className="font-medium text-gray-800 hover:text-indigo-600 transition">
-        DevTools
+       ZobiTools
       </Link>. Built with ❤️ using Next.js.
     </div>
   </div>

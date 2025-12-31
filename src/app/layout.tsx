@@ -13,14 +13,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://zobitools.com"),
   title: {
     default: "Dev Tools & Blog",
     template: "%s | Dev Tools",
   },
   description: "Free developer tools and technical blog articles",
   alternates: {
-    canonical: "http://localhost:3000",
+    canonical: "https://zobitools.com",
   },
 };
 
