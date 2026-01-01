@@ -145,7 +145,7 @@ export default function TimestampConverter() {
   };
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-10 relative mb-20 z-10">
+    <section className="py-12 px-1 sm:px-2 lg:px-4 relative mb-20 z-10">
 <motion.div 
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}

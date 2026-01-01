@@ -38,9 +38,8 @@ export default function TimestampPage() {
       </main>
 
       <main className="flex-1 pb-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Converter Tool */}
-          <div className="p-6 sm:p-8">
+        <div className="max-w-4xl mx-auto px-1 sm:px-4 lg:px-14 ">
+          <div className="p-4 sm:p-6">
             <TimestampConverter />
           </div>
 

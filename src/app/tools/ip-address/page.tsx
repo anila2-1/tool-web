@@ -40,8 +40,8 @@ export default function IPAddressPage() {
 
       {/* Lookup Box */}
       <section className="flex-1 pb-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-6 sm:p-10">
+        <div className="max-w-4xl mx-auto px-0.5 sm:px-4 lg:px-14 ">
+          <div className="p-4 sm:p-6">
             <IPAddressLookup />
           </div>
 

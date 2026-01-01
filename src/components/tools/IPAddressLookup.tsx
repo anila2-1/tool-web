@@ -73,15 +73,12 @@ export default function IpChecker() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto mt-10 mb-20 px-4 relative">
+    <div className="max-w-5xl mx-auto mt-10 mb-20 px-1 relative">
       {/* Stylish Background Glow */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 blur-3xl opacity-60 rounded-full" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 blur-3xl opacity-60 rounded-full" />
 
       <div className="backdrop-blur-xl bg-white/70 mt-[-100] border border-gray-200 shadow-2xl rounded-2xl p-8 transition-all duration-300 hover:shadow-indigo-200">
-        {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-8">
-        IP Address Checker
-        </h1>
+       
 
         {/* Manual Search */}
         <div className="flex flex-col sm:flex-row gap-3 mb-8">

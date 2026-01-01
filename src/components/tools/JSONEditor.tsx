@@ -35,6 +35,7 @@ const JSONNode = ({ data, name = "object", level = 0 }: JSONNodeProps) => {
         onClick={toggle} 
         className="cursor-pointer select-none flex items-center hover:bg-gray-200 px-2 py-1 rounded transition-colors"
       >
+        
         <span className="mr-1.5 text-gray-500">
           {expanded ? '▼' : '►'}
         </span>
@@ -196,11 +197,12 @@ const JSONEditor = () => {
 
   return (
     <section 
-      className="py-20 px-6 relative mt-0.5 z-10 "
+      className="py-20 px-4  mt-0.5 "
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto  ">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-white rounded-3xl shadow-xl border border-gray-200 p-10 sm:p-8 justify-center mt-[-130]  mb-8">
+        <div className="grid backdrop-blur-xl transition-all duration-300 hover:shadow-indigo-200 grid-cols-1 lg:grid-cols-2 gap-6 rounded-3xl shadow-2xl  bg-white/70 mt-[-100] border border-gray-200 p-10 sm:p-8 justify-center mb-8">
+          
           <div className="space-y-4">
             <div className="flex flex-wrap gap-2 mb-2">
               {Object.keys(templates).map((templateName) => (

@@ -135,7 +135,7 @@ const Footer = () => {
       © {new Date().getFullYear()}{" "}
       <Link href="/" className="font-medium text-gray-800 hover:text-indigo-600 transition">
        ZobiTools
-      </Link>. Built with ❤️ using Next.js.
+      </Link>. Free developer tools & technical blogs, built with ❤️ for developers.
     </div>
   </div>
 </footer>
