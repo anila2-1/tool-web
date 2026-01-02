@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
+/* Font definitions */
+@font-face {
+  font-family: 'Arimo-Bold';
+  src: url('/font/Arimo-SemiBold.woff2') format('woff2');
+  font-weight: bold;
+  font-style:normal;
+  font-display: swap;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  font-family: 'Arimo', sans-serif;
 }
 
 /* Tool card hover effect */

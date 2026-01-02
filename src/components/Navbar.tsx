@@ -16,21 +16,30 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 bg-gradient-to-r from-indigo-900/90 via-purple-900/80 to-indigo-800/90 backdrop-blur-xl shadow-xl border-b border-white/10">
+    <nav className="sticky top-0 z-50 bg-gradient-to-r from-indigo-900/80 via-purple-900/80 to-indigo-800/80 backdrop-blur-xl shadow-xl border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center py-4">
         
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-          <span className="text-3xl font-extrabold bg-gradient-to-r from-cyan-200 via-indigo-200 to-purple-200 bg-clip-text text-transparent tracking-tight drop-shadow-md group-hover:scale-105 transition-all duration-300">
-            ZobiTools
-          </span>
+          <span className="
+  relative inline-block text-3xl font-black tracking-tight
+  bg-linear-to-r from-indigo-100 via-purple-100 to-pink-400
+  bg-clip-text text-transparent
+  drop-shadow-[0_4px_12px_rgba(99,102,241,0.35)]
+  transition-all duration-300 ease-out
+  group-hover:scale-110
+  group-hover:tracking-wide
+">
+  Zobi<span className="text-white/90">Tools</span>
+</span>
+
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-10">
           <Link
             href="/"
-            className="relative text-white font-medium hover:text-cyan-300 transition-all duration-300 group"
+            className="relative text-white font-bold hover:text-cyan-300 transition-all duration-300 group"
           >
             Home
             <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
@@ -40,7 +49,7 @@ export default function Navbar() {
           <div className="relative">
             <button
               onClick={() => setIsToolsOpen(!isToolsOpen)}
-              className="flex items-center font-medium text-white hover:text-cyan-300 transition-all duration-300"
+              className="flex items-center font-bold text-white hover:text-cyan-300 transition-all duration-300"
             >
               Tools
               <span className="ml-1">{isToolsOpen ? <FiChevronUp /> : <FiChevronDown />}</span>
@@ -70,7 +79,7 @@ export default function Navbar() {
 
           <Link
             href="/blog"
-            className="relative text-white font-medium hover:text-cyan-300 transition-all duration-300 group"
+            className="relative text-white font-bold hover:text-cyan-300 transition-all duration-300 group"
           >
             Blog
             <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-pink-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>

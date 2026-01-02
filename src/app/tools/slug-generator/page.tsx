@@ -1,6 +1,7 @@
 import SlugGenerator from '@/components/tools/SlugGenerator'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ToolsSidebar from '@/components/ToolsSidebar'
 
 import type { Metadata } from "next";
 
@@ -20,14 +21,15 @@ export const metadata: Metadata = {
 
 export default function SlugGeneratorPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
+      <div className="flex flex-1 flex-col lg:flex-row">
 
       {/* Hero Section */}
       <main className="flex-1 py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className='text-center mb-8'>
-          <h1 className="text-3xl lg:text-4xl p-4 font-bold mb-2 bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl md:text-4xl font-extrabold mb-6 bg-linear-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent leading-tight tracking-tight animate-gradient bg-[length:200%_200%]">
             Slug Generator
           </h1>
           <p className="max-w-2xl mx-auto text-lg text-gray-600">
@@ -35,18 +37,17 @@ export default function SlugGeneratorPage() {
           </p>
           </div>
         </div>
-      </main>
+      
 
       {/* Main Content */}
-      <main className="flex-1 pb-16">
-        <div className="max-w-4xl mx-auto px-0.5 sm:px-4 lg:px-16">
-          {/* Tool Section */}
-          <div className="p-1 sm:p-2">
+      <section className="pb-16 mt-16">
+            <div className="max-w-4xl mx-auto px-0.5 sm:px-4 lg:px-14">
+              <div className="p-1 sm:p-2">
             <SlugGenerator />
           </div>
 
           {/* Article Section */}
-    <section className="mt-[-90] p-6 sm:p-8 prose prose-lg max-w-none">
+              <section className="mt-[-90] p-6 sm:p-8 prose prose-lg max-w-none">
       <h2 className="text-3xl font-bold text-gray-900 mb-6">
         What is a URL Slug?
       </h2>
@@ -283,9 +284,17 @@ export default function SlugGeneratorPage() {
       </div>
     </section>
 
-        </div>
-      </main>
-
+         </div>
+                     </section>
+               </main>
+                 {/* Sidebar (Desktop) */}
+               <ToolsSidebar isMobile={false} />
+             </div>
+       
+             {/* Sidebar (Mobile Bottom) */}
+             <div className="lg:hidden border-t mt-[-50] mb-20 border-gray-200">
+               <ToolsSidebar isMobile={true} />
+             </div>
       <Footer />
     </div>
   )

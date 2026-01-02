@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'merriweather': ['Merriweather', 'serif'],
+      },
+    },
   },
   plugins: [
     // eslint-disable-next-line @typescript-eslint/no-require-imports

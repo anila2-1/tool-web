@@ -41,9 +41,9 @@ export async function getAllPosts() {
 export async function getPostBySlug(slug: string) {
   const fullPath = path.join(postsDirectory, `${slug}.mdx`)
   
-  if (!fs.existsSync(fullPath)) {
-    throw new Error(`Post not found: ${slug}`)
-  }
+  // if (!fs.existsSync(fullPath)) {
+  //   throw new Error(`Post not found: ${slug}`)
+  // }
 
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { content, data } = matter(fileContents)

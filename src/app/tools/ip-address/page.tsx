@@ -1,6 +1,7 @@
 import IPAddressLookup from '@/components/tools/IPAddressLookup'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ToolsSidebar from '@/components/ToolsSidebar'
 
 
 import type { Metadata } from "next";
@@ -21,62 +22,59 @@ export const metadata: Metadata = {
 
 export default function IPAddressPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      {/* Hero Section */}
-      <main className="flex-1 py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl sm:text-4xl p-4 font-bold mb-2 bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
-              IP Address Checker
-            </h1>
-            <p className="max-w-2xl mx-auto text-base sm:text-lg text-gray-600 px-2">
-              Get detailed <strong>geolocation and network information</strong> for any IP address
-            </p>
-          </div>
-        </div>
-      </main>
-
-      {/* Lookup Box */}
-      <section className="flex-1 pb-16">
-        <div className="max-w-4xl mx-auto px-0.5 sm:px-4 lg:px-14 ">
-          <div className="p-4 sm:p-6">
-            <IPAddressLookup />
+      <div className="flex flex-1 flex-col lg:flex-row">
+        {/* Main Content */}
+        <main className="flex-1 py-12">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Hero Section */}
+            <div className="text-center mb-8">
+              <h1 className="text-2xl md:text-4xl font-extrabold mb-6 bg-linear-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent leading-tight tracking-tight animate-gradient bg-[length:200%_200%]">
+                IP Address Checker
+              </h1>
+              <p className="max-w-2xl mx-auto text-base sm:text-lg text-gray-600 px-2">
+                Get detailed <strong>geolocation and network information</strong> for any IP address
+              </p>
+            </div>
           </div>
 
-          {/* Article Section */}
-          <section className="mt-[-90] p-6 sm:p-8 prose prose-lg max-w-none">
-            {/* Heading */}
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              IP Location Discoverer – Check Location of Public IP
-            </h2>
-
-            {/* Intro */}
-            <p className="text-gray-700 leading-relaxed mb-6">
-              When you type a website address into your browser, the internet connects you to the correct site rapidly. 
-              But have you ever wondered how websites know it’s you making the request? 
-              The answer lies in your <span className="font-semibold text-indigo-600">IP Address</span>.
-            </p>
-
-            {/* Sub Sections */}
-            <div className="space-y-10">
-              {/* What is IP */}
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">🔑 What is an IP Address?</h3>
-                <p className="text-gray-700 mb-3">
-                  An IP (Internet Protocol) address is a unique numeric identifier assigned to every device connected to the internet—
-                  whether it’s a computer, mobile, tablet, or server.
-                </p>
-                <p className="text-gray-700 mb-3">
-                  👉 Example: <code className="bg-gray-100 px-2 py-1 rounded text-pink-600 font-mono">192.168.0.1</code> (IPv4) or a longer hexadecimal (IPv6).
-                </p>
-                <p className="text-gray-700">
-                  Your ISP assigns you an IP whenever you go online. This allows websites, apps, and servers to recognize your device.
-                </p>
+          {/* Lookup Box */}
+          <section className="pb-16 mt-20">
+            <div className="max-w-4xl mx-auto px-0.5 sm:px-4 lg:px-14">
+              <div className="p-4 sm:p-6">
+                <IPAddressLookup />
               </div>
 
-              {/* Versions */}
+              {/* Article Section */}
+              <section className="mt-[-90] p-6 sm:p-8 prose prose-lg max-w-none">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  IP Location Discoverer – Check Location of Public IP
+                </h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  When you type a website address into your browser, the internet connects you to the correct site rapidly. 
+                  But have you ever wondered how websites know it&apos;s you making the request? 
+                  The answer lies in your <span className="font-semibold text-indigo-600">IP Address</span>.
+                </p>
+
+                <div className="space-y-10">
+                  {/* What is IP */}
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">🔑 What is an IP Address?</h3>
+                    <p className="text-gray-700 mb-3">
+                      An IP (Internet Protocol) address is a unique numeric identifier assigned to every device connected to the internet—
+                      whether it&apos;s a computer, mobile, tablet, or server.
+                    </p>
+                    <p className="text-gray-700 mb-3">
+                      👉 Example: <code className="bg-gray-100 px-2 py-1 rounded text-pink-600 font-mono">192.168.0.1</code> (IPv4) or a longer hexadecimal (IPv6).
+                    </p>
+                    <p className="text-gray-700">
+                      Your ISP assigns you an IP whenever you go online. This allows websites, apps, and servers to recognize your device.
+                    </p>
+                  </div>
+
+                  {/* Versions */}
 <div className="mt-10">
   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
     ⚡ Versions of IP Address
@@ -231,9 +229,19 @@ export default function IPAddressPage() {
                     ⚠️ <span className="font-semibold text-red-600">Note:</span> IP-based location is <u>approximate</u>, only your ISP knows your exact address.
                   </p>
                 </div>
+              </section>
+            </div>
           </section>
-        </div>
-      </section>
+        </main>
+
+        {/* Sidebar - Desktop & Mobile */}
+        <ToolsSidebar isMobile={false} />
+      </div>
+
+      {/* Mobile Tools List - Appears at bottom on mobile only */}
+      <div className="lg:hidden border-t mt-[-50] mb-20 border-gray-200">
+        <ToolsSidebar isMobile={true} />
+      </div>
 
       <Footer />
     </div>

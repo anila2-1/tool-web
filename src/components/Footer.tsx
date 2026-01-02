@@ -64,7 +64,7 @@ const Footer = () => {
               <Link
                 href={link.href}
                 className="group flex items-center space-x-2 text-gray-700 
-                           hover:text-indigo-600 font-medium transition-all duration-300"
+                           hover:text-indigo-600 font-bold transition-all duration-300"
               >
                 <span className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transform scale-0 group-hover:scale-100 transition-transform duration-300"></span>
                 <span className="relative">
@@ -83,7 +83,7 @@ const Footer = () => {
         <div className="flex space-x-5">
           {[
             {
-              href: "https://github.com/anila2-1",
+              href: "https://github.com/",
               icon: <FaGithub size={22} />,
               colors: "from-gray-800 via-gray-900 to-black",
               title: "GitHub",

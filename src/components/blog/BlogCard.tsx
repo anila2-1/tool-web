@@ -27,6 +27,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
                 className="object-cover transition-transform duration-200 group-hover:scale-105"
                 sizes="(max-width: 758px) 100vw, 33vw"
                 priority={false}
+                unoptimized
               />
             </Link>
           </div>

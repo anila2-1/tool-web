@@ -15,10 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://zobitools.com"),
   title: {
-    default: "Dev Tools & Blog",
-    template: "%s | Dev Tools",
+    default: "ZobiTools – Free Online Tools for Developers & Creators",
+    template: "%s | Free Online Tools for Developers & Creators",
   },
-  description: "Free developer tools and technical blog articles",
+  description: "ZobiTools offers free online tools including IP Address Checker, Slug Generator, JSON Format & Viewer, and Timestamp Converter along with helpful articles about web tools.",
   alternates: {
     canonical: "https://zobitools.com",
   },
