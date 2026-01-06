@@ -25,7 +25,7 @@ export default function TimestampPage() {
       <Navbar />
 
        {/* Page Layout */}
-      <div className="flex flex-1 flex-col lg:flex-row">
+      <div className="flex flex-1">
         
         {/* Main Content */}
         <main className="flex-1 py-12">
@@ -49,7 +49,7 @@ export default function TimestampPage() {
           </div>
 
           {/* Article Section */}
-              <section className="mt-[-90] p-6 sm:p-8 prose prose-lg max-w-none">
+              <section className="mt-12 p-6 sm:p-8 prose prose-lg max-w-none">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
               What is a Unix Timestamp?
             </h2>
@@ -158,12 +158,16 @@ export default function TimestampPage() {
          </div>
                              </section>
                        </main>
-                         {/* Sidebar (Desktop) */}
-                       <ToolsSidebar isMobile={false} />
-                     </div>
-               
-                     {/* Sidebar (Mobile Bottom) */}
-                     <div className="lg:hidden border-t mt-[-50] mb-20 border-gray-200">
+                        {/* Sidebar - Desktop Only */}
+                                                     <aside className="hidden lg:block w-80 flex-shrink-0">
+                                                       <div className="sticky top-20 h-fit py-12 pr-4 pl-2">
+                                                         <ToolsSidebar isMobile={false} />
+                                                       </div>
+                                                     </aside>
+                                                   </div>
+                             
+                                   {/* Sidebar (Mobile Bottom) */}
+                            <div className="lg:hidden border-t border-gray-200 mt-[-10] mb-20">
                        <ToolsSidebar isMobile={true} />
                      </div>
 

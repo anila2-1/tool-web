@@ -131,11 +131,17 @@ const Footer = () => {
     <hr className="my-10 border-gray-300/70 relative z-10" />
 
     {/* Copyright */}
-    <div className="text-center text-sm text-gray-600 relative z-10">
-      © {new Date().getFullYear()}{" "}
-      <Link href="/" className="font-medium text-gray-800 hover:text-indigo-600 transition">
-       ZobiTools
-      </Link>. Free developer tools & technical blogs, built with ❤️ for developers.
+    <div className="text-center relative z-10">
+      <p className="text-sm md:text-base font-light tracking-wide text-gray-700 mb-3">
+        © {new Date().getFullYear()}{" "}
+        <Link href="/" className="font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent hover:from-indigo-500 hover:via-purple-500 hover:to-pink-400 transition-all duration-300 cursor-pointer">
+          ZobiTools
+        </Link>.Free Developer Tools &amp; Technical Blogs
+      </p>
+    
+      <p className="text-xs md:text-sm font-light text-gray-600 mt-2 tracking-wider">
+        Built With <span className="text-red-500 text-lg animate-pulse">❤️</span> For Developers
+      </p>
     </div>
   </div>
 </footer>

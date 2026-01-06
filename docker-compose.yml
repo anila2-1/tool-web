@@ -1,7 +1,7 @@
 services:
-  ZobiTools:
+  zobitools:
     build: .
-    container_name: ZobiTools
+    container_name: zobitools
     restart: always
     env_file: .env
     ports:       
