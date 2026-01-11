@@ -25,15 +25,16 @@ const Footer = () => {
   return (
     <>
       {/* Footer */}
-      <footer className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 py-16 px-6 border-t border-gray-200">
+      <footer className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 py-10 px-6 max-h-130 border-t border-gray-200">
 
   {/* Background Accents (blur blobs for modern look) */}
-  <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-300/30 rounded-full blur-3xl animate-pulse"></div>
-  <div className="absolute top-40 -right-32 w-80 h-80 bg-indigo-300/20 rounded-full blur-3xl"></div>
-  <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-pink-300/20 rounded-full blur-3xl opacity-70"></div>
+  {/* Background Accents */}
+<div className="absolute -top-16 -left-16 w-48 h-48 bg-purple-300/20 rounded-full blur-2xl"></div>
+<div className="absolute top-32 -right-24 w-56 h-56 bg-indigo-300/20 rounded-full blur-2xl"></div>
+<div className="absolute bottom-0 left-1/3 w-64 h-64 bg-pink-300/20 rounded-full blur-2xl opacity-60"></div>
 
   <div className="relative max-w-7xl mx-auto px-6 md:px-8">
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-gray-800">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-800">
       
       {/* Brand Info */}
       <div className="space-y-4 max-w-xs relative z-10">
@@ -52,29 +53,56 @@ const Footer = () => {
       </div>
 
       {/* Quick Links */}
-      <div className="space-y-4 relative z-10">
-        <h3 className="text-lg font-semibold text-gray-900">Quick Links</h3>
-        <ul className="space-y-3 text-sm">
-          {[
-            { href: "/tools", label: "Tools" },
-            { href: "/blog", label: "Blog" },
-            { href: "/about", label: "About" },
-          ].map((link, idx) => (
-            <li key={idx}>
-              <Link
-                href={link.href}
-                className="group flex items-center space-x-2 text-gray-700 
-                           hover:text-indigo-600 font-bold transition-all duration-300"
-              >
-                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transform scale-0 group-hover:scale-100 transition-transform duration-300"></span>
-                <span className="relative">
-                  {link.label}
-                  <span className="absolute left-0 -bottom-0.5 w-0 h-[2px] bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
+        <div>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Links</h3>
+          <ul className="space-y-3 text-sm">
+            {[
+                            { href: "/", label: "Home" },
+
+              { href: "/tools", label: "Tools" },
+              { href: "/blog", label: "Blog" },
+            ].map((link, idx) => (
+              <li key={idx}>
+                <Link
+                  href={link.href}
+                  className="group flex items-center space-x-2 text-gray-700
+                             hover:text-indigo-600 font-bold transition-all duration-300"
+                >
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transform scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+                  <span className="relative">
+                    {link.label}
+                    <span className="absolute left-0 -bottom-0.5 w-0 h-[2px] bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="md:mt-8">
+          <ul className="space-y-3 text-sm">
+            {[
+              { href: "/contact-us", label: "Contact Us" },
+              { href: "/about-us", label: "About us" },
+                            { href: "/privacy-policy", label: "Privacy Policy" },
+
+            ].map((link, idx) => (
+              <li key={idx}>
+                <Link
+                  href={link.href}
+                  className="group flex items-center space-x-2 text-gray-700
+                             hover:text-indigo-600 font-bold transition-all duration-300"
+                >
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transform scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+                  <span className="relative">
+                    {link.label}
+                    <span className="absolute left-0 -bottom-0.5 w-0 h-[2px] bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Social + CTA */}
@@ -128,20 +156,19 @@ const Footer = () => {
     </div>
 
     {/* Divider */}
-    <hr className="my-10 border-gray-300/70 relative z-10" />
+    <hr className="my-6 border-gray-300/60 relative z-10" />
 
     {/* Copyright */}
     <div className="text-center relative z-10">
-      <p className="text-sm md:text-base font-light tracking-wide text-gray-700 mb-3">
+      <p className="text-xs md:text-sm font-light tracking-wide text-gray-700 mb-3">
         © {new Date().getFullYear()}{" "}
         <Link href="/" className="font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent hover:from-indigo-500 hover:via-purple-500 hover:to-pink-400 transition-all duration-300 cursor-pointer">
           ZobiTools
-        </Link>.Free Developer Tools &amp; Technical Blogs
+        </Link> Built With <span className="text-red-500 text-lg animate-pulse">❤️</span> For Developers
+      
       </p>
     
-      <p className="text-xs md:text-sm font-light text-gray-600 mt-2 tracking-wider">
-        Built With <span className="text-red-500 text-lg animate-pulse">❤️</span> For Developers
-      </p>
+      
     </div>
   </div>
 </footer>
