@@ -126,7 +126,7 @@ export default function ToolsPage() {
             We’re constantly growing. Suggest a tool and help shape the future of ZobiTools.
           </p>
           <Link
-            href="/contact"
+            href="/contact-us"
             className="inline-flex items-center px-8 py-4 text-base font-semibold rounded-2xl 
                        shadow-lg hover:shadow-2xl text-white 
                        bg-gradient-to-r from-indigo-600 to-purple-600 
