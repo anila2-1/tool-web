@@ -1,0 +1,184 @@
+---
+title: "IP Address vs MAC Address: Crucial Differences Explained"
+excerpt: "Understand the key differences between IP Address and MAC Address, how they work, their roles in networking, and why both are essential."
+image: "/images/ip-vs-mac.png"
+---
+
+<div className="max-w-4xl mx-auto p-8 bg-white border border-gray-200 rounded-3xl shadow-md space-y-6">
+
+![IP vs MAC Address Diagram](/images/ip-vs-mac.png)
+
+*Figure: IP Address vs MAC Address*
+
+In computer networking, **IP Address** and **MAC Address** are two fundamental concepts that help devices communicate with each other. Although they are frequently mentioned together, they serve very different purposes and operate at different layers of a network.
+
+This article provides a clear, beginner-friendly, and SEO-optimized comparison of **IP Address vs MAC Address**, including definitions, differences, examples, a comparison table, and FAQs.
+
+<h2 className="text-2xl font-semibold text-indigo-600">What Is an IP Address?</h2>
+
+An **IP Address (Internet Protocol Address)** is a logical address assigned to a device connected to a network. It helps identify a device’s location on a network so data can be routed correctly.
+
+<h3 className="text-xl font-semibold text-gray-800">Key Characteristics of an IP Address</h3>
+
+<ul className="space-y-3 mb-6 list-disc list-inside">
+  <li>Assigned dynamically or manually</li>
+  <li>Can change over time</li>
+  <li>Used for routing data across networks</li>
+  <li>Works at the Network Layer (Layer 3) of the OSI model</li>
+</ul>
+
+<h3 className="text-xl font-semibold text-gray-800">Examples of IP Addresses</h3>
+
+<ul className="space-y-3 mb-6 list-disc list-inside">
+  <li><strong>IPv4:</strong> 192.168.1.1</li>
+  <li><strong>IPv6:</strong> 2001:0db8:85a3::8a2e:0370:7334</li>
+</ul>
+
+<h3 className="text-xl font-semibold text-gray-800">Types of IP Addresses</h3>
+
+<ul className="space-y-3 mb-6 list-disc list-inside">
+  <li><strong>Public IP Address:</strong> Used on the internet</li>
+  <li><strong>Private IP Address:</strong> Used within local networks</li>
+  <li><strong>Static IP Address:</strong> Fixed address</li>
+  <li><strong>Dynamic IP Address:</strong> Assigned automatically via DHCP</li>
+</ul>
+
+<h2 className="text-2xl font-semibold text-indigo-600">What Is a MAC Address?</h2>
+
+A **MAC Address (Media Access Control Address)** is a physical hardware address assigned to a network interface card (NIC) by the manufacturer. It uniquely identifies a device on a local network.
+
+<h3 className="text-xl font-semibold text-gray-800">Key Characteristics of a MAC Address</h3>
+
+<ul className="space-y-3 mb-6 list-disc list-inside">
+  <li>Permanent (usually cannot be changed)</li>
+  <li>Assigned by the manufacturer</li>
+  <li>Used for local network communication</li>
+  <li>Works at the Data Link Layer (Layer 2) of the OSI model</li>
+</ul>
+
+<h3 className="text-xl font-semibold text-gray-800">Example of a MAC Address</h3>
+
+<pre className="bg-gray-100 p-4 rounded-xl text-sm">
+00:1A:2B:3C:4D:5E
+</pre>
+
+<h3 className="text-xl font-semibold text-gray-800">Structure of a MAC Address</h3>
+
+<ul className="space-y-3 mb-6 list-disc list-inside">
+  <li><strong>First 3 bytes:</strong> Manufacturer ID (OUI)</li>
+  <li><strong>Last 3 bytes:</strong> Unique device identifier</li>
+</ul>
+
+<h2 className="text-2xl font-semibold text-indigo-600">IP Address vs MAC Address: Core Differences</h2>
+
+<div className="overflow-x-auto">
+<table className="w-full border border-gray-200 rounded-xl">
+  <thead className="bg-gray-100">
+    <tr>
+      <th className="p-3 text-left">Feature</th>
+      <th className="p-3 text-left">IP Address</th>
+      <th className="p-3 text-left">MAC Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr className="border-t">
+      <td className="p-3">Full Form</td>
+      <td className="p-3">Internet Protocol Address</td>
+      <td className="p-3">Media Access Control Address</td>
+    </tr>
+    <tr className="border-t">
+      <td className="p-3">Type</td>
+      <td className="p-3">Logical address</td>
+      <td className="p-3">Physical address</td>
+    </tr>
+    <tr className="border-t">
+      <td className="p-3">OSI Layer</td>
+      <td className="p-3">Network Layer (Layer 3)</td>
+      <td className="p-3">Data Link Layer (Layer 2)</td>
+    </tr>
+    <tr className="border-t">
+      <td className="p-3">Assigned By</td>
+      <td className="p-3">Network / ISP / DHCP</td>
+      <td className="p-3">Device manufacturer</td>
+    </tr>
+    <tr className="border-t">
+      <td className="p-3">Can Change</td>
+      <td className="p-3">Yes</td>
+      <td className="p-3">No (usually fixed)</td>
+    </tr>
+    <tr className="border-t">
+      <td className="p-3">Scope</td>
+      <td className="p-3">Global (Internet & LAN)</td>
+      <td className="p-3">Local network only</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 className="text-2xl font-semibold text-indigo-600">Why Do We Need Both IP and MAC Addresses?</h2>
+
+<ul className="space-y-3 mb-6 list-disc list-inside">
+  <li>IP Address finds where the device is on the network</li>
+  <li>MAC Address identifies which exact device should receive the data</li>
+</ul>
+
+When data is transmitted:
+<ul className="space-y-3 mb-6 list-disc list-inside">
+  <li>IP address routes data across networks</li>
+  <li>MAC address delivers data within the local network</li>
+</ul>
+
+This process is handled using **ARP (Address Resolution Protocol)**.
+
+<h2 className="text-2xl font-semibold text-indigo-600">Real-World Example</h2>
+
+<ul className="space-y-3 mb-6 list-disc list-inside">
+  <li><strong>IP Address:</strong> Home address (city, street)</li>
+  <li><strong>MAC Address:</strong> Person’s name inside the house</li>
+</ul>
+
+Without either one, delivery would fail.
+
+<h2 className="text-2xl font-semibold text-indigo-600">Can IP and MAC Addresses Be Tracked?</h2>
+
+<ul className="space-y-3 mb-6 list-disc list-inside">
+  <li><strong>IP Address:</strong> Can be tracked and reveals approximate location</li>
+  <li><strong>MAC Address:</strong> Not visible on the internet, used only in local networks</li>
+</ul>
+
+<h2 className="text-2xl font-semibold text-indigo-600">How to Find IP and MAC Address</h2>
+
+<pre className="bg-gray-100 p-4 rounded-xl text-sm">
+Windows: ipconfig /all
+Linux / macOS: ifconfig
+</pre>
+
+<h2 className="text-2xl font-semibold text-indigo-600">Conclusion</h2>
+
+Understanding the difference between **IP Address vs MAC Address** is essential for networking, cybersecurity, and troubleshooting.  
+IP Address identifies a device’s location, while MAC Address identifies the device itself.  
+Together, they form the backbone of modern network communication.
+
+<section className="relative mt-10">
+  <div className="absolute inset-0 bg-linear-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 blur-3xl opacity-60"></div>
+
+  <div className="relative text-center p-10">
+    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+      Want to check IP details instantly?
+    </h2>
+    <div className="text-lg text-gray-700 mb-8">
+      Try our free <span className="font-semibold text-indigo-600">IP Lookup Tool</span> to analyze IP addresses in real time.
+    </div>
+    <a
+      href="/tools/ip-address"
+      className="inline-block px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r 
+                 from-indigo-600 via-purple-600 to-pink-600 rounded-xl shadow-md 
+                 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] 
+                 transition-all duration-200"
+    >
+      Open IP Lookup Tool
+    </a>
+  </div>
+</section>
+
+</div>

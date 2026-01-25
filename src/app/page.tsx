@@ -88,11 +88,23 @@ export default async function Home() {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.slice(0, 6).map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </div>
+            {posts.length > 6 && (
+              <div className="text-center mt-8">
+                <Link
+                  href="/blog"
+                  className="inline-block px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                >
+                  Read More Blogs
+                </Link>
+              </div>
+            )}
+          </>
         )}
 
         {/* Floating background elements */}

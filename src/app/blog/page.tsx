@@ -1,8 +1,9 @@
 // app/blog/page.tsx
-import { getAllPosts } from '@/lib/mdx'
+import { getPaginatedPosts } from '@/lib/mdx'
 import Navbar from '@/components/Navbar'
 import BlogCard from '@/components/blog/BlogCard'
 import Footer from '@/components/Footer'
+import Pagination from '@/components/blog/Pagination'
 
 import type { Metadata } from "next";
 
@@ -25,8 +26,10 @@ export const metadata: Metadata = {
 };
 
 
-export default async function BlogPage() {
-  const posts = await getAllPosts()
+export default async function BlogPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+  const params = await searchParams
+  const page = parseInt(params.page || '1', 10)
+  const { posts, currentPage, totalPages, hasNextPage, hasPrevPage } = await getPaginatedPosts(page, 6)
 
   return (
     <div className="min-h-screen bg-[#f9fafb]">
@@ -62,11 +65,20 @@ export default async function BlogPage() {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-  {posts.map((post) => (
-    <BlogCard key={post.slug} post={post} />
-  ))}
-</div>
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </div>
+
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              hasNextPage={hasNextPage}
+              hasPrevPage={hasPrevPage}
+            />
+          </>
         )}
 
         {/* Floating background elements */}

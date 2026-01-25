@@ -46,36 +46,49 @@ export default function Navbar() {
           </Link>
 
           {/* Tools Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setIsToolsOpen(!isToolsOpen)}
-              className="flex items-center font-bold text-white hover:text-cyan-300 transition-all duration-300"
-            >
-              Tools
-              <span className="ml-1">{isToolsOpen ? <FiChevronUp /> : <FiChevronDown />}</span>
-            </button>
+          <div className="relative flex items-center gap-1">
+  {/* Tools Page Link */}
+  <Link
+    href="/tools"
+    className="font-bold text-white hover:text-cyan-300 transition-all duration-300"
+  >
+    Tools
+  </Link>
 
-            {isToolsOpen && (
-              <div
-                className="absolute left-1/2 transform -translate-x-1/2 mt-3 w-64 
-                           bg-gradient-to-br from-indigo-600/90 via-purple-600/90 to-indigo-600/90
-                           backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 
-                           overflow-hidden z-50 animate-fadeIn"
-              >
-                {tools.map((tool) => (
-                  <Link
-                    key={tool.path}
-                    href={tool.path}
-                    className="block px-5 py-3 text-gray-100 font-medium transition-all duration-300
-                               hover:bg-white/10 hover:pl-7"
-                    onClick={() => setIsToolsOpen(false)}
-                  >
-                    {tool.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+  {/* Dropdown Toggle Button */}
+  <button
+    onClick={(e) => {
+      e.stopPropagation()
+      setIsToolsOpen(!isToolsOpen)
+    }}
+    className="text-white hover:text-cyan-300 transition-all duration-300"
+  >
+    {isToolsOpen ? <FiChevronUp /> : <FiChevronDown />}
+  </button>
+
+  {/* Dropdown */}
+  {isToolsOpen && (
+    <div
+      className="absolute left-1/2 transform -translate-x-1/2 mt-70 w-64
+                 bg-linear-to-br from-indigo-600/90 via-purple-600/90 to-indigo-600/90
+                 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20
+                 overflow-hidden z-50 animate-fadeIn"
+    >
+      {tools.map((tool) => (
+        <Link
+          key={tool.path}
+          href={tool.path}
+          className="block px-5 py-3 text-gray-100 font-medium transition-all duration-300
+                     hover:bg-white/10 hover:pl-7"
+          onClick={() => setIsToolsOpen(false)}
+        >
+          {tool.name}
+        </Link>
+      ))}
+    </div>
+  )}
+</div>
+
 
           <Link
             href="/blog"

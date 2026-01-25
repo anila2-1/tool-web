@@ -16,7 +16,7 @@ export async function getAllPosts() {
 
     const fileNames = fs.readdirSync(postsDirectory)
 
-    return fileNames
+    const posts = fileNames
       .filter(fileName => fileName.endsWith('.mdx'))
       .map(fileName => {
         const fullPath = path.join(postsDirectory, fileName)
@@ -24,16 +24,42 @@ export async function getAllPosts() {
         const { data } = matter(fileContents)
 
         return {
-          slug: fileName.replace(/\.mdx$/, ''),
+          slug: fileName.replace(/\.mdx$/, '').replace(/\s+/g, '-').toLowerCase(),
           title: data.title || 'Untitled Post',
           date: data.date || new Date().toISOString(),
           excerpt: data.excerpt || '',
           ...data
         }
       })
+
+    // Sort posts by date (newest first)
+    return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   } catch (error) {
     console.error('Error loading posts:', error)
     return []
+  }
+}
+
+// Function to get paginated posts
+export async function getPaginatedPosts(page: number = 1, postsPerPage: number = 6) {
+  const allPosts = await getAllPosts()
+  const totalPosts = allPosts.length
+  const totalPages = Math.ceil(totalPosts / postsPerPage)
+
+  // Ensure page is within valid range
+  const currentPage = Math.max(1, Math.min(page, totalPages))
+
+  const startIndex = (currentPage - 1) * postsPerPage
+  const endIndex = startIndex + postsPerPage
+  const posts = allPosts.slice(startIndex, endIndex)
+
+  return {
+    posts,
+    currentPage,
+    totalPages,
+    totalPosts,
+    hasNextPage: currentPage < totalPages,
+    hasPrevPage: currentPage > 1
   }
 }
 
